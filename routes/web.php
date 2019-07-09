@@ -18,5 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/mon_compte', 'MonCompteController@index');
-// ->middleware('auth');
+Route::get('/contact', 'Contact@index');
+Route::get('/main', 'Main@index');//->middleware('auth');
