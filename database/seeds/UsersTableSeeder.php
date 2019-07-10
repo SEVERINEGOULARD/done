@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
         			'pseudo' 	 => 'admin',
-        			'email' 	 => 'toto@gmail.com',
+        			'email' 	 => 'admin@gmail.com',
         			'password' 	 => Hash::make('000000'),
         			'dob'		 => '2019-07-09',
         			'city_id'	 => 1,

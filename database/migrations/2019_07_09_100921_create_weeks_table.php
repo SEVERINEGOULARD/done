@@ -15,7 +15,7 @@ class CreateWeeksTable extends Migration
     {
         Schema::create('weeks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('week_number');
+            $table->string('week_number');
             $table->timestamps();
         });
     }
