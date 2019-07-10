@@ -63,6 +63,23 @@
                             </div>
                         </div>
 
+
+                <!--Date of Birth-->
+                             <div class="form-group row">
+                            <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('dob') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror" name="dob">
+
+                                @error('dob')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
                 <!--City-->
                 <!-- Must be set on "ville" regarding the API-->
                         <div class="form-group row">
@@ -100,20 +117,18 @@
 
                         <div class="row">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <input class="form-check-input" type="radio" name="theme1" id="inlineRadio1" value="theme1">
                                 <label class="form-check-label" for="inlineRadio1">Classic</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <input class="form-check-input" type="radio" name="theme2" id="inlineRadio2" value="theme2">
                                 <label class="form-check-label" for="inlineRadio2">Nature</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                                <input class="form-check-input" type="radio" name="theme3" id="inlineRadio3" value="theme3">
                                 <label class="form-check-label" for="inlineRadio3">Espace</label>
                             </div>
                         </div>
-
-<!-- ototototototot   -->
 
                 <!--Sumit Button-->
                         <div class="form-group row mb-0">
