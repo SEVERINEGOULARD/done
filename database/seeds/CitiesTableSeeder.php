@@ -12,7 +12,7 @@ class CitiesTableSeeder extends Seeder
     public function run()
     {
         DB::table('cities')->insert([
-        			'name' 	 => 'totoville'
+        			'name' 	 => 'ville de test'
         		]);
     }
 }

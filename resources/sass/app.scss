@@ -6,3 +6,64 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+*{
+	font-family: 'Rajdhani', sans-serif;
+	font-size:1.2rem;
+	margin:0;
+	padding:0;
+	width:100%;
+}
+body{
+	height:100%;
+}
+
+
+//VIEW MAIN
+.header{
+	background-color: #cdcdcd;
+}
+.container-fluid{
+	width:100%;
+	margin:0!important;
+	padding:0!important;
+}
+
+.cst-ul{
+	display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+}
+.cst-col-aside{
+	background-color: #edecec;
+} 
+.cst-col-main-left{
+	background-color: #e2e2ef;
+} 
+.cst-col-main-right{
+	background-color: #eaf8ea;
+}    
+.cst-footer{
+	position: absolute;
+    bottom: 0;
+    width:100%;
+    text-align: center;
+    background-color: #ebebeb;
+    height: 37px;
+}
+.cst-calendar{
+	background: #edebeb;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px grey;
+    height: 29px;
+    font-size:0.9rem;
+}
+.cst-header{
+    height: 45px;
+}
+.cst-div-header{
+	height:40px;
+}
+.cst-logo{
+	height: 100%;
+}

@@ -18,5 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/contact', 'Contact@index');
-Route::get('/main', 'Main@index');//->middleware('auth');
+Route::get('/mon_compte', 'MonCompteController@index')->middleware('auth');
+Route::post('/mon_compte', 'MonCompteController@update')->middleware('auth');
+
+Route::get('/main', 'MainController@index')->middleware('auth');
+Route::post('/main', 'MainController@selectWeek')->middleware('auth');
+
+Route::post('/main/calendar', 'MainController@calendar')->middleware('auth');
+
+Route::get('/contact', 'ContactController@index');

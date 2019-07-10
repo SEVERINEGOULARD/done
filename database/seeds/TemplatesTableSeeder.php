@@ -12,7 +12,7 @@ class TemplatesTableSeeder extends Seeder
     public function run()
     {
         DB::table('templates')->insert([
-        			'name' 	 => 'templatetoto'
+        			'name' 	 => 'templateTest'
         			
         		]);
     }
