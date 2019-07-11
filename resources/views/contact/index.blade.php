@@ -1,5 +1,3 @@
-{{-- VUE CONTACT --}}
-
 @extends('layouts.master')
 
 @section('content')
