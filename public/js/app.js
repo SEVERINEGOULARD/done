@@ -49359,6 +49359,30 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+$(function () {
+  var droppedOn;
+  $('.module').draggable({
+    revert: "invalid",
+    zIndex: 1000,
+    snap: ".dropZone",
+    stop: function stop(e, i) {
+      $(this).animate({
+        height: $('.dropZone').outerHeight(),
+        width: $('.dropZone').outerWidth(),
+        top: droppedOn.offset().top - $('#header').outerHeight(),
+        left: droppedOn.offset().left
+      });
+    }
+  });
+  $('.dropZone').droppable({
+    accept: ".module",
+    activeClass: "ui-state-highlight",
+    drop: function drop(event, ui) {
+      droppedOn = $(this);
+      $(this).css('display', 'block');
+    }
+  });
+});
 
 /***/ }),
 

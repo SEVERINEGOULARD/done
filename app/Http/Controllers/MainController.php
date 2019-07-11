@@ -21,11 +21,11 @@ class MainController extends Controller
 
        
     	 $data = $request->all();
-         $weekId = Week::where('week_number', $request->id)->first();
+
+         $weekId = Week::where('week_number', $data['id'])->first();
 
          $user = Auth::user();
-         $result = UserWeek::where('week_id', $weekId['id']);
-                                //->where('user_id', $user->id);
+         $result = UserWeek::where('week_id', $weekId['id'])->where('user_id', $user->id);
          $userWeek = $result->get();
 
 
@@ -34,4 +34,11 @@ class MainController extends Controller
 
 
     }
+
+    // public function insertText(Request $request){
+    //     $data = $request->all();
+        
+    //     $user = Auth::user();
+    //     echo json_encode($data);
+    // }
 }

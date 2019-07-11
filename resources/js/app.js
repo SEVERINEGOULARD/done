@@ -30,3 +30,36 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+
+$(function(){
+	var droppedOn;
+	
+	$('.module').draggable({
+		revert: "invalid",
+		zIndex: 1000,
+		snap: ".dropZone",
+		
+		stop: function(e, i){
+			$(this).animate({
+					height: $('.dropZone').outerHeight(),
+					width: $('.dropZone').outerWidth(),
+					top: droppedOn.offset().top - $('#header').outerHeight(),
+					left: droppedOn.offset().left	
+			});
+			
+		}
+	
+	});
+
+	$('.dropZone').droppable({
+		accept: ".module",
+  	    activeClass: "ui-state-highlight",
+  	    drop: function(event, ui) { 
+  	    	droppedOn = $(this);
+  	    	$(this).css('display', 'block');
+  	    }
+  	      
+	});
+});
+

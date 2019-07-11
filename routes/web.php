@@ -17,12 +17,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/mon_compte', 'MonCompteController@index')->middleware('auth');
 Route::post('/mon_compte', 'MonCompteController@update')->middleware('auth');
 
 Route::get('/main', 'MainController@index')->middleware('auth');
 Route::post('/main', 'MainController@selectWeek')->middleware('auth');
+Route::post('/main/text', 'MainController@insertText')->middleware('auth');
+
 
 Route::post('/main/calendar', 'MainController@calendar')->middleware('auth');
 

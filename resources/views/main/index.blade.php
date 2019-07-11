@@ -8,13 +8,32 @@ votre semaine
 
 @section('scripts-header')
 
-<div class="container-fluid header">
+<div class="container-fluid header" id="header">
    <div class="row cst-header">
         <div class="col-md-1 cst-div-header">
-          <img src="{{URL::asset('avatar.png')}}" class="cst-logo">
+          <a href="/"><img src="{{URL::asset('logo.png')}}" class="cst-logo"></a>
         </div>
-        <div class="col-md-2 cst-div-header">
+        <div class="col-md-2 cst-div-hello">
+          <div class="row cst-row-admin">
+            <p>Bonjour {{Auth::user()->pseudo}}</p>
+          </div>
           
+            
+              <div class="row cst-row-admin cst-row-sub-admin">
+                <div class="col-md-4">
+                  <a href="/mon_compte"><i class="fas fa-cog cst-compte"></i></a>
+                </div>
+                <div class="col-md-4">
+                  <img src="{{URL::asset(Auth::user()->avatar)}}" class="cst-avatar img-responsive center-block">
+                </div>
+                <div class="col-md-4">
+                  <a href="{{ url('/logout') }}"><i class="fas fa-sign-out-alt cst-compte"></i></a>
+                </div>
+              </div>
+           
+          
+
+
         </div>
        <div class="col-md-2 cst-div-header">
            <form action="/main/calendar" method="POST">
@@ -23,7 +42,7 @@ votre semaine
           </form>
        </div>
        <div class="col-md-1 cst-div-header">
-          
+          <p>météo</p>
         </div>
        
         <div class="col-md-6 cst-div-header cst-nav">
@@ -46,18 +65,44 @@ votre semaine
 
 <div class="container-fluid row">
   <!--ASIDE-->
-  <div class="container-aside col-md-1 cst-col-aside">
-    <P>COLONNE ASIDE</P>
+  <div class="container-aside col-md-1 cst-col-aside dragModules">
+
+    <div id="draggable" class="ui-widget-content cst-Module module">
+     <textarea class="input" type="text" name="textModule" data-module="1">A vos claviers</textarea>
+    </div>
+
+    <div id="draggable1" class="ui-widget-content cst-Module module">
+     <input class="input" type="image" name="imageModule" data-module="2" placeholder="image">
+    </div>
+
+
   </div>
 
   <!--MAIN-->
   <div class="container-main col-md-11">
-    <div class="row">
+    <div class="row cst-main-row" id="dropZones">
       <div class="col-md-6 cst-col-main-left">
-        <P>COLONNE MAIN GAUCHE</P>
+        <div class="row cst-subrow dropZone" data-zone="1" id="dropZone1">
+          
+        </div>
+         <div class="row cst-subrow dropZone" data-zone="2" id="dropZone2">
+          
+        </div>
+         <div class="row cst-subrow dropZone" data-zone="3" id="dropZone3">
+          
+        </div>
       </div>
       <div class="col-md-6 cst-col-main-right">
-        <P>COLONNE MAIN DROITE</P>
+        <div class="row cst-subrow dropZone" data-zone="4" id="dropZone4">
+          
+        </div>
+         <div class="row cst-subrow dropZone" data-zone="5" id="dropZone5">
+         
+          
+        </div>
+         <div class="row cst-subrow dropZone" data-zone="6" id="dropZone6">
+          
+        </div>
       </div>
     </div>
 
@@ -69,7 +114,7 @@ votre semaine
 @endsection
 
 @section('scripts-footer')
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="row cst-footer">
     <div class="col-md-3 offset-md-1">
       <a href="">Mentions légales</a>
@@ -83,7 +128,7 @@ votre semaine
       
     
   </div>
-</div>
+</div> -->
 
 
 
@@ -116,16 +161,64 @@ $(function(){
           data: 'id=' + $weekValue,
           complete: function(data) {
 
-          $result = data.responseJSON;
-          console.log($result);
+            $result = data.responseJSON;
+            //console.log($result);
 
-          }
-          
+            for(var i = 0; i < $result.length; i++) {
+              var zone = $('div[data-zone="'+$result[i]['zone_id']+'"]');
+            
+                $.each( $result[i], function() {
+
+                  zone.html($result[i]['content']);
+                
+                });
+            }
+          }     
       })
-
   })
+//***********************Ajax module**********************************//
 
+//***********************Ajax module texte**********************************//
 
+  
+//   $('.textModule').on('keyup', function(e){
+      
+//       $content = $('.textModule').val();
+//       console.log($content);
+
+//        $.ajaxSetup({
+
+//            headers: {
+//            'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+//                }
+//            });
+
+//        $.ajax({
+
+//            url : '/main/text',
+//            dataType: "json",
+//            method: "POST",
+//            data: 'text=' + $content,
+//            complete: function(data) {
+
+//              $result = data.responseJSON;
+//              console.log($result);
+
+//       //       for(var i = 0; i < $result.length; i++) {
+//       //         var zone = $('div[data-zone="'+$result[i]['zone_id']+'"]');
+            
+//       //           $.each( $result[i], function() {
+
+//       //             zone.html($result[i]['content']);
+                
+//       //           });
+//          //    }
+
+//            }
+          
+//        })
+
+//    });
 
 });
 
