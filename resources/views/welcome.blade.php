@@ -6,8 +6,11 @@
 
         <title>Done</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <!--FONTS-->
+       <!--Homemade Apple :-->
+       <link href="https://fonts.googleapis.com/css?family=Homemade+Apple&display=swap" rel="stylesheet">
+       <!--Philosopher :-->
+       <link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet">
 
         <!-- Styles -->
         <style>

@@ -10644,17 +10644,74 @@ a.text-dark:focus {
   }
 }
 
-* {
-  font-family: "Rajdhani", sans-serif;
-  font-size: 1.2rem;
-  margin: 0 !important;
-  padding: 0 !important;
-  width: 100%;
-}
-
 body {
   height: 100%;
 }
+
+* {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+h1 {
+  font-family: "Amatic SC", cursive;
+  color: #190571;
+}
+
+p {
+  font-family: "Cormorant Garamond", serif;
+}
+
+button {
+  background-color: #190571;
+  border: none;
+  border-radius: 3px;
+}
+
+/*view contact*/
+
+.cst-background {
+  background-color: #EBD452;
+  min-height: 200px;
+}
+
+.header {
+  background: #190571 !important;
+  height: 60px;
+}
+
+.header nav {
+  text-align: right;
+}
+
+.header nav a {
+  color: #eeeeee;
+  font-family: "Amatic SC", cursive;
+}
+
+.cst-contact-img {
+  margin: 0 auto !important;
+  width: 60%;
+}
+
+.cst-contact-footer {
+  background-color: #190571;
+}
+
+.cst-contact-footer a {
+  color: #eeeeee;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.cst-contact-footer p {
+  color: #eeeeee;
+  font-family: "Cormorant Garamond", serif;
+}
+
+/*VIEW MAIN*/
 
 .cst-div-hello {
   text-align: center;

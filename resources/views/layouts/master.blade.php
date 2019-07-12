@@ -13,8 +13,16 @@
        <!--Lien Fontawesome :-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
        <!--FONTS-->
-        <!--Rajdhani :-->
-       <link href="https://fonts.googleapis.com/css?family=Rajdhani&display=swap" rel="stylesheet">
+        <!--Homemade Apple :-->
+       <link href="https://fonts.googleapis.com/css?family=Homemade+Apple&display=swap" rel="stylesheet">
+       <!--Philosopher :-->
+       <link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet">
+       <!--Montez :-->
+       <link href="https://fonts.googleapis.com/css?family=Montez&display=swap" rel="stylesheet">
+       <!--Cormorant :-->
+       <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond&display=swap" rel="stylesheet">
+       <!--Amatic :-->
+       <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
 
        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
        

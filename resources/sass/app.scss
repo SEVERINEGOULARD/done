@@ -3,23 +3,89 @@
 
 // Variables
 @import 'variables';
+$colorGrey1: #eeeeee;
+$colorGrey2: #dedede;
+$colorYellow: #EBD452;
+$colorBlue: #190571;
+$fontParagraph: 'Cormorant Garamond', serif;
+$fontMain: 'Amatic SC', cursive;
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-*{
-	font-family: 'Rajdhani', sans-serif;
-	font-size:1.2rem;
-	margin:0!important;
-	padding:0!important;
-	width:100%;
-}
 body{
 	height:100%;
 }
 
+*{
+	font-family: 'Rajdhani', sans-serif;
+	font-size:1.2rem;
+	margin:0;
+	padding:0;
+	width:100%;
+}
 
-//VIEW MAIN
+
+
+h1{
+	font-family: $fontMain;
+	color: $colorBlue;
+	
+}
+p{
+	font-family: $fontParagraph;
+}
+
+button{
+	background-color: $colorBlue;
+	border :none;
+	border-radius: 3px;
+}
+
+/*view contact*/
+.cst-background{
+	background-color: $colorYellow;
+	min-height: 200px;
+
+
+}
+
+.header{
+	background: $colorBlue!important;
+	height: 60px;
+
+	nav{
+		text-align: right;
+
+		a{
+			color : $colorGrey1;
+			font-family: $fontMain;
+		}
+	}
+}
+
+
+.cst-contact-img{
+	margin:0 auto!important;
+	width: 60%;
+}
+
+
+.cst-contact-footer{
+	background-color: $colorBlue;
+
+	a{
+		color: $colorGrey1;
+		font-family: $fontParagraph;
+	} 
+
+	p{
+		color: $colorGrey1;
+		font-family: $fontParagraph;
+	}
+}
+
+/*VIEW MAIN*/
 .cst-div-hello{
 	text-align: center;
 	height:100%!important;

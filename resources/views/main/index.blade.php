@@ -115,21 +115,7 @@ votre semaine
 @endsection
 
 @section('scripts-footer')
-<!-- <div class="container-fluid">
-  <div class="row cst-footer">
-    <div class="col-md-3 offset-md-1">
-      <a href="">Mentions légales</a>
-    </div>
-    <div class="col-md-4">
-      <p>Copyright 2019 - AWSY</p>
-    </div>
-    <div class="col-md-3">
-      <a href="">CGU</a>
-    </div>     
-      
-    
-  </div>
-</div> -->
+
 
 
 
