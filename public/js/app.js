@@ -49355,33 +49355,105 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+// const app = new Vue({
+//     el: '#app',
+// });
 
-var app = new Vue({
-  el: '#app'
-});
 $(function () {
-  var droppedOn;
-  $('.module').draggable({
+  $("#draggable1").draggable({
     revert: "invalid",
-    zIndex: 1000,
-    snap: ".dropZone",
-    stop: function stop(e, i) {
-      $(this).animate({
-        height: $('.dropZone').outerHeight(),
-        width: $('.dropZone').outerWidth(),
-        top: droppedOn.offset().top - $('#header').outerHeight(),
-        left: droppedOn.offset().left
-      });
-    }
+    zIndex: 1001
   });
-  $('.dropZone').droppable({
-    accept: ".module",
-    activeClass: "ui-state-highlight",
-    drop: function drop(event, ui) {
-      droppedOn = $(this);
-      $(this).css('display', 'block');
-    }
+  $("#draggable2").draggable({
+    revert: "invalid",
+    zIndex: 1001
   });
+  $("#draggable3").draggable({
+    revert: "invalid",
+    zIndex: 1001
+  });
+  $("#draggable4").draggable({
+    revert: "invalid",
+    zIndex: 1001
+  });
+
+  for (i = 1; i <= 6; i++) {
+    $("#dropZone" + i).droppable({
+      zIndex: 1,
+      tolerance: "fit",
+      drop: function drop(event, ui) {
+        $droppedOn = $(this);
+        $dragged = ui.draggable;
+        $droppedOnData = $droppedOn.data('zone');
+        $draggedData = $dragged.data('mod');
+        $clone = $dragged.clone();
+        $clone.css({
+          'left': '',
+          'top': ''
+        });
+        $clone.draggable({
+          revert: "invalid",
+          zIndex: 1001
+        });
+        $clone.draggable("option", "ui-draggable-dragging", false);
+        $clone.draggable("option", "resizable", false);
+        $dragged.after($clone);
+        $(this).append($dragged);
+        $dragged.css({
+          'left': '0px',
+          'top': '0px'
+        });
+        $dragged.empty(".anim");
+        $dragged.animate({
+          backgroundColor: "#fff",
+          height: $(this).outerHeight(),
+          width: $(this).outerWidth()
+        }, 1000);
+        /*changer la partie boutton*/
+
+        $closeButton = $('<button type="button" class="btn btn-outline-danger">X</button>');
+        $parent = $(this);
+        $closeButton.on("click", function () {
+          $parent.droppable('option', 'disabled', true);
+          $parent.empty();
+        });
+
+        if ($dragged.data('category') == "1") {
+          $dragged.append('<textarea class="textarea" placeholder="Votre texte ici..."></textarea>');
+        }
+
+        $dragged.append($closeButton).addClass("text-right");
+        $dragged.draggable("option", "disabled", true);
+        $(this).droppable('option', 'disabled', true); // Ajax here
+        // $droppedOn $dragged 
+
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+          }
+        });
+        $.ajax({
+          url: '/main/ajax',
+          dataType: "json",
+          method: "POST",
+          data: 'zone=' + $droppedOnData + '&module=' + $draggedData + '&weekId=' + window.weekId,
+          complete: function complete(data) {
+            $result = data.responseJSON;
+            console.log($result); //   $result = data.responseJSON;
+            //   console.log($result);
+            //   for(var i = 0; i < $result.length; i++) {
+            // 	var zone = $('div[data-zone="'+$result[i]['zone_id']+'"]');
+            // 	  $.each( $result[i], function() {
+            // 		zone.html($result[i]['content']);
+          }
+        });
+      }
+    });
+  }
+
+  if ($("#dropZone" + i) == "#droppable1") {
+    $(this).append('<textarea placeholder="Votre texte ici..."></textarea>');
+  }
 });
 
 /***/ }),
@@ -49531,8 +49603,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\done\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\done\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\done\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\done\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

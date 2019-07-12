@@ -68,15 +68,17 @@ votre semaine
   <!--ASIDE-->
   <div class="container-aside col-md-1 cst-col-aside dragModules">
 
-    <div id="draggable" class="ui-widget-content cst-Module module">
-     <textarea class="input" type="text" name="textModule" data-module="1">A vos claviers</textarea>
+    <div id="draggable1" data-category="1" class="ui-widget-content modules" data-mod="1">
+      <img id="dragImage" class="dragImage" src="">
     </div>
 
-    <div id="draggable1" class="ui-widget-content cst-Module module">
-     <input class="input" type="image" name="imageModule" data-module="2" placeholder="image">
+    <div id="draggable2" class="ui-widget-content modules" data-mod="2">
+      <img id="dragImage" class="dragImage" src=""> 
     </div>
 
-
+    <div id="draggable3" class="ui-widget-content modules" data-mod="3">
+      <img id="dragImage" class="dragImage" src="">
+    </div>
   </div>
 
   <!--MAIN-->
@@ -116,19 +118,11 @@ votre semaine
 
 @section('scripts-footer')
 
-
-
-
-
-
-
-
-
 <!--***************SCRIPTS**************-->
 <script>
 
 $(function(){
-
+  
   $('#week').on('change', function(e){
       
       $weekValue = $('#week').val();
@@ -149,64 +143,21 @@ $(function(){
           complete: function(data) {
 
             $result = data.responseJSON;
-            //console.log($result);
+            console.log($result);
+
+            window.weekId = $result[0]['week_id'];
 
             for(var i = 0; i < $result.length; i++) {
               var zone = $('div[data-zone="'+$result[i]['zone_id']+'"]');
-            
-                $.each( $result[i], function() {
+              $.each( $result[i], function() {
 
-                  zone.html($result[i]['content']);
-                
-                });
+                zone.html($result[i]['content']);
+              
+              });
             }
           }     
       })
   })
-//***********************Ajax module**********************************//
-
-//***********************Ajax module texte**********************************//
-
-  
-//   $('.textModule').on('keyup', function(e){
-      
-//       $content = $('.textModule').val();
-//       console.log($content);
-
-//        $.ajaxSetup({
-
-//            headers: {
-//            'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
-//                }
-//            });
-
-//        $.ajax({
-
-//            url : '/main/text',
-//            dataType: "json",
-//            method: "POST",
-//            data: 'text=' + $content,
-//            complete: function(data) {
-
-//              $result = data.responseJSON;
-//              console.log($result);
-
-//       //       for(var i = 0; i < $result.length; i++) {
-//       //         var zone = $('div[data-zone="'+$result[i]['zone_id']+'"]');
-            
-//       //           $.each( $result[i], function() {
-
-//       //             zone.html($result[i]['content']);
-                
-//       //           });
-//          //    }
-
-//            }
-          
-//        })
-
-//    });
-
 });
 
 </script>
