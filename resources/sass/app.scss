@@ -15,6 +15,7 @@ $fontMain: 'Amatic SC', cursive;
 
 body{
 	height:100%;
+	background-color: #fff;
 }
 
 *{
@@ -23,6 +24,8 @@ body{
 	margin:0;
 	padding:0;
 	width:100%;
+	font-family: $fontParagraph;
+	
 }
 
 
@@ -40,6 +43,26 @@ button{
 	background-color: $colorBlue;
 	border :none;
 	border-radius: 3px;
+}
+/*NAV BAR*/
+
+.cst-nav{
+	background-color: $colorBlue;
+	
+}
+.cst-nav a{
+	
+	color: $colorGrey1;
+}
+
+/*VIEW LOGIN*/
+
+.cst-login-head{
+	color:$colorYellow;
+	font-family: $fontMain;
+}
+.cst-btn-login{
+	background-color: $colorYellow;
 }
 
 /*view contact*/
@@ -83,6 +106,56 @@ button{
 		color: $colorGrey1;
 		font-family: $fontParagraph;
 	}
+}
+
+/*VIEW REGISTER*/
+.cst-register{
+	color:$colorYellow!important;
+} 
+.card-header{
+	background-color:#fff; 
+}
+.card-body{
+	background-color: $colorBlue;
+	color:$colorGrey1;
+}
+.cst-template{
+	margin:0 auto;
+}
+.cst-check-template{
+	margin:0;
+}
+.cst-btn-register{
+	background-color: $colorYellow;
+}
+
+/*VIEW MOOD*/
+
+.cst-mood{
+	border:1px dashed $colorGrey1;
+	height: 84px;
+	background-color: $colorGrey2;
+}
+.cst-p-mood{
+	font-size: 0.8rem;
+	color: $colorBlue;
+}
+.cst-label-choice{
+	font-size: 0.8rem;
+	text-align: center;
+	color: $colorBlue;
+}
+.cst-select-mood option{
+	font-size: 0.8rem;
+	color: $colorBlue;
+}.cst-mood{
+	border-radius: 54px;
+}
+.cst-row-mood{
+	margin-top: 74px;
+	}    
+.cst-div-select{
+	margin-left: 12px;
 }
 
 /*VIEW MAIN*/

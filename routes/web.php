@@ -31,3 +31,5 @@ Route::post('/main/text', 'MainController@insertText')->middleware('auth');
 Route::post('/main/calendar', 'MainController@calendar')->middleware('auth');
 
 Route::get('/contact', 'ContactController@index');
+
+Route::get('/mood', 'MoodController@index');

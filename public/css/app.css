@@ -10646,6 +10646,7 @@ a.text-dark:focus {
 
 body {
   height: 100%;
+  background-color: #fff;
 }
 
 * {
@@ -10654,6 +10655,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
+  font-family: "Cormorant Garamond", serif;
 }
 
 h1 {
@@ -10669,6 +10671,27 @@ button {
   background-color: #190571;
   border: none;
   border-radius: 3px;
+}
+
+/*NAV BAR*/
+
+.cst-nav {
+  background-color: #190571;
+}
+
+.cst-nav a {
+  color: #eeeeee;
+}
+
+/*VIEW LOGIN*/
+
+.cst-login-head {
+  color: #EBD452;
+  font-family: "Amatic SC", cursive;
+}
+
+.cst-btn-login {
+  background-color: #EBD452;
 }
 
 /*view contact*/
@@ -10709,6 +10732,69 @@ button {
 .cst-contact-footer p {
   color: #eeeeee;
   font-family: "Cormorant Garamond", serif;
+}
+
+/*VIEW REGISTER*/
+
+.cst-register {
+  color: #EBD452 !important;
+}
+
+.card-header {
+  background-color: #fff;
+}
+
+.card-body {
+  background-color: #190571;
+  color: #eeeeee;
+}
+
+.cst-template {
+  margin: 0 auto;
+}
+
+.cst-check-template {
+  margin: 0;
+}
+
+.cst-btn-register {
+  background-color: #EBD452;
+}
+
+/*VIEW MOOD*/
+
+.cst-mood {
+  border: 1px dashed #eeeeee;
+  height: 84px;
+  background-color: #dedede;
+}
+
+.cst-p-mood {
+  font-size: 0.8rem;
+  color: #190571;
+}
+
+.cst-label-choice {
+  font-size: 0.8rem;
+  text-align: center;
+  color: #190571;
+}
+
+.cst-select-mood option {
+  font-size: 0.8rem;
+  color: #190571;
+}
+
+.cst-mood {
+  border-radius: 54px;
+}
+
+.cst-row-mood {
+  margin-top: 74px;
+}
+
+.cst-div-select {
+  margin-left: 12px;
 }
 
 /*VIEW MAIN*/
