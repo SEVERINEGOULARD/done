@@ -130,16 +130,7 @@ $(function () {
 					data: 'zone=' + $droppedOnData + '&module=' + $draggedData + '&weekId=' + window.weekId, 
 					complete: function(data) {
 						$result = data.responseJSON;
-						console.log($result);
-					//   $result = data.responseJSON;
-					//   console.log($result);
-		  
-					//   for(var i = 0; i < $result.length; i++) {
-					// 	var zone = $('div[data-zone="'+$result[i]['zone_id']+'"]');
-					  
-					// 	  $.each( $result[i], function() {
-		  
-					// 		zone.html($result[i]['content']);
+						
 						  
 					}
 				});
@@ -153,3 +144,42 @@ $(function () {
     }
 });
 
+
+/*Ajax toDo*/
+
+$(function(){
+  
+    $('#sendToDo').on('click', function(e){
+        
+        $toDo = $('#toDo').val();
+        $category = $('#category').val();
+
+  
+        $.ajaxSetup({
+  
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+                }
+            });
+  
+        $.ajax({
+  
+            url : '/toDo',
+            dataType: "json",
+            method: "POST",
+            data: 'toDo=' + $toDo + '&category=' + $category,
+            complete: function(data) {
+  
+              $result = data.responseJSON;
+              console.log($result);
+            
+            //   if($('div[data-toDo="' + $result['category'] + '"]').length){ 
+            //   $('div[data-toDo="' + $result['category'] + '"]').html($result['content']);
+            //   }
+
+            //$('#test').append($result['toDo']);
+
+            }     
+        })
+     })
+  });

@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 
 @section('title')
@@ -49,7 +48,7 @@ votre semaine
         <div class="col-md-6 cst-div-header cst-nav">
           <nav>
              <ul class="cst-ul">
-                 <li><a href="#">To do</a></li>
+                 <li><a href="/toDo">To do</a></li>
                  <li><a href="#">Journal</a></li>
                  <li><a href="/contact">Contact</a></li>
              </ul>
