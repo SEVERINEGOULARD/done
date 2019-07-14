@@ -6,7 +6,7 @@
 $colorGrey1: #eeeeee;
 $colorGrey2: #dedede;
 $colorYellow: #EBD452;
-$colorBlue: #190571;
+$colorBlue: #fff;
 $fontParagraph: 'Cormorant Garamond', serif;
 $fontMain: 'Amatic SC', cursive;
 
@@ -39,11 +39,11 @@ p{
 	font-family: $fontParagraph;
 }
 
-button{
-	background-color: $colorBlue;
-	border :none;
-	border-radius: 3px;
-}
+//button{
+	//background-color: $colorBlue;
+	//border :none;
+	//border-radius: 3px;
+//}
 /*NAV BAR*/
 
 .cst-nav{
@@ -269,4 +269,60 @@ button{
 	display: none; 
 	height: 100%; 
 	resize:none;
+}
+
+.cst-textarea {
+
+    width: 100%;
+    height: 100%;
+}
+
+.cst-button{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 16px;
+    height: 16px;
+    font-size:x-small;
+    border-radius: 2px;
+    background-color:#fff;
+   // visibility:hidden;
+}
+
+.file-input{
+    margin-left: 20%;
+}
+.modules {
+    height: 12%;
+}
+
+.dragImage {
+    width: 75%;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.yt{
+    opacity:0.7;
+}
+
+.illustration{
+    width:30%;
+}
+
+.design-button{
+    width: 20%;
+    height: 20%;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+.design{
+    overflow-y: scroll;
+    
+}
+
+.ill-mod-photo {
+    width: 50%;
+    margin-right: 30%;
 }
