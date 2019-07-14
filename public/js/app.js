@@ -49360,6 +49360,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 // });
 
 $(function () {
+  // Draggables declare
   $("#draggable1").draggable({
     revert: "invalid",
     zIndex: 1001
@@ -49375,7 +49376,7 @@ $(function () {
   $("#draggable4").draggable({
     revert: "invalid",
     zIndex: 1001
-  });
+  }); // Behaviour drop/drag
 
   for (i = 1; i <= 6; i++) {
     $("#dropZone" + i).droppable({
@@ -49385,7 +49386,8 @@ $(function () {
         $droppedOn = $(this);
         $dragged = ui.draggable;
         $droppedOnData = $droppedOn.data('zone');
-        $draggedData = $dragged.data('mod');
+        $draggedData = $dragged.data('mod'); //Clone module
+
         $clone = $dragged.clone();
         $clone.css({
           'left': '',
@@ -49418,31 +49420,105 @@ $(function () {
         $closeButton.on("click", $parent, function (parentButton) {
           parentButton.data.droppable('option', 'disabled', false);
           parentButton.data.empty();
-        });
+        }); //Behaviour by draggable category and ajax requests for each
+
+        /*cat 1*/
 
         if ($dragged.data('category') == "1") {
-          $dragged.append('<textarea class="cst-textarea" placeholder="Votre texte ici..."></textarea>');
-        }
-
-        if ($dragged.data('category') == "2") {
-          $dragged.append('<img class="ill-mod-photo" src="img/polaroid.png"><form method="post" action="" enctype="multipart/form-data"><div class="form-group file-parent"></div></form>');
-          $fileInput = $('<input type="file" class="form-control-file">');
-          $dragged.find('.file-parent').append($fileInput);
-          $fileInput.on('change', function (e) {
-            console.log(e.target.files[0].name);
+          $dragged.append('<form class="textForm" method="post"></form>');
+          $textArea = $('<textarea id="textArea" class="cst-textarea" placeholder="Votre texte ici..."></textarea>');
+          $dragged.find('.textForm').append($textArea);
+          $textArea.keyup({
+            dragged: $dragged
+          }, function (e) {
+            $.ajaxSetup({
+              headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+            });
+            $.ajax({
+              url: '/main/text',
+              dataType: "json",
+              method: "POST",
+              data: 'text=' + $(this).val() + '&line-id=' + e.data.dragged.data('line-id'),
+              complete: function complete(data) {
+                $result = data.responseJSON;
+                console.log($result);
+              }
+            });
           });
         }
 
+        ;
+        /*cat 2*/
+
+        if ($dragged.data('category') == "2") {
+          $dragged.append('<img id="preview" class="ill-mod-photo" src="img/polaroid.png"><form method="post"  enctype="multipart/form-data"><div class="form-group file-parent"></div></form>');
+          $fileInput = $('<input type="file" class="form-control-file">');
+          $dragged.find('.file-parent').append($fileInput); // on rajoute dragged comme argument qui va se coller dans l'event e (à e.data.dragged)
+          // ça permet d'appeler cet élément dragged au moment de l'event sans devoir rechercher avec
+          // des parents de parents etc.
+
+          $fileInput.on('change', {
+            dragged: $dragged
+          }, function (e) {
+            var thatTarget = e.currentTarget;
+
+            if (thatTarget.files && thatTarget.files[0]) {
+              $myData = new FormData();
+              $myData.append('image', thatTarget.files[0]);
+              $myData.append('line-id', e.data.dragged.data('line-id'));
+              $.ajaxSetup({
+                headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+              });
+              $.ajax({
+                method: 'POST',
+                url: '/main/image',
+                data: $myData,
+                contentType: false,
+                processData: false
+              }).done(function (data) {
+                $result = data.responseJSON;
+                console.log(data);
+              }).fail(function (data) {});
+            }
+
+            ;
+          });
+        }
+
+        ;
+        /*cat 3*/
+
         if ($dragged.data('category') == "3") {
           $dragged.append('<div class"row"><button class="design-button"><img src="img/ville1.png" /></button><button class="design-button"><img src="img/texture1.jpg" /></button><button class="design-button"><img src="img/perso1.png"/></button><button class="design-button"><img src="img/arab2.png"/></button><button class="design-button"><img src="img/arab3.png"/></button></div><div class"row"><button class="design-button"><img src="img/chat1.jpg" /></button><button class="design-button"><img src="img/chat3.jpg" /></button><button class="design-button"><img src="img/livres.jpg" /></button></button><button class="design-button"><img src="img/arab4.png" /></button></button><button class="design-button"><img src="img/tempete.jpg" /></button><button class="design-button"><img src="img/tempete.jpg" /></button></button></button><button class="design-button"><img src="img/tempete.jpg" /></button><button class="design-button"><img src="img/tempete.jpg" /></button></button></button><button class="design-button"><img src="img/tempete.jpg" /></button></button></button><button class="design-button"><img src="img/tempete.jpg" /></button><button class="design-button"><img src="img/tempete.jpg" /></button></div>');
-        } // $(".design-button").on("click", function(){
-        // });
+        }
 
+        $(".design-button").on("click", function (e) {
+          e.preventDefault();
+          $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });
+          $.ajax({
+            url: '/design',
+            dataType: "json",
+            method: "POST",
+            data: 'design=' + $('.design-button'),
+            complete: function complete(data) {
+              $result = data.responseJSON;
+              console.log($result);
+            }
+          });
+        });
+        /*red cross button on each dragged*/
 
         $dragged.append($closeButton).addClass("text-right");
         $dragged.draggable("option", "disabled", true);
-        $(this).droppable('option', 'disabled', true); // Ajax here
-        // $droppedOn $dragged 
+        $(this).droppable('option', 'disabled', true); // $droppedOn $dragged 
 
         $.ajaxSetup({
           headers: {
@@ -49456,125 +49532,51 @@ $(function () {
           data: 'zone=' + $droppedOnData + '&module=' + $draggedData + '&weekId=' + window.weekId,
           complete: function complete(data) {
             $result = data.responseJSON;
-            console.log($result); //   $result = data.responseJSON;
-            //   console.log($result);
-            //   for(var i = 0; i < $result.length; i++) {
-            // 	var zone = $('div[data-zone="'+$result[i]['zone_id']+'"]');
-            // 	  $.each( $result[i], function() {
-            // 		zone.html($result[i]['content']);
+            console.log($result);
+            $dragged.attr('data-line-id', $result['id']);
+            /* for (var i = 0; i < $result.length; i++) {
+                var zone = $('div[data-zone="' + $result[i]['zone_id'] + '"]');
+                  $.each($result[i], function () {
+                      zone.html($result[i]['content']);
+                  });
+              }*/
           }
         });
       }
     });
   }
+
+  ;
 });
-/*Ajax module1 Text
+/*Ajax toDo*/
 
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});*/
-
-/*
-    
-    files = [];                             //on déclare un tableau vide ! attention ce tableau files n'est pas le même que le .files de la ligne en-dessous !
-    droppedFiles = e.dataTransfer.files;    // https://developer.mozilla.org/fr/docs/Web/API/DataTransfer/files
-    var droppedItem;                        //on déclare une variable vide
-    dropShow.innerHTML = "";                //on réïnitialise dropSow au cas ou il y aurait déjà qqch (sinon ça se cumule)
-
-    for (var i = 0; i < droppedFiles.length; i++) { //Boucle for sur le tableau des infos recueilles
-
-        droppedItem = document.createElement('p');  //on stocke dans la variable la création d'un élément <p>
-        droppedItem.innerHTML = droppedFiles[i].name + '(' + droppedFiles[i].size + 'Kb)'; //on le rempli avec le nom et la taille du fichier
-        dropShow.appendChild(droppedItem); //on en fait un enfant de dropShow pour qu'il s'affiche
-        files.push(droppedFiles[i]); //On push toutes les infos dans le tableau vide, il va être récupérer plus haut pour l'ajax
-
-    }//fin du for droppedFiles  
-
-    }//fin du .ondrop
-
-    $myData = new FormData();
-    $myData.append('file', files[0]);
-
+$(function () {
+  $('#sendToDo').on('click', function (e) {
+    e.preventDefault();
+    $toDo = $('#toDo').val();
+    $category = $('#category').val();
     $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+      }
+    });
+    $.ajax({
+      url: '/toDo',
+      dataType: "json",
+      method: "POST",
+      data: 'toDo=' + $toDo + '&category=' + $category,
+      complete: function complete(data) {
+        $result = data.responseJSON;
+
+        if ($('div[data-toDo="' + $result['category'] + '"]').length) {
+          $('div[data-toDo="' + $result['category'] + '"]').html($result['content']);
         }
 
-              $.ajax({
-                  method: 'POST',
-                  url: '/main',
-                  data: myData,
-                  contentType: false,
-                  processData: false,
-              })
-
-                  .done(function (data) {        
-                      //recupérer le contenu du module et le supprimer
-                      //lui faire un append du l'image reçue
-                  })
-
-                  .fail(function (data) {                                                     
-
-
-                      /*$.each(data.responseJSON["errors"], function (key, value) {                 
-
-                          for (i = 0; i < value.length; i++) {                                    
-                              $("#error").append("<li>" + value[i] + "</li>");                
-                          }
-                      });*/
-
-/*
-})
-});
-});*/
-//fin du ready function
-
-/*Ajax module3 Illustration
-
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});*/
-
-/*Ajax module4 Mood
-
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});*/
-
-/*Ajax toDo*/
-//$(function(){
-
-$('#sendToDo').on('click', function (e) {
-  e.preventDefault();
-  $toDo = $('#toDo').val();
-  $category = $('#category').val();
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
-    }
-  });
-  $.ajax({
-    url: '/toDo',
-    dataType: "json",
-    method: "POST",
-    data: 'toDo=' + $toDo + '&category=' + $category,
-    complete: function complete(data) {
-      $result = data.responseJSON;
-
-      if ($('div[data-toDo="' + $result['category'] + '"]').length) {
-        $('div[data-toDo="' + $result['category'] + '"]').html($result['content']);
+        $('#test').append("<p>" + $result['toDo'] + "</p>");
       }
-
-      $('#test').append("<p>" + $result['toDo'] + "</p>");
-    }
+    });
   });
-}); //});
+});
 
 /***/ }),
 
