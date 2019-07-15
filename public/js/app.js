@@ -49547,10 +49547,8 @@ $(function () {
   }
 
   ;
-});
-/*Ajax toDo*/
+  /*Ajax toDo*/
 
-$(function () {
   $('#sendToDo').on('click', function (e) {
     e.preventDefault();
     $toDo = $('#toDo').val();

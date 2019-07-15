@@ -15,3 +15,5 @@ yarn-error.log
 \.vs/slnx\.sqlite
 
 \.vs/VSWorkspaceState\.json
+
+*.sqlite

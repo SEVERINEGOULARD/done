@@ -256,14 +256,14 @@ $(function () {
             }
         });
     };
-});
+
     
 
 
 
 /*Ajax toDo*/
 
-$(function(){
+
   
     $('#sendToDo').on('click', function (e) {
         e.preventDefault();
