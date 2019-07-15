@@ -17,7 +17,9 @@ class UsersTableSeeder extends Seeder
         			'password' 	 => Hash::make('000000'),
         			'dob'		 => '1983-06-15',
         			'city_id'	 => 1,
-        			'template_id'=> 1
+        			'template_id'=> 1,
+                    'created_at' => '2019-01-01 00:00:00',
+                    'updated_at' => '2019-01-01 00:00:00'
         		]);
     }
 }

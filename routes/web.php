@@ -26,7 +26,6 @@ Route::post('/mon_compte', 'MonCompteController@update')->middleware('auth');
 Route::get('/main', 'MainController@index')->middleware('auth');
 Route::post('/main', 'MainController@selectWeek')->middleware('auth');
 Route::post('/main/ajax', 'MainController@insertDrop')->middleware('auth');
-// Route::post('/main/text', 'MainController@insertText')->middleware('auth');
 
 Route::get('/toDo', 'ToDoController@index')->middleware('auth');
 Route::post('/toDo', 'ToDoController@insertToDo')->middleware('auth');
@@ -37,6 +36,7 @@ Route::post('/main/calendar', 'MainController@calendar')->middleware('auth');
 Route::get('/contact', 'ContactController@index');
 
 Route::get('/mood', 'MoodController@index');
+Route::get('/admin', 'AdminController@index')->middleware('admin');
 
 Route::post('/main/text', 'MainController@updateTextModule')->middleware('auth');
 Route::post('/main/image', 'MainController@uploadImageModule')->middleware('auth');

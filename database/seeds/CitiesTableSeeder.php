@@ -12,7 +12,9 @@ class CitiesTableSeeder extends Seeder
     public function run()
     {
         DB::table('cities')->insert([
-        			'name' 	 => 'ville de test'
+        			'name' 	 => 'ville de test',
+                    'created_at' => '2019-01-01 00:00:00',
+                    'updated_at' => '2019-01-01 00:00:00'
         		]);
     }
 }

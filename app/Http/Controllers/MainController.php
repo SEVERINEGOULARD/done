@@ -31,7 +31,7 @@ class MainController extends Controller
         $result = UserWeek::where('week_id', $data['number'])->where('user_id', $user->id);
         $userWeek = $result->get();
 
-    	echo json_encode($userWeek);
+    	echo json_encode($userWeek); 
 
     }
 
@@ -45,46 +45,47 @@ class MainController extends Controller
         $userWeek->user_id    = $user->id;
         $userWeek->week_id    = $data['weekId'];
         $userWeek->save();
-
         echo json_encode($userWeek);
     }
 
     public function updateTextModule(Request $request){
-        
-        $request->validate([
 
-        'text' => 'max:5000',
-        
-        ]);
+       $request->validate([
 
-        $data = $request->all();
-        UserWeek::where('id', $data['line-id'])->update(['content' => $data['text']]);
-        return response()->json();
-    }
+       'text' => 'max:5000',
 
-    public function uploadImageModule(Request $request){
+       ]);
 
-        $request->validate([
+       $data = $request->all();
+       UserWeek::where('id', $data['line-id'])->update(['content' => $data['text']]);
+       return response()->json();
+   }
 
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        
-        ]);
+   public function uploadImageModule(Request $request){
 
-        $path = $request->file('image')->store('UserImages');
-        UserWeek::where('id', $request->get('line-id'))->update(['content' => $path]);
-        return response()->json(['state' => $path, 'id' => $request->get('line-id')]);
-    }
+       $request->validate([
 
-    public function insertDesignModule(Request $request){
+           'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-        
-        $request->validate([
-    
-        'design' => 'required',
-        
-        ]);
+       ]);
 
-        $data = $request->all();
+       $path = $request->file('image')->store('UserImages');
+       UserWeek::where('id', $request->get('line-id'))->update(['content' => $path]);
+       return response()->json(['state' => $path, 'id' => $request->get('line-id')]);
+   }
 
-    }
+   public function insertDesignModule(Request $request){
+
+
+       $request->validate([
+
+       'design' => 'required',
+
+       ]);
+
+       $data = $request->all();
+
+   }
+
+
 }

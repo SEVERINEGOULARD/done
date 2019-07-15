@@ -13,12 +13,6 @@
        <!--Lien Fontawesome :-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
        <!--FONTS-->
-        <!--Homemade Apple :-->
-       <link href="https://fonts.googleapis.com/css?family=Homemade+Apple&display=swap" rel="stylesheet">
-       <!--Philosopher :-->
-       <link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet">
-       <!--Montez :-->
-       <link href="https://fonts.googleapis.com/css?family=Montez&display=swap" rel="stylesheet">
        <!--Cormorant :-->
        <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond&display=swap" rel="stylesheet">
        <!--Amatic :-->

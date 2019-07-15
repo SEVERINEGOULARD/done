@@ -5,8 +5,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <h1 class="card-header cst-register">REGISTER</h1>
                 <div class="card">
-                    <h1 class="card-header cst-register">REGISTER</h1>
+                    
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">

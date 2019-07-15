@@ -62,18 +62,25 @@ button{
 .cst-login-head{
 	color:$colorYellow;
 	font-family: $fontMain;
+	font-size: 2rem;
 }
 .cst-btn-login{
 	background-color: $colorYellow;
+	font-size: 1.2rem;
+}
+.cst-label-log-rem{
+	font-size: 0.9rem;
+}
+.cst-div-rem{
+	padding: 0;
+    text-align: center;
+    padding-top: 10px;
 }
 
-/*view contact*/
+/*VIEW CONTACT*/
 .cst-background{
 	background-image: linear-gradient(to top right, $colorGreen2, $colorGreen, $colorYellow);
 	min-height: 200px;
-
-
-
 }
 
 .header{
@@ -296,6 +303,30 @@ button{
 	display: none; 
 	height: 100%; 
 	resize:none;
+}
+
+/*VIEW MON_COMPTE*/
+.cst-btn-compte{
+	background-color: $colorYellow!important;
+	width:40%;	
+}
+.cst-div-btn-compte{
+	text-align: center;
+}
+.cst-div-form-compte{
+	background-color: $colorBlue;
+}
+.cst-form-compte label, .cst-form-compte p{
+	color: $colorGrey1;
+}
+.cst-cpte-container{
+	width:80%;
+	margin:0 auto;
+}
+.cst-head-compte{
+	color: $colorYellow;
+	font-size: 2rem;
+	font-family: $fontMain;
 }
 
 /*VIEW TODO*/
