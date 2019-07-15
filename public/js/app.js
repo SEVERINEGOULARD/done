@@ -49456,12 +49456,6 @@ $(function () {
           data: 'zone=' + $droppedOnData + '&module=' + $draggedData + '&weekId=' + window.weekId,
           complete: function complete(data) {
             $result = data.responseJSON;
-            console.log($result); //   $result = data.responseJSON;
-            //   console.log($result);
-            //   for(var i = 0; i < $result.length; i++) {
-            // 	var zone = $('div[data-zone="'+$result[i]['zone_id']+'"]');
-            // 	  $.each( $result[i], function() {
-            // 		zone.html($result[i]['content']);
           }
         });
       }
@@ -49528,53 +49522,60 @@ $.ajaxSetup({
 /*
 })
 });
-});*/
-//fin du ready function
-
-/*Ajax module3 Illustration
-
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});*/
-
-/*Ajax module4 Mood
-
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});*/
-
 /*Ajax toDo*/
-//$(function(){
 
-$('#sendToDo').on('click', function (e) {
-  e.preventDefault();
-  $toDo = $('#toDo').val();
-  $category = $('#category').val();
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
-    }
-  });
-  $.ajax({
-    url: '/toDo',
-    dataType: "json",
-    method: "POST",
-    data: 'toDo=' + $toDo + '&category=' + $category,
-    complete: function complete(data) {
-      $result = data.responseJSON;
-
-      if ($('div[data-toDo="' + $result['category'] + '"]').length) {
-        $('div[data-toDo="' + $result['category'] + '"]').html($result['content']);
+$(function () {
+  $('#sendToDo').on('click', function (e) {
+    e.preventDefault();
+    $toDo = $('#toDo').val();
+    $category = $('#category').val();
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
       }
+    });
+    $.ajax({
+      url: '/toDo',
+      dataType: "json",
+      method: "POST",
+      data: 'toDo=' + $toDo + '&category=' + $category,
+      complete: function complete(data) {
+        $result = data.responseJSON;
+        console.log($result);
+        $('#test').empty();
 
-      $('#test').append("<p>" + $result['toDo'] + "</p>");
-    }
+        if ($result['toDo']) {
+          $('#test').append("<div class='col-md-4'><p>" + $result['toDo'] + "</p> </div> <div class='col-md-4'><input type='checkbox'></div><div class='col-md-4'><p id='deleteToDo'><i class='fas fa-trash'></i></p></div>");
+        } else {
+          $('#test').append("<div class='col-md-4'><p> Aucun message indiqué </p> </div> <div class='col-md-4'><input type='checkbox'></div><div class='col-md-4'><p id='deleteToDo'><i class='fas fa-trash'></i></p></div>");
+        }
+      }
+    });
   });
-}); //});
+  $('#chooseCat').on('change', function (e) {
+    e.preventDefault();
+    $chooseCat = $('#chooseCat').val();
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+      }
+    });
+    $.ajax({
+      url: '/toDo/chooseCat',
+      dataType: "json",
+      method: "POST",
+      data: 'category=' + $chooseCat,
+      complete: function complete(data) {
+        $result = data.responseJSON;
+        $('#test').empty();
+
+        for (var i = 0; i < $result.length; i++) {
+          $('#test').append("<div class='col-md-4'><p>" + $result[i]['content'] + "</p> </div> <div class='col-md-4'><input type='checkbox'></div><div class='col-md-4'><a id='deleteToDo'><i class='fas fa-trash'></i></a></div>");
+        }
+      }
+    });
+  });
+});
 
 /***/ }),
 

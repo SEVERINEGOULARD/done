@@ -156,16 +156,7 @@ $(function () {
 					data: 'zone=' + $droppedOnData + '&module=' + $draggedData + '&weekId=' + window.weekId, 
 					complete: function(data) {
 						$result = data.responseJSON;
-						console.log($result);
-					//   $result = data.responseJSON;
-					//   console.log($result);
-		  
-					//   for(var i = 0; i < $result.length; i++) {
-					// 	var zone = $('div[data-zone="'+$result[i]['zone_id']+'"]');
-					  
-					// 	  $.each( $result[i], function() {
-		  
-					// 		zone.html($result[i]['content']);
+						
 						  
 					}
 				});

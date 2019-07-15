@@ -10660,17 +10660,23 @@ body {
 
 h1 {
   font-family: "Amatic SC", cursive;
-  color: #fff;
+  color: #497264;
 }
 
 p {
   font-family: "Cormorant Garamond", serif;
 }
 
+button {
+  background-image: linear-gradient(to top right, #45e0aa, #f8da63);
+  border: none;
+  border-radius: 20px;
+}
+
 /*NAV BAR*/
 
 .cst-nav {
-  background-color: #fff;
+  background-color: #45e0aa;
 }
 
 .cst-nav a {
@@ -10680,32 +10686,35 @@ p {
 /*VIEW LOGIN*/
 
 .cst-login-head {
-  color: #EBD452;
+  color: #f8da63;
   font-family: "Amatic SC", cursive;
 }
 
 .cst-btn-login {
-  background-color: #EBD452;
+  background-color: #f8da63;
 }
 
 /*view contact*/
 
 .cst-background {
-  background-color: #EBD452;
+  background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
   min-height: 200px;
 }
 
 .header {
-  background: #fff !important;
+  background: #45e0aa !important;
   height: 60px;
+  box-shadow: 0px 5px 5px #a39e9e;
 }
 
 .header nav {
   text-align: right;
+  padding-top: 10px;
+  letter-spacing: 0.2rem;
 }
 
 .header nav a {
-  color: #eeeeee;
+  color: #424242;
   font-family: "Amatic SC", cursive;
 }
 
@@ -10715,10 +10724,13 @@ p {
 }
 
 .cst-contact-footer {
-  background-color: #fff;
+  background-color: #424242;
+  box-shadow: 0px -2px 5px #a39e9e;
+  padding-top: 10px;
 }
 
 .cst-contact-footer a {
+  padding-top: 10px;
   color: #eeeeee;
   font-family: "Cormorant Garamond", serif;
 }
@@ -10728,10 +10740,28 @@ p {
   font-family: "Cormorant Garamond", serif;
 }
 
+.cst-contact-titre {
+  font-size: 3rem;
+}
+
+.cst-contact-titre1 {
+  font-family: "Amatic SC", cursive;
+}
+
+.cst-contact-p {
+  font-size: 1rem;
+  padding: 0px;
+  color: #424242;
+}
+
+.img-membre-4 {
+  width: 328px;
+}
+
 /*VIEW REGISTER*/
 
 .cst-register {
-  color: #EBD452 !important;
+  color: #f8da63 !important;
 }
 
 .card-header {
@@ -10739,7 +10769,7 @@ p {
 }
 
 .card-body {
-  background-color: #fff;
+  background-color: #45e0aa;
   color: #eeeeee;
 }
 
@@ -10752,7 +10782,7 @@ p {
 }
 
 .cst-btn-register {
-  background-color: #EBD452;
+  background-color: #f8da63;
 }
 
 /*VIEW MOOD*/
@@ -10760,23 +10790,23 @@ p {
 .cst-mood {
   border: 1px dashed #eeeeee;
   height: 84px;
-  background-color: #dedede;
+  background-color: #424242;
 }
 
 .cst-p-mood {
   font-size: 0.8rem;
-  color: #fff;
+  color: #45e0aa;
 }
 
 .cst-label-choice {
   font-size: 0.8rem;
   text-align: center;
-  color: #fff;
+  color: #45e0aa;
 }
 
 .cst-select-mood option {
   font-size: 0.8rem;
-  color: #fff;
+  color: #45e0aa;
 }
 
 .cst-mood {
@@ -10922,57 +10952,9 @@ p {
   resize: none;
 }
 
-.cst-textarea {
-  width: 100%;
-  height: 100%;
-}
+/*VIEW TODO*/
 
-.cst-button {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  width: 16px;
-  height: 16px;
-  font-size: x-small;
-  border-radius: 2px;
-  background-color: #fff;
-}
-
-.file-input {
-  margin-left: 20%;
-}
-
-.modules {
-  height: 12%;
-}
-
-.dragImage {
-  width: 75%;
-  margin-top: 5px;
-  margin-left: 10px;
-}
-
-.yt {
-  opacity: 0.7;
-}
-
-.illustration {
-  width: 30%;
-}
-
-.design-button {
-  width: 20%;
-  height: 20%;
-  border-radius: 5px;
-  border: 1px solid grey;
-}
-
-.design {
-  overflow-y: scroll;
-}
-
-.ill-mod-photo {
-  width: 50%;
-  margin-right: 30%;
+.cst-todo-p {
+  font-size: 1rem;
 }
 
