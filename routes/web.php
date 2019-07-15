@@ -30,6 +30,7 @@ Route::post('/main/ajax', 'MainController@insertDrop')->middleware('auth');
 
 Route::get('/toDo', 'ToDoController@index')->middleware('auth');
 Route::post('/toDo', 'ToDoController@insertToDo')->middleware('auth');
+Route::post('/toDo/chooseCat', 'ToDoController@chooseCat')->middleware('auth');
 
 Route::post('/main/calendar', 'MainController@calendar')->middleware('auth');
 

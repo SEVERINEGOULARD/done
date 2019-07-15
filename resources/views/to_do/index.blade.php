@@ -13,22 +13,38 @@
 
 <div class="container-fluid">
 	<div class="container">
-		<div class="row">
-			<div class="col-md-6">
-				<form method="" action="">
-					<textarea name="toDo" id="toDo"></textarea>
-					<select name="categorie">
-						@foreach($categories as $category)
-						<option id="category" value="{{$category->id}}">{{$category->name}}</option>
+		<div class="row pt-4">
+			<div class="col-md-12 pb-4">
+				<h1>Allez au bout de vos objectifs !</h1>
+			</div>
+			<div class="col-md-12 pb-4">
+				<p class="m-0 cst-todo-p">Recherchez vos listes par catégorie</p>
+				<form>
+					<select id="chooseCat" required>
+						<option selected>--sélectionnez votre catégorie--</option>
+						@foreach($categories as $chooseCat)
+							<option value="{{$chooseCat->id}}">{{$chooseCat->name}}</option>
 						@endforeach
 					</select>
-					<button id="sendToDo">Envoyer</button>
+				</form>
+			</div>
+			<div class="col-md-4">
+				<form method="" action="">
+					<textarea name="toDo" id="toDo" maxlength="70"></textarea>
+					<select id="category">
+						<option selected>--sélectionnez votre catégorie--</option>
+						@foreach($categories as $category)
+							<option  value="{{$category->id}}">{{$category->name}}</option>
+						@endforeach
+					</select>
+					<button id="sendToDo" type="submit">Envoyer</button>
 				</form>
 			</div>
 			
-			<div class="col-md-6" id="test">
+			<div class="col-md-8" >
+				<div class="row" id="test">
+				</div>
 			</div>
-			
 		</div>
 	</div>
 </div>

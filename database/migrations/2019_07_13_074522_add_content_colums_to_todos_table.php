@@ -14,7 +14,7 @@ class AddContentColumsToTodosTable extends Migration
     public function up()
     {
         Schema::table('todos', function (Blueprint $table) {
-            $table->string('content');
+            $table->string('content')->nullable();
         });
     }
 

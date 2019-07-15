@@ -49453,6 +49453,7 @@ $(function () {
 
 $(function () {
   $('#sendToDo').on('click', function (e) {
+    e.preventDefault();
     $toDo = $('#toDo').val();
     $category = $('#category').val();
     $.ajaxSetup({
@@ -49467,10 +49468,37 @@ $(function () {
       data: 'toDo=' + $toDo + '&category=' + $category,
       complete: function complete(data) {
         $result = data.responseJSON;
-        console.log($result); //   if($('div[data-toDo="' + $result['category'] + '"]').length){ 
-        //   $('div[data-toDo="' + $result['category'] + '"]').html($result['content']);
-        //   }
-        //$('#test').append($result['toDo']);
+        console.log($result);
+        $('#test').empty();
+
+        if ($result['toDo']) {
+          $('#test').append("<div class='col-md-4'><p>" + $result['toDo'] + "</p> </div> <div class='col-md-4'><input type='checkbox'></div><div class='col-md-4'><p id='deleteToDo'><i class='fas fa-trash'></i></p></div>");
+        } else {
+          $('#test').append("<div class='col-md-4'><p> Aucun message indiqué </p> </div> <div class='col-md-4'><input type='checkbox'></div><div class='col-md-4'><p id='deleteToDo'><i class='fas fa-trash'></i></p></div>");
+        }
+      }
+    });
+  });
+  $('#chooseCat').on('change', function (e) {
+    e.preventDefault();
+    $chooseCat = $('#chooseCat').val();
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+      }
+    });
+    $.ajax({
+      url: '/toDo/chooseCat',
+      dataType: "json",
+      method: "POST",
+      data: 'category=' + $chooseCat,
+      complete: function complete(data) {
+        $result = data.responseJSON;
+        $('#test').empty();
+
+        for (var i = 0; i < $result.length; i++) {
+          $('#test').append("<div class='col-md-4'><p>" + $result[i]['content'] + "</p> </div> <div class='col-md-4'><input type='checkbox'></div><div class='col-md-4'><a id='deleteToDo'><i class='fas fa-trash'></i></a></div>");
+        }
       }
     });
   });

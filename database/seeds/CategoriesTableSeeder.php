@@ -11,7 +11,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->insert([
+        DB::table('categories')->insert([[
             'name' 	 => 'sport',
         ],
         [
@@ -23,6 +23,6 @@ class CategoriesTableSeeder extends Seeder
         [
             'name' 	 => 'famille',
         ]
-        );
+        ]);
     }
 }

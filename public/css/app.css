@@ -10660,7 +10660,7 @@ body {
 
 h1 {
   font-family: "Amatic SC", cursive;
-  color: #190571;
+  color: #497264;
 }
 
 p {
@@ -10668,15 +10668,15 @@ p {
 }
 
 button {
-  background-color: #190571;
+  background-image: linear-gradient(to top right, #45e0aa, #f8da63);
   border: none;
-  border-radius: 3px;
+  border-radius: 20px;
 }
 
 /*NAV BAR*/
 
 .cst-nav {
-  background-color: #190571;
+  background-color: #45e0aa;
 }
 
 .cst-nav a {
@@ -10686,32 +10686,35 @@ button {
 /*VIEW LOGIN*/
 
 .cst-login-head {
-  color: #EBD452;
+  color: #f8da63;
   font-family: "Amatic SC", cursive;
 }
 
 .cst-btn-login {
-  background-color: #EBD452;
+  background-color: #f8da63;
 }
 
 /*view contact*/
 
 .cst-background {
-  background-color: #EBD452;
+  background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
   min-height: 200px;
 }
 
 .header {
-  background: #190571 !important;
+  background: #45e0aa !important;
   height: 60px;
+  box-shadow: 0px 5px 5px #a39e9e;
 }
 
 .header nav {
   text-align: right;
+  padding-top: 10px;
+  letter-spacing: 0.2rem;
 }
 
 .header nav a {
-  color: #eeeeee;
+  color: #424242;
   font-family: "Amatic SC", cursive;
 }
 
@@ -10721,10 +10724,13 @@ button {
 }
 
 .cst-contact-footer {
-  background-color: #190571;
+  background-color: #424242;
+  box-shadow: 0px -2px 5px #a39e9e;
+  padding-top: 10px;
 }
 
 .cst-contact-footer a {
+  padding-top: 10px;
   color: #eeeeee;
   font-family: "Cormorant Garamond", serif;
 }
@@ -10734,10 +10740,28 @@ button {
   font-family: "Cormorant Garamond", serif;
 }
 
+.cst-contact-titre {
+  font-size: 3rem;
+}
+
+.cst-contact-titre1 {
+  font-family: "Amatic SC", cursive;
+}
+
+.cst-contact-p {
+  font-size: 1rem;
+  padding: 0px;
+  color: #424242;
+}
+
+.img-membre-4 {
+  width: 328px;
+}
+
 /*VIEW REGISTER*/
 
 .cst-register {
-  color: #EBD452 !important;
+  color: #f8da63 !important;
 }
 
 .card-header {
@@ -10745,7 +10769,7 @@ button {
 }
 
 .card-body {
-  background-color: #190571;
+  background-color: #45e0aa;
   color: #eeeeee;
 }
 
@@ -10758,7 +10782,7 @@ button {
 }
 
 .cst-btn-register {
-  background-color: #EBD452;
+  background-color: #f8da63;
 }
 
 /*VIEW MOOD*/
@@ -10766,23 +10790,23 @@ button {
 .cst-mood {
   border: 1px dashed #eeeeee;
   height: 84px;
-  background-color: #dedede;
+  background-color: #424242;
 }
 
 .cst-p-mood {
   font-size: 0.8rem;
-  color: #190571;
+  color: #45e0aa;
 }
 
 .cst-label-choice {
   font-size: 0.8rem;
   text-align: center;
-  color: #190571;
+  color: #45e0aa;
 }
 
 .cst-select-mood option {
   font-size: 0.8rem;
-  color: #190571;
+  color: #45e0aa;
 }
 
 .cst-mood {
@@ -10926,5 +10950,11 @@ button {
   display: none;
   height: 100%;
   resize: none;
+}
+
+/*VIEW TODO*/
+
+.cst-todo-p {
+  font-size: 1rem;
 }
 
