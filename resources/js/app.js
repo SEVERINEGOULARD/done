@@ -99,19 +99,23 @@ $(function () {
         revert: "invalid",
         zIndex: 1001
     });
-/*behaviour drag and drop*/
+
+
+    // Behaviour drop/drag
     for (i = 1; i <= 6; i++) {
         $("#dropZone" + i).droppable({
             zIndex: 1,
             tolerance: "fit",
-			
-            drop: function (event, ui) {
-				$droppedOn = $(this);
-				$dragged = ui.draggable;
 
-				$droppedOnData = $droppedOn.data('zone');
-				$draggedData = $dragged.data('mod');
-				
+            drop: function (event, ui) {
+                $droppedOn = $(this);
+                $dragged = ui.draggable;
+
+                $droppedOnData = $droppedOn.data('zone');
+                $draggedData = $dragged.data('mod');
+
+
+                //Clone module
                 $clone = $dragged.clone();
                 $clone.css({
                     'left': '',
@@ -131,12 +135,13 @@ $(function () {
                 });
 
                 $dragged.empty(".anim");
-/*drop animation*/
+
+                /* drop animation */
                 $dragged.animate({
 
                     backgroundColor: "#fff",
-                    height: '100%',
-                    width: '100%',
+                    height: "100%",
+                    width: "100%",
                 }, 1000);
 
 				/*close btn on modules*/
@@ -301,3 +306,4 @@ $(function () {
        });
    });
 });
+    
