@@ -25,7 +25,7 @@ votre semaine
                   <a href="/mon_compte"><i class="fas fa-cog cst-compte"></i></a>
                 </div>
                 <div class="col-md-4">
-                  <img src="{{URL::asset(Auth::user()->avatar)}}" class="cst-avatar img-responsive center-block">
+                  <img src="{{Auth::user()->avatar}}" class="cst-avatar img-responsive center-block">
                 </div>
                 <div class="col-md-4">
                   <a href="{{ url('/logout') }}"><i class="fas fa-sign-out-alt cst-compte"></i></a>
@@ -39,7 +39,7 @@ votre semaine
        <div class="col-md-2 cst-div-header">
            <form action="/main/calendar" method="POST">
           @csrf
-            <input type="week" id="week" name="week" min="2018-W18" max="2025-W26" value="2017-W1" class="cst-calendar">
+            <input type="week" id="week" name="week" min="2019-W1" max="2025-W26" value="2019-W1" class="cst-calendar">
           </form>
        </div>
        <div class="col-md-1 cst-div-header">
@@ -75,7 +75,7 @@ votre semaine
     <div id="draggable2" class="ui-widget-content modules" data-mod="2">
       <img id="dragImage" class="dragImage" src=""> 
     </div>
-
+ 
     <div id="draggable3" class="ui-widget-content modules" data-mod="3">
       <img id="dragImage" class="dragImage" src="">
     </div>
@@ -123,41 +123,7 @@ votre semaine
 
 $(function(){
   
-  $('#week').on('change', function(e){
-      
-      $weekValue = $('#week').val();
-
-      $.ajaxSetup({
-
-          headers: {
-          'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
-              }
-          });
-
-      $.ajax({
-
-          url : '/main',
-          dataType: "json",
-          method: "POST",
-          data: 'id=' + $weekValue,
-          complete: function(data) {
-
-            $result = data.responseJSON;
-            console.log($result);
-
-            window.weekId = $result[0]['week_id'];
-
-            for(var i = 0; i < $result.length; i++) {
-              var zone = $('div[data-zone="'+$result[i]['zone_id']+'"]');
-              $.each( $result[i], function() {
-
-                zone.html($result[i]['content']);
-              
-              });
-            }
-          }     
-      })
-  })
+  
 });
 
 </script>

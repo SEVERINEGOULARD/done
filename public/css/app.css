@@ -10688,13 +10688,25 @@ button {
 .cst-login-head {
   color: #EBD452;
   font-family: "Amatic SC", cursive;
+  font-size: 2rem;
 }
 
 .cst-btn-login {
   background-color: #EBD452;
+  font-size: 1.2rem;
 }
 
-/*view contact*/
+.cst-label-log-rem {
+  font-size: 0.9rem;
+}
+
+.cst-div-rem {
+  padding: 0;
+  text-align: center;
+  padding-top: 10px;
+}
+
+/*VIEW CONTACT*/
 
 .cst-background {
   background-color: #EBD452;
@@ -10926,5 +10938,36 @@ button {
   display: none;
   height: 100%;
   resize: none;
+}
+
+/*VIEW MON_COMPTE*/
+
+.cst-btn-compte {
+  background-color: #EBD452 !important;
+  width: 40%;
+}
+
+.cst-div-btn-compte {
+  text-align: center;
+}
+
+.cst-div-form-compte {
+  background-color: #190571;
+}
+
+.cst-form-compte label,
+.cst-form-compte p {
+  color: #eeeeee;
+}
+
+.cst-cpte-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.cst-head-compte {
+  color: #EBD452;
+  font-size: 2rem;
+  font-family: "Amatic SC", cursive;
 }
 

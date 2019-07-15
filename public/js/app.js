@@ -49360,6 +49360,47 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 // });
 
 $(function () {
+  /*Display week choozen on select input*/
+  $('#week').on('change', function (e) {
+    $weekValue = $('#week').val();
+    window.weekNumber = parseInt($weekValue.substr(6, 7)); //store week number as an integer
+
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+      }
+    });
+    $.ajax({
+      url: '/main',
+      //main controller->selectWeek
+      dataType: "json",
+      method: "POST",
+      data: 'number=' + window.weekNumber,
+      complete: function complete(data) {
+        $result = data.responseJSON;
+        console.log($result);
+
+        if ($result.length) {
+          // Week has data
+          // window.weekId = $result[0]['week_id'];
+          for (var i = 0; i < $result.length; i++) {
+            var zone = $('div[data-zone="' + $result[i]['zone_id'] + '"]');
+            $.each($result[i], function () {
+              zone.html($result[i]['content']);
+            });
+          }
+        } else {
+          // Blank week
+          for ($s = 1; $s <= 6; $s++) {
+            var zone = $('div[data-zone=' + $s + ']');
+            zone.html('');
+          }
+        }
+      }
+    });
+  });
+  /*DRAGGABLES DECLARE*/
+
   $("#draggable1").draggable({
     revert: "invalid",
     zIndex: 1001
@@ -49376,6 +49417,7 @@ $(function () {
     revert: "invalid",
     zIndex: 1001
   });
+  /*behaviour drag and drop*/
 
   for (i = 1; i <= 6; i++) {
     $("#dropZone" + i).droppable({
@@ -49404,28 +49446,124 @@ $(function () {
           'top': '0px'
         });
         $dragged.empty(".anim");
+        /*drop animation*/
+
         $dragged.animate({
           backgroundColor: "#fff",
-          height: $(this).outerHeight(),
-          width: $(this).outerWidth()
+          height: '100%',
+          width: '100%'
         }, 1000);
-        /*changer la partie boutton*/
+        /*close btn on modules*/
 
-        $closeButton = $('<button type="button" class="btn btn-outline-danger">X</button>');
+        $closeButton = $('<button type="button" class="btn-outline-danger cst-button">X</button>');
         $parent = $(this);
-        $closeButton.on("click", function () {
-          $parent.droppable('option', 'disabled', true);
-          $parent.empty();
+        $closeButton.on("click", $parent, function (parentButton) {
+          parentButton.data.droppable('option', 'disabled', false);
+          parentButton.data.empty();
         });
+        /*behaviour by draggable category and ajax request for each*/
+
+        /*cat 1*/
 
         if ($dragged.data('category') == "1") {
-          $dragged.append('<textarea class="textarea" placeholder="Votre texte ici..."></textarea>');
+          $dragged.append('<form class="textForm" method="post"></form>');
+          $textArea = $('<textarea id="textArea" class="cst-textarea" placeholder="Votre texte ici..."></textarea>');
+          $dragged.find('.textForm').append($textArea);
+          $textArea.keyup({
+            dragged: $dragged
+          }, function (e) {
+            $.ajaxSetup({
+              headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+            });
+            $.ajax({
+              url: '/main/text',
+
+              /*MainController->updateTextModule*/
+              dataType: "json",
+              method: "POST",
+              data: 'text=' + $(this).val() + '&line-id=' + e.data.dragged.data('line-id'),
+              complete: function complete(data) {
+                $result = data.responseJSON;
+                console.log($result);
+              }
+            });
+          });
         }
+
+        ;
+        /*cat 2*/
+
+        if ($dragged.data('category') == "2") {
+          $dragged.append('<img id="preview" class="ill-mod-photo" src="img/polaroid.png"><form method="post"  enctype="multipart/form-data"><div class="form-group file-parent"></div></form>');
+          $fileInput = $('<input type="file" class="form-control-file">');
+          $dragged.find('.file-parent').append($fileInput); // on rajoute dragged comme argument qui va se coller dans l'event e (à e.data.dragged)
+          // ça permet d'appeler cet élément dragged au moment de l'event sans devoir rechercher avec
+          // des parents de parents etc.
+
+          $fileInput.on('change', {
+            dragged: $dragged
+          }, function (e) {
+            var thatTarget = e.currentTarget;
+
+            if (thatTarget.files && thatTarget.files[0]) {
+              $myData = new FormData();
+              $myData.append('image', thatTarget.files[0]);
+              $myData.append('line-id', e.data.dragged.data('line-id'));
+              $.ajaxSetup({
+                headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+              });
+              $.ajax({
+                method: 'POST',
+                url: '/main/image',
+
+                /*MainController -> uploadImageModule*/
+                data: $myData,
+                contentType: false,
+                processData: false
+              }).done(function (data) {
+                $result = data.responseJSON;
+                console.log(data);
+              }).fail(function (data) {});
+            }
+
+            ;
+          });
+        }
+
+        ;
+        /*cat 3*/
+
+        if ($dragged.data('category') == "3") {
+          $dragged.append('<div class"row"><button class="design-button"><img src="img/ville1.png" /></button><button class="design-button"><img src="img/texture1.jpg" /></button><button class="design-button"><img src="img/perso1.png"/></button><button class="design-button"><img src="img/arab2.png"/></button><button class="design-button"><img src="img/arab3.png"/></button></div><div class"row"><button class="design-button"><img src="img/chat1.jpg" /></button><button class="design-button"><img src="img/chat3.jpg" /></button><button class="design-button"><img src="img/livres.jpg" /></button></button><button class="design-button"><img src="img/arab4.png" /></button></button><button class="design-button"><img src="img/tempete.jpg" /></button><button class="design-button"><img src="img/tempete.jpg" /></button></button></button><button class="design-button"><img src="img/tempete.jpg" /></button><button class="design-button"><img src="img/tempete.jpg" /></button></button></button><button class="design-button"><img src="img/tempete.jpg" /></button></button></button><button class="design-button"><img src="img/tempete.jpg" /></button><button class="design-button"><img src="img/tempete.jpg" /></button></div>');
+        }
+
+        $(".design-button").on("click", function (e) {
+          e.preventDefault();
+          $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });
+          $.ajax({
+            url: '/design',
+            dataType: "json",
+            method: "POST",
+            data: 'design=' + $('.design-button'),
+            complete: function complete(data) {
+              $result = data.responseJSON;
+              console.log($result);
+            }
+          });
+        });
+        /*red cross button on each dragged*/
 
         $dragged.append($closeButton).addClass("text-right");
         $dragged.draggable("option", "disabled", true);
-        $(this).droppable('option', 'disabled', true); // Ajax here
-        // $droppedOn $dragged 
+        $(this).droppable('option', 'disabled', true); // $droppedOn $dragged
 
         $.ajaxSetup({
           headers: {
@@ -49434,26 +49572,48 @@ $(function () {
         });
         $.ajax({
           url: '/main/ajax',
+
+          /*Main Controller -> InsertDrop*/
           dataType: "json",
           method: "POST",
-          data: 'zone=' + $droppedOnData + '&module=' + $draggedData + '&weekId=' + window.weekId,
+          data: 'zone=' + $droppedOnData + '&module=' + $draggedData + '&weekId=' + window.weekNumber,
           complete: function complete(data) {
             $result = data.responseJSON;
-            console.log($result); //   $result = data.responseJSON;
-            //   console.log($result);
-            //   for(var i = 0; i < $result.length; i++) {
-            // 	var zone = $('div[data-zone="'+$result[i]['zone_id']+'"]');
-            // 	  $.each( $result[i], function() {
-            // 		zone.html($result[i]['content']);
+            $dragged.attr('data-line-id', $result['id']);
           }
         });
       }
     });
   }
 
-  if ($("#dropZone" + i) == "#droppable1") {
-    $(this).append('<textarea placeholder="Votre texte ici..."></textarea>');
-  }
+  ;
+  /*Ajax toDo*/
+
+  $('#sendToDo').on('click', function (e) {
+    e.preventDefault();
+    $toDo = $('#toDo').val();
+    $category = $('#category').val();
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+      }
+    });
+    $.ajax({
+      url: '/toDo',
+      dataType: "json",
+      method: "POST",
+      data: 'toDo=' + $toDo + '&category=' + $category,
+      complete: function complete(data) {
+        $result = data.responseJSON;
+
+        if ($('div[data-toDo="' + $result['category'] + '"]').length) {
+          $('div[data-toDo="' + $result['category'] + '"]').html($result['content']);
+        }
+
+        $('#test').append("<p>" + $result['toDo'] + "</p>");
+      }
+    });
+  });
 });
 
 /***/ }),
@@ -49603,8 +49763,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\done\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\done\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\done\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\done\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
