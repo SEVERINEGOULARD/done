@@ -49360,7 +49360,46 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 // });
 
 $(function () {
-  // Draggables declare
+  /* Display week choozen on select input */
+  $('#week').on('change', function (e) {
+    $weekValue = $('#week').val();
+    window.weekNumber = parseInt($weekValue.substr(6, 7)); //store week number as an integer
+
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+      }
+    });
+    $.ajax({
+      url: '/main',
+      //main controller->selectWeek
+      dataType: "json",
+      method: "POST",
+      data: 'number=' + window.weekNumber,
+      complete: function complete(data) {
+        $result = data.responseJSON;
+        console.log($result);
+
+        if ($result.length) {
+          // Week has data
+          // window.weekId = $result[0]['week_id'];
+          for (var i = 0; i < $result.length; i++) {
+            var zone = $('div[data-zone="' + $result[i]['zone_id'] + '"]');
+            $.each($result[i], function () {
+              zone.html($result[i]['content']);
+            });
+          }
+        } else {
+          // Blank week
+          for ($s = 1; $s <= 6; $s++) {
+            var zone = $('div[data-zone=' + $s + ']');
+            zone.html('');
+          }
+        }
+      }
+    });
+  }); // Draggables declare
+
   $("#draggable1").draggable({
     revert: "invalid",
     zIndex: 1001
@@ -49420,7 +49459,7 @@ $(function () {
         $closeButton.on("click", $parent, function (parentButton) {
           parentButton.data.droppable('option', 'disabled', false);
           parentButton.data.empty();
-        }); //Behaviour by draggable category and ajax requests for each
+        }); //Behaviour by draggable category and ajax request for each
 
         /*cat 1*/
 
@@ -49443,7 +49482,6 @@ $(function () {
               data: 'text=' + $(this).val() + '&line-id=' + e.data.dragged.data('line-id'),
               complete: function complete(data) {
                 $result = data.responseJSON;
-                console.log($result);
               }
             });
           });
@@ -49481,7 +49519,6 @@ $(function () {
                 processData: false
               }).done(function (data) {
                 $result = data.responseJSON;
-                console.log(data);
               }).fail(function (data) {});
             }
 
@@ -49529,17 +49566,11 @@ $(function () {
           url: '/main/ajax',
           dataType: "json",
           method: "POST",
-          data: 'zone=' + $droppedOnData + '&module=' + $draggedData + '&weekId=' + window.weekId,
+          data: 'zone=' + $droppedOnData + '&module=' + $draggedData + '&weekId=' + window.weekNumber,
           complete: function complete(data) {
             $result = data.responseJSON;
             console.log($result);
             $dragged.attr('data-line-id', $result['id']);
-            /* for (var i = 0; i < $result.length; i++) {
-                var zone = $('div[data-zone="' + $result[i]['zone_id'] + '"]');
-                  $.each($result[i], function () {
-                      zone.html($result[i]['content']);
-                  });
-              }*/
           }
         });
       }
@@ -49723,8 +49754,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\done\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\done\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\masterclone\done\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\masterclone\done\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

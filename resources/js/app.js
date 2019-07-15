@@ -32,8 +32,73 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 // });
 
 $(function () {
-    
-// Draggables declare
+
+/* Display week choozen on select input */
+
+    $('#week').on('change', function (e) {
+        $weekValue = $('#week').val();
+
+        window.weekNumber = parseInt($weekValue.substr(6, 7));//store week number as an integer
+
+        $.ajaxSetup({
+        headers: {
+
+            'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+
+        }
+
+        });
+
+        $.ajax({
+
+            url: '/main',//main controller->selectWeek
+
+            dataType: "json",
+
+            method: "POST",
+
+            data: 'number=' + window.weekNumber,
+
+            complete: function (data) {
+                $result = data.responseJSON;
+
+                console.log($result);
+                if ($result.length) {
+
+                    // Week has data
+
+                    // window.weekId = $result[0]['week_id'];
+
+                    for (var i = 0; i < $result.length; i++) {
+
+                        var zone = $('div[data-zone="' + $result[i]['zone_id'] + '"]');
+
+                        $.each($result[i], function () { zone.html($result[i]['content']); });
+
+                    }
+
+                } else {
+
+                    // Blank week
+
+                    for ($s = 1; $s <= 6; $s++) {
+
+                        var zone = $('div[data-zone=' + $s + ']');
+
+                        zone.html('');
+
+                    }
+
+                }
+
+            }
+
+        })
+
+    })
+
+
+    // Draggables declare
     $("#draggable1").draggable({
         revert: "invalid",
         zIndex: 1001
@@ -106,13 +171,14 @@ $(function () {
                     parentButton.data.empty();
                 });
 
-                //Behaviour by draggable category and ajax requests for each
+                //Behaviour by draggable category and ajax request for each
                 /*cat 1*/
                 if ($dragged.data('category') == "1") {
                     $dragged.append('<form class="textForm" method="post"></form>');
                     $textArea = $('<textarea id="textArea" class="cst-textarea" placeholder="Votre texte ici..."></textarea>');
 
                     $dragged.find('.textForm').append($textArea);
+
                     $textArea.keyup({ dragged: $dragged }, function (e) {
 
                         $.ajaxSetup({
@@ -129,7 +195,7 @@ $(function () {
                             data: 'text=' + $(this).val() + '&line-id=' + e.data.dragged.data('line-id'),
                             complete: function (data) {
                                 $result = data.responseJSON;
-                                console.log($result);
+                      
 
                             }
 
@@ -171,7 +237,7 @@ $(function () {
                             .done(function (data) {
 
                                 $result = data.responseJSON;
-                                console.log(data);
+                      
                             })
 
                             .fail(function (data) {
@@ -235,36 +301,21 @@ $(function () {
                     url: '/main/ajax',
                     dataType: "json",
                     method: "POST",
-                    data: 'zone=' + $droppedOnData + '&module=' + $draggedData + '&weekId=' + window.weekId,
+                    data: 'zone=' + $droppedOnData + '&module=' + $draggedData + '&weekId=' + window.weekNumber,
                     complete: function (data) {
 
                         $result = data.responseJSON;
                         console.log($result);
                         $dragged.attr('data-line-id', $result['id']);
-                        /* for (var i = 0; i < $result.length; i++) {
-                            var zone = $('div[data-zone="' + $result[i]['zone_id'] + '"]');
-
-                            $.each($result[i], function () {
-
-                                zone.html($result[i]['content']);
-
-                            });
-
-                        }*/
+                      
                     }
                 });
             }
         });
     };
 
-    
 
-
-
-/*Ajax toDo*/
-
-
-  
+    /*Ajax toDo*/
     $('#sendToDo').on('click', function (e) {
         e.preventDefault();
         $toDo = $('#toDo').val();

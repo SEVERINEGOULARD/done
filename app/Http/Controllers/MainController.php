@@ -25,10 +25,10 @@ class MainController extends Controller
        
     	$data = $request->all();
 
-        $weekId = Week::where('week_number', $data['id'])->first();
+        //$weekId = Week::where('week_number', $data['id'])->first();
 
         $user = Auth::user();
-        $result = UserWeek::where('week_id', $weekId['id'])->where('user_id', $user->id);
+        $result = UserWeek::where('week_id', $data['number'])->where('user_id', $user->id);
         $userWeek = $result->get();
 
     	echo json_encode($userWeek);
@@ -86,14 +86,5 @@ class MainController extends Controller
 
         $data = $request->all();
 
-        $user = Auth::user();
-        $userWeek = new UserWeek();
-        $userWeek->zone_id    = $data['zone'];
-        $userWeek->module_id  = $data['module'];
-        $userWeek->user_id    = $user->id;
-        $userWeek->week_id    = $data['weekId'];
-        $userWeek->content    = $data['image'];
-        $userWeek->save();
-        echo json_encode();
     }
 }
