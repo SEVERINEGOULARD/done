@@ -10667,12 +10667,6 @@ p {
   font-family: "Cormorant Garamond", serif;
 }
 
-button {
-  background-image: linear-gradient(to top right, #45e0aa, #f8da63);
-  border: none;
-  border-radius: 20px;
-}
-
 /*NAV BAR*/
 
 .cst-nav {
@@ -10692,7 +10686,7 @@ button {
 }
 
 .cst-btn-login {
-  background-color: #EBD452;
+  background-color: #f8da63;
   font-size: 1.2rem;
 }
 
@@ -10964,12 +10958,40 @@ button {
   resize: none;
 }
 
-/*VIEW TODO*/
 /*VIEW MON_COMPTE*/
+
+.cst-btn-compte {
+  background-color: #f8da63 !important;
+  width: 40%;
+}
+
+.cst-div-btn-compte {
+  text-align: center;
+}
+
+.cst-form-compte label,
+.cst-form-compte p {
+  color: #eeeeee;
+}
+
+.cst-cpte-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.cst-head-compte {
+  color: #f8da63;
+  font-size: 2rem;
+  font-family: "Amatic SC", cursive;
+}
+
+/*VIEW TODO*/
 
 .cst-todo-p {
   font-size: 1rem;
 }
+
+/*MAIN VIEW*/
 
 .file-input {
   margin-left: 20%;
@@ -10994,14 +11016,8 @@ button {
 }
 
 .design-button {
-  width: 20%;
-  height: 20%;
-  border-radius: 5px;
-  border: 1px solid grey;
-}
-
-.design {
-  overflow-y: scroll;
+  width: 10%;
+  height: 10%;
 }
 
 .ill-mod-photo {
@@ -11013,33 +11029,20 @@ button {
   height: 100%;
 }
 
-
-.cst-btn-compte {
-  background-color: #EBD452 !important;
-  width: 40%;
+.cst-btn-close {
+  height: 13px;
+  width: 13px;
+  font-size: xx-small;
+  position: absolute;
+  background-color: #b71717;
+  color: #fff !important;
+  top: 0px;
+  right: 0px;
 }
 
-.cst-div-btn-compte {
-  text-align: center;
-}
-
-.cst-div-form-compte {
-  background-color: #190571;
-}
-
-.cst-form-compte label,
-.cst-form-compte p {
-  color: #eeeeee;
-}
-
-.cst-cpte-container {
-  width: 80%;
-  margin: 0 auto;
-}
-
-.cst-head-compte {
-  color: #EBD452;
-  font-size: 2rem;
-  font-family: "Amatic SC", cursive;
+.cst-textarea {
+  height: 100%;
+  resize: none;
+  border-color: white;
 }
 

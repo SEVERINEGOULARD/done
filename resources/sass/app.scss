@@ -41,11 +41,11 @@ p{
 	font-family: $fontParagraph;
 }
 
-button{
-	background-image: linear-gradient(to top right, $colorGreen, $colorYellow);
-	border :none;
-	border-radius: 20px;
-}
+//button{
+	//background-image: linear-gradient(to top right, $colorGreen, $colorYellow);
+	//border :none;
+	//border-radius: 20px;
+//}
 /*NAV BAR*/
 
 .cst-nav{
@@ -314,7 +314,7 @@ button{
 	text-align: center;
 }
 .cst-div-form-compte{
-	background-color: $colorBlue;
+	//background-color: $colorBlue;
 }
 .cst-form-compte label, .cst-form-compte p{
 	color: $colorGrey1;
@@ -335,6 +335,7 @@ button{
 	font-size: 1rem;
 }
 
+/*MAIN VIEW*/
 
 .file-input{
     margin-left: 20%;
@@ -358,15 +359,9 @@ button{
 }
 
 .design-button{
-    width: 20%;
-    height: 20%;
-    border-radius: 5px;
-    border: 1px solid grey;
-}
-
-.design{
-    overflow-y: scroll;
-    
+    width: 10%;
+    height: 10%;
+ 
 }
 
 .ill-mod-photo {
@@ -376,4 +371,22 @@ button{
 
 .textForm{
     height: 100%;
+}
+
+.cst-btn-close {
+    height: 13px;
+    width: 13px;
+    font-size: xx-small;
+    position: absolute;
+    background-color: $colorRed;
+    color: #fff !important;
+    top: 0px;
+    right: 0px;
+   
+}
+
+.cst-textarea {
+    height: 100%;
+    resize: none;
+    border-color:white;
 }
