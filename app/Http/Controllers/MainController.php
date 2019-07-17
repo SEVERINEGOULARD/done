@@ -7,6 +7,7 @@ Use App\Model\Week;
 Use App\Model\UserWeek;
 use Auth;
 use Session;
+use DB;
 
 class MainController extends Controller
 {
@@ -25,10 +26,9 @@ class MainController extends Controller
        
     	$data = $request->all();
 
-       // $weekId = Week::where('week_number', $data['id'])->first();
- 
-        $user = Auth::user();
+        //$weekId = Week::where('week_number', $data['id'])->first();
 
+        $user = Auth::user();
         $result = UserWeek::where('week_id', $data['number'])->where('user_id', $user->id);
         $userWeek = $result->get();
 
@@ -87,6 +87,11 @@ class MainController extends Controller
        $data = $request->all();
 
    }
+   public function deleteModule(Request $request){
 
-
+       $data = $request->all();
+       DB::table('users_weeks')->where('id', $data['id'])->delete();
+       echo json_encode($data);
+    }
 }
+

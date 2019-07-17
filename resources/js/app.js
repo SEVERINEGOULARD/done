@@ -31,25 +31,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 //     el: '#app',
 // });
 
-$(function () {
 
-    /*Display week choozen on select input*/
-    $('#week').on('change', function(e){
-      
-      $weekValue = $('#week').val();
-      window.weekNumber = parseInt($weekValue.substr(6, 7));//store week number as an integer
 
-      $.ajaxSetup({
-          headers: {
-          'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
-              }
-          }); 
-      $.ajax({
-          url : '/main',//main controller->selectWeek
-          dataType: "json",
-          method: "POST",
-          data: 'number=' + window.weekNumber,
-          complete: function(data) {
 
             $result = data.responseJSON;
             console.log($result); 

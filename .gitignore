@@ -17,3 +17,5 @@ yarn-error.log
 \.vs/VSWorkspaceState\.json
 
 public/js/app\.js
+
+*.sqlite

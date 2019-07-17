@@ -33,12 +33,11 @@ votre semaine
        <div class="col-md-2 cst-div-header">
            <form action="/main/calendar" method="POST">
           @csrf
-            <input type="week" id="week" name="week" min="2019-W1" max="2025-W26" value="2019-W1" class="cst-calendar">
+            <input type="week" id="week" name="week" min="2019-W1" max="2025-W26" class="cst-calendar">
           </form>
        </div>
-       <div class="col-md-1 cst-div-header">
-          <p>météo</p>
-        </div>
+       
+       
         <div class="col-md-1 cst-div-header">
         <!--Widget météo start -->
                 <div id="cont_MzMwMDB8MXw0fDV8M3xCQkUwRkZ8MnxGRkZGRkZ8Y3wx">
@@ -69,7 +68,7 @@ votre semaine
 
 <div class="container-fluid row">
   <!--ASIDE-->
-  <div class="container-aside col-md-1 cst-col-aside dragModules">
+  <div id="aside" class="container-aside col-md-1 cst-col-aside dragModules">
 
     <div id="draggable1" data-category="1" class="ui-widget-content modules" data-mod="1">
       <img class="dragImage" src="img/moduleIco1Crayon.svg">
