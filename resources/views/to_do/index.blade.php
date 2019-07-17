@@ -18,20 +18,29 @@
 				<h1>Allez au bout de vos objectifs !</h1>
 			</div>
 			<div class="col-md-12 pb-4">
-				<p class="m-0 cst-todo-p">Recherchez vos listes par catégorie</p>
-				<form>
-					<select id="chooseCat" required>
-						<option selected>--sélectionnez votre catégorie--</option>
-						@foreach($categories as $chooseCat)
-							<option value="{{$chooseCat->id}}">{{$chooseCat->name}}</option>
-						@endforeach
-					</select>
-				</form>
+				<div class="row">
+					<div class="col-md-6">
+						<p class="m-0 cst-todo-p">Recherchez vos listes par catégorie</p>
+					</div>
+
+					<div class="col-md-6 text-right">
+						<a href="/toDo" class="cst-todo-p">Toute votre liste</a>
+					</div>
+					
+					<form>
+						<select id="chooseCat" required>
+							<option selected>--sélectionnez votre catégorie--</option>
+							@foreach($categories as $chooseCat)
+								<option value="{{$chooseCat->id}}">{{$chooseCat->name}}</option>
+							@endforeach
+						</select>
+					</form>
+				</div>
 			</div>
 			<div class="col-md-4">
 				<form method="" action="">
 					<textarea name="toDo" id="toDo" maxlength="70"></textarea>
-					<select id="category">
+					<select id="category" required>
 						<option selected>--sélectionnez votre catégorie--</option>
 						@foreach($categories as $category)
 							<option  value="{{$category->id}}">{{$category->name}}</option>
@@ -41,9 +50,25 @@
 				</form>
 			</div>
 			
-			<div class="col-md-8" >
-				<div class="row" id="test">
+			<div class="col-md-8" id="list-items">
+				@foreach($toDos as $toDo)
+				<div class="row" class="list">
+				
+					<div class="col-md-8" id="toDoContent">
+						{{$toDo->content}}
+					</div>
+
+					<div class="col-md-2 text-right">
+						<form>
+							<input data-checkbox="{{$toDo->id}}" class="checkbox" type="checkbox" name="done[]" value=0>
+						</form>
+					</div>
+
+					<div class="col-md-2">
+						<a class ="deleteList" href="#" data-delete='{{$toDo->id}}' ><i class="far fa-trash-alt"></i></a>
+					</div>
 				</div>
+				@endforeach
 			</div>
 		</div>
 	</div>

@@ -6,12 +6,15 @@ use Illuminate\Http\Request;
 use App\Model\Categorie;
 use App\Model\Todo;
 use Auth;
+use DB;
 
 class ToDoController extends Controller
 {
     public function index(){
         $categories = Categorie::all();
-        return view('to_do.index')->with('categories', $categories);
+        $toDos = Todo::all();
+        return view('to_do.index')->with('categories', $categories)
+                                  ->with('toDos', $toDos);
                             
     }
 
@@ -26,11 +29,23 @@ class ToDoController extends Controller
         echo json_encode($data);
     }
 
-    public function chooseCat(Request $request){
+        public function chooseCat(Request $request){
         $data = $request->all();
         $user = Auth::user();
         $chooseCat = Todo::where('category_id', $data['category'])->where('user_id', $user->id)->get();
-        //$chooseCat->session()->all();
+
         echo json_encode($chooseCat);
+    }
+
+    
+        public function deleteToDo(Request $request){ 
+        $data = $request->all();
+        DB::table('todos')->where('id', $request->id)->delete();
+        echo json_encode($data);
+    }
+
+    public function checkBox(Request $request){
+        $data = $request->all();
+        echo json_encode($data);
     }
 }

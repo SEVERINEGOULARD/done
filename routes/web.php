@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('register', '\App\Http\Controllers\Auth\RegisterController@create')->name('register');
+
 Auth::routes();
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -31,6 +33,9 @@ Route::post('/main/ajax', 'MainController@insertDrop')->middleware('auth');
 Route::get('/toDo', 'ToDoController@index')->middleware('auth');
 Route::post('/toDo', 'ToDoController@insertToDo')->middleware('auth');
 Route::post('/toDo/chooseCat', 'ToDoController@chooseCat')->middleware('auth');
+Route::post('/toDo/delete', 'ToDoController@deleteToDo')->middleware('auth');
+Route::post('/toDo/checkBox', 'ToDoController@checkBox')->middleware('auth');
+
 
 Route::post('/main/calendar', 'MainController@calendar')->middleware('auth');
 
