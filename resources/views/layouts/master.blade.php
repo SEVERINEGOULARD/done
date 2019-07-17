@@ -13,12 +13,6 @@
        <!--Lien Fontawesome :-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
        <!--FONTS-->
-        <!--Homemade Apple :-->
-       <link href="https://fonts.googleapis.com/css?family=Homemade+Apple&display=swap" rel="stylesheet">
-       <!--Philosopher :-->
-       <link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet">
-       <!--Montez :-->
-       <link href="https://fonts.googleapis.com/css?family=Montez&display=swap" rel="stylesheet">
        <!--Cormorant :-->
        <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond&display=swap" rel="stylesheet">
        <!--Amatic :-->
@@ -27,6 +21,7 @@
        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
        
        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+       <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
        
        <!--script jquery ui -->
        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

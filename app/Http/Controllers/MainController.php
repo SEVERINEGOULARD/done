@@ -7,6 +7,7 @@ Use App\Model\Week;
 Use App\Model\UserWeek;
 use Auth;
 use Session;
+use DB;
 
 class MainController extends Controller
 {
@@ -25,13 +26,13 @@ class MainController extends Controller
        
     	$data = $request->all();
 
-        $weekId = Week::where('week_number', $data['id'])->first();
+        //$weekId = Week::where('week_number', $data['id'])->first();
 
         $user = Auth::user();
-        $result = UserWeek::where('week_id', $weekId['id'])->where('user_id', $user->id);
+        $result = UserWeek::where('week_id', $data['number'])->where('user_id', $user->id);
         $userWeek = $result->get();
 
-    	echo json_encode($userWeek);
+    	echo json_encode($userWeek); 
 
     }
 
@@ -45,55 +46,52 @@ class MainController extends Controller
         $userWeek->user_id    = $user->id;
         $userWeek->week_id    = $data['weekId'];
         $userWeek->save();
-
         echo json_encode($userWeek);
     }
 
     public function updateTextModule(Request $request){
-        
-        $request->validate([
 
-        'text' => 'max:5000',
-        
-        ]);
+       $request->validate([
 
-        $data = $request->all();
-        UserWeek::where('id', $data['line-id'])->update(['content' => $data['text']]);
-        return response()->json();
-    }
+       'text' => 'max:5000',
 
-    public function uploadImageModule(Request $request){
+       ]);
 
-        $request->validate([
+       $data = $request->all();
+       UserWeek::where('id', $data['line-id'])->update(['content' => $data['text']]);
+       return response()->json();
+   }
 
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        
-        ]);
+   public function uploadImageModule(Request $request){
 
-        $path = $request->file('image')->store('UserImages');
-        UserWeek::where('id', $request->get('line-id'))->update(['content' => $path]);
-        return response()->json(['state' => $path, 'id' => $request->get('line-id')]);
-    }
+       $request->validate([
 
-    public function insertDesignModule(Request $request){
+           'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-        
-        $request->validate([
-    
-        'design' => 'required',
-        
-        ]);
+       ]);
 
-        $data = $request->all();
+       $path = $request->file('image')->store('UserImages');
+       UserWeek::where('id', $request->get('line-id'))->update(['content' => $path]);
+       return response()->json(['state' => $path, 'id' => $request->get('line-id')]);
+   }
 
-        $user = Auth::user();
-        $userWeek = new UserWeek();
-        $userWeek->zone_id    = $data['zone'];
-        $userWeek->module_id  = $data['module'];
-        $userWeek->user_id    = $user->id;
-        $userWeek->week_id    = $data['weekId'];
-        $userWeek->content    = $data['image'];
-        $userWeek->save();
-        echo json_encode();
+   public function insertDesignModule(Request $request){
+
+
+       $request->validate([
+
+       'design' => 'required',
+
+       ]);
+
+       $data = $request->all();
+
+   }
+   public function deleteModule(Request $request){
+
+       $data = $request->all();
+       DB::table('users_weeks')->where('id', $data['id'])->delete();
+       echo json_encode($data);
     }
 }
+
