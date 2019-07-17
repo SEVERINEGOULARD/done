@@ -33,6 +33,7 @@ Route::post('/main/calendar', 'MainController@calendar')->middleware('auth');
 Route::post('/main/text', 'MainController@updateTextModule')->middleware('auth');
 Route::post('/main/image', 'MainController@uploadImageModule')->middleware('auth');
 Route::post('/main/design', 'MainController@insertDesignModule')->middleware('auth');
+Route::post('/main/mood', 'MainController@insertMoods')->middleware('auth');
 
 
 

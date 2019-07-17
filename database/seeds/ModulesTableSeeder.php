@@ -17,6 +17,8 @@ class ModulesTableSeeder extends Seeder
                         ['type'   => '2', 'created_at' => '2019-01-01 00:00:00',
                     'updated_at' => '2019-01-01 00:00:00'],
                         ['type'   => '3', 'created_at' => '2019-01-01 00:00:00',
+                    'updated_at' => '2019-01-01 00:00:00'],
+                    ['type'   => '4', 'created_at' => '2019-01-01 00:00:00',
                     'updated_at' => '2019-01-01 00:00:00']
                 ]);
     }
