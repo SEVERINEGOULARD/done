@@ -50,6 +50,8 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
+       
     $message = [
             'pseudo.required'        => "Votre pseudo est obligatoire",
             'pseudo.min'             => "Votre pseudo doit contenir au minimum 8 caractères",
@@ -78,9 +80,7 @@ class RegisterController extends Controller
                                       ],
             $message);
        
-     
-        
-
+                                      
     }
 
     /**
@@ -93,9 +93,9 @@ class RegisterController extends Controller
     //on a trouvé cette fonction native à laravel qui permet de retourner des messages d'error personnalisés à la place des messages d'erreur de laravel en anglais (vendor\laravel\framework\src\Illuminate\Foundation\Auth)
 
     public function register(Request $request)
-    {
+    {  
         $validator = $this->validator($request->all());
-   
+        
         if ($validator->fails()) {
             return redirect('/register')
             ->withErrors($validator)
@@ -119,7 +119,8 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
+    {   dd($data);
+    
         $user = User::create([
             'pseudo'        => $data['name'],
             'email'         => $data['email'],
@@ -131,11 +132,7 @@ class RegisterController extends Controller
 
         ]);
 
-
-        //TODO vérifier que ça fonctionne bien (ne fonctionne pas actuellement)
         $user->save();
-        
-      return $user; 
        
     }
 }

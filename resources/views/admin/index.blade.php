@@ -1,4 +1,4 @@
-<!--vue admin-->
+<!--view admin : list of users-->
 @extends('layouts.master')
 
 @section('scripts-header')
@@ -16,30 +16,43 @@
     <div class="container">
         <div class="cst-cpte-container">
             <div class="row">
-            <div class="col-md-12">
-                <h2 class="cst-head-compte">Gestion des utilisateurs</h2>
-            </div>
-        </div>
-        <div class="row cst-div-form-compte">
-            <div class="col-md-12">
-                <form action="/" method="POST" class=""> 
-                    @csrf 
-                    <input type="hidden" name="" value="">
-
-                <div class="form-group">
-                    <label for="pseudo">??</label>
-                    
-                <div class="mt-5 mb-5">
-                    <button class="btn cst-btn-compte" type="submit">Modifiez les données</button>
+                <div class="col-md-12">
+                    <h2 class="cst-head-compte">Gestion des utilisateurs</h2>
                 </div>
-                
-                
-                </form>
             </div>
+
+            <div class="row cst-div-form-compte">
+                <div class="col-md-12">
+                    <form> 
+                    @csrf 
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Pseudo</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Date d'anniversaire</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($users as $user)
+                                <tr>
+                                    <td>{{$user->pseudo}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->dob}}</td>
+                                    <td><a href="/admin/delete?id={{$user->id}}"><i class="fas fa-user-times"></i></a></td>
+                                    <!--vers userUdptate-->
+                                    <td><a href="/admin/update?id={{$user->id}}"><i class="fas fa-user-edit"></i></a></td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+
+
         </div>
-        </div>
-               
-    </div>
+    </div> 
 </div>
 
 @endsection
@@ -49,13 +62,13 @@
 <div class="container-fluid cst-contact-footer mt-5">
   <div class="row">
     <div class="col-md-4 text-center">
-      <a href="">Mentions légales</a>
+      <a href="/ml">Mentions légales</a>
     </div>
     <div class="col-md-4 text-center">
       <p>Copyright 2019 - AWSY</p>
     </div>
     <div class="col-md-4 text-center">
-      <a href="">CGU</a>
+      <a href="/cgu">CGU</a>
     </div>     
   </div>
 </div>

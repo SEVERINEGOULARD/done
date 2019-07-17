@@ -141,8 +141,4 @@ votre semaine
 
 @section('scripts-footer')
 
-<!--***************SCRIPTS**************-->
-<script>
-
-</script>
 @endsection

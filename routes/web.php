@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('register', '\App\Http\Controllers\Auth\RegisterController@create')->name('register');
+
 Auth::routes();
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -37,11 +39,26 @@ Route::post('/main/design', 'MainController@insertDesignModule')->middleware('au
 Route::get('/toDo', 'ToDoController@index')->middleware('auth');
 Route::post('/toDo', 'ToDoController@insertToDo')->middleware('auth');
 Route::post('/toDo/chooseCat', 'ToDoController@chooseCat')->middleware('auth');
+Route::post('/toDo/delete', 'ToDoController@deleteToDo')->middleware('auth');
+Route::post('/toDo/checkBox', 'ToDoController@checkBox')->middleware('auth');
+
 
 
 Route::get('/contact', 'ContactController@index');
 
 Route::get('/mood', 'MoodController@index');
-Route::get('/admin', 'AdminController@index')->middleware('admin');
+
+Route::get('/admin', 'AdminController@index')->middleware('admin')->name('admin');
+Route::get('/admin/delete', 'AdminController@deleteUser')->middleware('admin');
+Route::get('/admin/update', 'UserUpdateController@index')->middleware('admin');
+Route::post('/admin/update', 'UserUpdateController@userUpdate')->middleware('admin');
 
 
+Route::post('/main/text', 'MainController@updateTextModule')->middleware('auth');
+Route::post('/main/image', 'MainController@uploadImageModule')->middleware('auth');
+Route::post('/main/design', 'MainController@insertDesignModule')->middleware('auth');
+
+
+
+Route::get('/cgu', 'CguController@index');
+Route::get('/ml', 'MlController@index');

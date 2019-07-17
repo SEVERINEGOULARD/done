@@ -80,13 +80,13 @@
 <div class="container-fluid cst-contact-footer mt-5">
   <div class="row">
     <div class="col-md-4 text-center">
-      <a href="">Mentions légales</a>
+      <a href="/ml">Mentions légales</a>
     </div>
     <div class="col-md-4 text-center">
       <p>Copyright 2019 - AWSY</p>
     </div>
     <div class="col-md-4 text-center">
-      <a href="">CGU</a>
+      <a href="/cgu">CGU</a>
     </div>     
   </div>
 </div>
