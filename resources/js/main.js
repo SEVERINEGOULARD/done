@@ -318,15 +318,6 @@ $(function () {
                 });
 
 
-
-
-                //$dragged.draggable("option", "disabled", true);
-                //$(this).droppable('option', 'disabled', true);
-
-                /*red cross button visible/hidden*/
-                // $('.textArea').onmouseover = function () {
-                //     $('.cst-btn-close').css('visibility', 'visible');
-                // }
                 // $droppedOn $dragged
                 $.ajaxSetup({
                     headers: {
@@ -344,11 +335,6 @@ $(function () {
                         $dragged.attr('data-line-id', $result['id']);
                     }
                 });
-
-
-
-
-
             }
         });
     };

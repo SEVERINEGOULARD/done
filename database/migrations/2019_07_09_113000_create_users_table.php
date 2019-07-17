@@ -20,11 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->date('dob')->nullable();
-            $table->string('avatar')->default('/avatar.png');
-            $table->unsignedBigInteger('city_id');
-            $table->foreign('city_id')
-            ->references('id')
-            ->on('cities');
+            $table->string('avatar')->default('/avatar.png')->nullable();
             $table->unsignedBigInteger('template_id');
             $table->foreign('template_id')
             ->references('id')

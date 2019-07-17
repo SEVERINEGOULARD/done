@@ -445,7 +445,7 @@ var divMood = [
             default: $($zone).css("background", "grey");
           }
         })
-                        }*/
+                        }
                     }
                 });
             }
