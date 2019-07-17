@@ -1,3 +1,4 @@
+<!--view welcome-->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -6,11 +7,19 @@
 
         <title>Done</title>
 
-        <!--FONTS-->
-       <!--Homemade Apple :-->
-       <link href="https://fonts.googleapis.com/css?family=Homemade+Apple&display=swap" rel="stylesheet">
-       <!--Philosopher :-->
-       <link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet">
+        <script src="{{ asset('js/app.js') }}"></script>
+
+       <!--FONTS-->
+       <!--Cormorant :-->
+       <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond&display=swap" rel="stylesheet">
+       <!--Amatic :-->
+       <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
+       <!--Lien Fontawesome :-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+        <!-- Link stylesheet -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 
         <!-- Styles -->
         <style>
@@ -66,43 +75,107 @@
             }
         </style>
     </head>
-    <body>
-        <div class="flex-center position-ref full-height">
 
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                        <a href="/main">Bullet journal</a>
-                    @else
-                        <a href="{{ route('login') }}">Connexion</a>
+<body>
+<!-- <div class="flex-center position-ref full-height"> -->
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Inscription</a>
-                        @endif
-                    @endauth
-            @endif
-                        <a href="/contact">Contact</a>
+<!--row header-->
+    <div class="container-fluid cst-row-head-home">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    @if (Route::has('login'))
+                    <div class="links cst-icons">
+                        @auth
+                            <a href="/home">Home</a>
+                            <a href="/main">Bullet journal</a>
+                        @else
+                            <a href="{{ route('login') }}">Connexion</a>
+
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}">Inscription</a>
+                            @endif
+                        @endauth
+                            @endif
+                            <a href="/contact">Contact</a>
+                    </div>
                 </div>
-            
-                
+            </div>            
+    </div>
+    
+    
+        
 
+<div class="content container-fluid">
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+    <div class="row">
+        <!--LEFT ZONE-->
+        <div class="col-md-6">
+            <div class="masthead">
+                <div class="masthead-bg">
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="container h-100">
+                    <div class="row h-100">
+                        <div class="col-md-12">
+                            <div class="masthead-content text-white py-5 py-md-0">
+                                <img src="/logo1.png"  class="logo">
+                                <h1 class="mb-3">DONE</h1>
+                                <p class="mb-5">Bienvenue dans votre <strong>Bullet Journal</strong>. <br/>
+                                Un outil de developpement personnel au service de votre organisation<br/>
+                                </p>
+                                <div class="input-group input-group-newsletter">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-secondary" type="button">C'est parti !</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </body>
+
+        <!--RIGHT ZONE-->
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6 offset-md-6 social-icons">
+                    <div class="row">
+                        <ul class="list-unstyled text-center mb-0">
+                            <li class="list-unstyled-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li class="list-unstyled-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="list-unstyled-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="row support">
+                        <p>! Supportez Nous !</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<!--VIDEO-->
+     <!-- <div class="vidfit"> -->
+  <!--  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="mp4/date_bg.mp4" type="video/mp4">
+    </video> -->
+    <!-- </div> -->
+<!--LEFT-->
+
+
+    <div class="mention">
+      <a href="cgu" target="_blank">Conditions générales</a>
+      <a href="ml" target="_blank">Mentions légales - 2019 All rights reserved</a>
+    </div>
+
+</div><!--end container-fluid-->
+
+    
+
+
+
+<!-- </div> -->
+</body>
 </html>

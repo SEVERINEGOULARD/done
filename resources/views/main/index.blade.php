@@ -87,10 +87,6 @@ votre semaine
       <img class="dragImage" src="img/moduleIco4Humeur.svg">
     </div>
 
-    <div id="draggable5" data-category="5" class="ui-widget-content modules" data-mod="5">
-      <img class="dragImage yt" src="img/moduleIco5YouTube.svg">
-    </div>
-
   </div>
 
   <!--MAIN-->
@@ -130,13 +126,4 @@ votre semaine
 
 @section('scripts-footer')
 
-<!--***************SCRIPTS**************-->
-<script>
-
-$(function(){
-  
-  
-});
-
-</script>
 @endsection

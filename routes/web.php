@@ -36,8 +36,18 @@ Route::post('/main/calendar', 'MainController@calendar')->middleware('auth');
 Route::get('/contact', 'ContactController@index');
 
 Route::get('/mood', 'MoodController@index');
-Route::get('/admin', 'AdminController@index')->middleware('admin');
+
+Route::get('/admin', 'AdminController@index')->middleware('admin')->name('admin');
+Route::get('/admin/delete', 'AdminController@deleteUser')->middleware('admin');
+Route::get('/admin/update', 'UserUpdateController@index')->middleware('admin');
+Route::post('/admin/update', 'UserUpdateController@userUpdate')->middleware('admin');
+
 
 Route::post('/main/text', 'MainController@updateTextModule')->middleware('auth');
 Route::post('/main/image', 'MainController@uploadImageModule')->middleware('auth');
 Route::post('/main/design', 'MainController@insertDesignModule')->middleware('auth');
+
+
+
+Route::get('/cgu', 'CguController@index');
+Route::get('/ml', 'MlController@index');
