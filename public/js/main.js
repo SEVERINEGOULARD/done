@@ -94,9 +94,7 @@
 /***/ (function(module, exports) {
 
 $(function () {
-  //$today = new Date().toISOString().substr(0, 10);
-  //document.querySelector("#week").value = $today;
-  //console.log($today);
+  /*get current week*/
   function getWeekNumber(d) {
     // Copy date so don't modify original
     d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())); // Set to nearest Thursday: current date + 4 - current day number
@@ -109,7 +107,8 @@ $(function () {
     var weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7); // Return array of year and week number
 
     return [d.getUTCFullYear(), weekNo];
-  }
+  } //close getWeekNumber
+
 
   var result = getWeekNumber(new Date());
   var week = result[0] + '-W' + result[1];
@@ -139,7 +138,9 @@ $(function () {
         data: 'text=' + $(this).val() + '&line-id=' + e.data.dragged.data('line-id')
       });
     });
-  } //$zone contient $dragged 
+  } //close creatTextArea
+
+  /*$zone with $dragged element in*/
 
 
   function prepareForInput($dragged, $zone, $animate) {
@@ -195,13 +196,14 @@ $(function () {
     /*red cross button on each dragged*/
 
     $dragged.append($closeButton).addClass("text-right");
-  } //Display week choozen on select input
+  } //close prepareForInput
+  //Display week choozen on select input
 
 
   $('#week').on('change', function (e) {
     e.preventDefault();
     displayUserWeek();
-  });
+  }); //close event #week on change
 
   function displayUserWeek() {
     $weekValue = $('#week').val();
@@ -219,8 +221,7 @@ $(function () {
       method: "POST",
       data: 'number=' + window.weekNumber,
       complete: function complete(data) {
-        $result = data.responseJSON;
-        console.log($result); // empty all areas
+        $result = data.responseJSON; // empty all areas
 
         for ($s = 1; $s <= 6; $s++) {
           var zone = $('div[data-zone=' + $s + ']');
@@ -247,7 +248,8 @@ $(function () {
         }
       }
     });
-  }
+  } //close displayUserWeek
+
   /* Display modules by weeks */
 
   /*DRAGGABLES DECLARE*/
@@ -305,7 +307,7 @@ $(function () {
         /*cat 2*/
 
         if ($dragged.data('category') == "2") {
-          $dragged.append('<img id="preview" class="ill-mod-photo" src="img/polaroid.png"><form method="post"  enctype="multipart/form-data"><div class="form-group file-parent"></div></form>');
+          $dragged.append('<img id="preview" class="ill-mod-photo" src="img/polaroid.png"><form method="post" enctype="multipart/form-data"><div class="form-group file-parent"></div></form>');
           $fileInput = $('<input type="file" class="form-control-file">');
           $dragged.find('.file-parent').append($fileInput); // on rajoute dragged comme argument qui va se coller dans l'event e (à e.data.dragged)
           // ça permet d'appeler cet élément dragged au moment de l'event sans devoir rechercher avec
@@ -334,15 +336,16 @@ $(function () {
                 contentType: false,
                 processData: false
               }).done(function (data) {
-                $result = data.responseJSON;
-              }).fail(function (data) {});
+                $result = data;
+              });
             }
 
             ;
           });
         }
 
-        ;
+        ; //close cat 2
+
         /*cat 3*/
 
         if ($dragged.data('category') == "3") {
@@ -365,14 +368,20 @@ $(function () {
               $result = data.responseJSON;
             }
           });
-        }); //$dragged.draggable("option", "disabled", true);
-        //$(this).droppable('option', 'disabled', true);
+        });
+        /*close cat3*/
 
-        /*red cross button visible/hidden*/
-        // $('.textArea').onmouseover = function () {
-        //     $('.cst-btn-close').css('visibility', 'visible');
-        // }
+        /*cat 4*/
+
+        if ($dragged.data('category') == "4") {
+          $dragged.append('<div id="moodDrag"></div>');
+          $.get("mood.blade.php", function (data) {
+            $dragged.find('#moodDrag').html(data);
+          });
+        }
+        /*close cat4*/
         // $droppedOn $dragged
+
 
         $.ajaxSetup({
           headers: {
@@ -388,6 +397,7 @@ $(function () {
           data: 'zone=' + $droppedOnData + '&module=' + $draggedData + '&weekId=' + window.weekNumber,
           complete: function complete(data) {
             $result = data.responseJSON;
+            console.log($result);
             $dragged.attr('data-line-id', $result['id']);
           }
         });
@@ -396,6 +406,78 @@ $(function () {
   }
 
   ;
+  /*MOOD TRACKER*/
+
+  /*Array : moods available*/
+
+  var mood = ['Heureux', 'Energique', 'Enervé', 'Fatigué', 'Malade', 'Triste', 'Inquiet', 'Amoureux', 'Calme', 'En colère'];
+  /*Array : select input for week*/
+
+  var select = ['#select-choice-mood1', '#select-choice-mood2', '#select-choice-mood3', '#select-choice-mood4', '#select-choice-mood5', '#select-choice-mood6', '#select-choice-mood7'];
+  /*Array : select div for mood*/
+
+  var divMood = ['#mood-1', '#mood-2', '#mood-3', '#mood-4', '#mood-5', '#mood-6', '#mood-7'];
+  /*get select value and display mood on div*/
+
+  function moodDisplay() {
+    console.log($(this).val());
+
+    for ($i = 0; $i < select.length; $i++) {
+      $moodChoozen = $(select[$i]).val();
+      console.log($moodChoozen);
+      $zone = divMood[$i];
+      console.log($zone);
+
+      switch ($moodChoozen) {
+        case '1':
+          $($zone).css("background-image", "url('/heureux.png')").css("background-size", "cover").css("background-position", "center");
+          break;
+
+        case '2':
+          $($zone).css("background-image", "url('/energique.png')").css("background-size", "cover").css("background-position", "center");
+          break;
+
+        case '3':
+          $($zone).css("background-image", "url('/enerve.png')").css("background-size", "cover").css("background-position", "center");
+          break;
+
+        case '4':
+          $($zone).css("background-image", "url('/fatigue.png')").css("background-size", "cover").css("background-position", "center");
+          break;
+
+        case '5':
+          $($zone).css("background-image", "url('/malade.png')").css("background-size", "cover").css("background-position", "center");
+          break;
+
+        case '6':
+          $($zone).css("background-image", "url('/triste.png')").css("background-size", "cover").css("background-position", "center");
+          break;
+
+        case '7':
+          $($zone).css("background-image", "url('/inquiet.png')").css("background-size", "cover").css("background-position", "center");
+          break;
+
+        case '8':
+          $($zone).css("background-image", "url('/amoureux.png')").css("background-size", "cover").css("background-position", "center");
+          break;
+
+        case '9':
+          $($zone).css("background-image", "url('/calme.png')").css("background-size", "cover").css("background-position", "center");
+          break;
+
+        case '10':
+          $($zone).css("background-image", "url('/colere.png')").css("background-size", "cover").css("background-position", "center");
+          break;
+
+        default:
+          $($zone).css("background-image", "url('/what.jpg')").css("background-size", "cover").css("background-position", "center");
+      }
+    }
+  }
+  /*display mood on div after change*/
+
+
+  $(document).on('change', '.cst-select-mood', moodDisplay);
   /*Ajax toDo*/
 
   $('#sendToDo').on('click', function (e) {
@@ -413,13 +495,70 @@ $(function () {
       method: "POST",
       data: 'toDo=' + $toDo + '&category=' + $category,
       complete: function complete(data) {
-        $result = data.responseJSON;
+        $result = data.responseJSON; // console.log($result);
 
-        if ($('div[data-toDo="' + $result['category'] + '"]').length) {
-          $('div[data-toDo="' + $result['category'] + '"]').html($result['content']);
+        if ($result['toDo'] && $result['category']) {
+          $('#list-items').append("<div class='row' class='list'><div class='col-md-8'>" + $result['toDo'] + " </div> <div class='col-md-2 text-center'><input type='checkbox'></div><div class='col-md-2'><a class='deleteList' data-delete='" + $result['category'] + "'><i class='far fa-trash-alt'></i></a></div></div>");
         }
+      }
+    });
+  });
+  $('#chooseCat').on('change', function (e) {
+    e.preventDefault();
+    $chooseCat = $('#chooseCat').val();
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+      }
+    });
+    $.ajax({
+      url: '/toDo/chooseCat',
+      dataType: "json",
+      method: "POST",
+      data: 'category=' + $chooseCat,
+      complete: function complete(data) {
+        $result = data.responseJSON;
+        $('#list-items').empty();
 
-        $('#test').append("<p>" + $result['toDo'] + "</p>");
+        for (var i = 0; i < $result.length; i++) {
+          $('#list-items').append("<div class='row' class='list'><div class='col-md-8'>" + $result[i]['content'] + " </div> <div class='col-md-2 text-center'><input type='checkbox'></div><div class='col-md-2'><a class='deleteList' data-delete='" + $result[i]['id'] + "'><i class='far fa-trash-alt'></i></a></div></div>");
+        }
+      }
+    });
+  });
+  $(document).on('click', '.deleteList', function (e) {
+    e.preventDefault();
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+      }
+    });
+    $.ajax({
+      url: '/toDo/delete',
+      dataType: 'json',
+      method: 'POST',
+      data: 'id=' + $(this).data('delete'),
+      complete: function complete(data) {
+        $result = data.responseJSON;
+        $('a[data-delete="' + $result['id'] + '"]').parent().parent().remove();
+      }
+    });
+  });
+  $(document).on('click', '.checkbox', function () {
+    $valueCheck = $(this).val();
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+      }
+    });
+    $.ajax({
+      url: '/toDo/checkBox',
+      dataType: 'json',
+      method: 'POST',
+      data: 'id=' + $(this).data('checkbox') + '&value=' + $valueCheck,
+      complete: function complete(data) {
+        $result = data.responseJSON;
+        console.log($result);
       }
     });
   });
