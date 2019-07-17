@@ -90,6 +90,18 @@ votre semaine
       <img class="dragImage yt" src="img/moduleIco5YouTube.svg">
     </div>
 
+      <div id="draggable6" data-category="6" class="ui-widget-content modules" data-mod="6">
+      <img class="dragImage" src="img/moduleIco6Local.svg">
+    </div>
+
+    <div id="draggable7" data-category="7" class="ui-widget-content modules" data-mod="7">
+      <img class="dragImage" src="img/moduleIco7Money.svg">
+    </div>
+
+    <div id="draggable8" data-category="8" class="ui-widget-content modules" data-mod="8">
+      <img class="dragImage" src="img/moduleIco8Sport.svg">
+    </div>
+
   </div>
 
   <!--MAIN-->

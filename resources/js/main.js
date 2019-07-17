@@ -1,13 +1,6 @@
 $(function () {
 
 
-
-
-    //$today = new Date().toISOString().substr(0, 10);
-    //document.querySelector("#week").value = $today;
-
-    //console.log($today);
-
     function getWeekNumber(d) {
         // Copy date so don't modify original
         d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
@@ -24,7 +17,6 @@ $(function () {
 
     var result = getWeekNumber(new Date());
     var week = result[0] + '-W' + result[1];
-    console.log(week);
     document.getElementById("week").value = week;
 
 
@@ -89,8 +81,8 @@ $(function () {
         $closeButton.on("click", $parent, function (parentButton) {
             parentButton.data.droppable('option', 'disabled', false);
 
-            $id = $(this).parent().data('lineId');
-            console.log($id);
+            $id = $(this).parent().data('line-id');
+     
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -106,8 +98,7 @@ $(function () {
                 complete: function (data) {
 
                     $result = data.responseJSON;
-                 
-
+ 
                     parentButton.data.empty();
 
 
@@ -149,7 +140,7 @@ $(function () {
             complete: function (data) {
 
                 $result = data.responseJSON;
-                console.log($result);
+         
 
                 // empty all areas
                 for ($s = 1; $s <= 6; $s++) {
@@ -282,14 +273,10 @@ $(function () {
                             })
                                 .done(function (data) {
 
-                                    $result = data.responseJSON;
-
-                                })
-
-                                .fail(function (data) {
-
-
+                                    $result = data;
+                                    console.log($result);
                                 });
+   
                         };
                     });
                 };
@@ -318,15 +305,6 @@ $(function () {
                 });
 
 
-
-
-                //$dragged.draggable("option", "disabled", true);
-                //$(this).droppable('option', 'disabled', true);
-
-                /*red cross button visible/hidden*/
-                // $('.textArea').onmouseover = function () {
-                //     $('.cst-btn-close').css('visibility', 'visible');
-                // }
                 // $droppedOn $dragged
                 $.ajaxSetup({
                     headers: {
