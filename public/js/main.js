@@ -112,7 +112,6 @@ $(function () {
 
   var result = getWeekNumber(new Date());
   var week = result[0] + '-W' + result[1];
-  console.log(week);
   document.getElementById("week").value = week;
   /*Create TextArea*/
 
@@ -140,6 +139,51 @@ $(function () {
     });
   } //close creatTextArea
 
+
+  function createImage(zone, base64content) {
+    $img = $('<img src="data:image/png;base64,' + base64content + '">');
+    zone.append($img);
+  }
+
+  function createImageEmptyZone(zone) {
+    zone.append('<img id="preview" class="ill-mod-photo" src="img/polaroid.png"><form method="post"  enctype="multipart/form-data"><div class="form-group file-parent"></div></form>');
+    $fileInput = $('<input type="file" class="form-control-file">');
+    zone.find('.file-parent').append($fileInput); // on rajoute dragged comme argument qui va se coller dans l'event e (à e.data.dragged)
+    // ça permet d'appeler cet élément dragged au moment de l'event sans devoir rechercher avec
+    // des parents de parents etc.
+
+    $fileInput.on('change', {
+      dragged: zone
+    }, function (e) {
+      var thatTarget = e.currentTarget;
+
+      if (thatTarget.files && thatTarget.files[0]) {
+        $myData = new FormData();
+        $myData.append('image', thatTarget.files[0]);
+        $myData.append('line-id', e.data.dragged.data('line-id'));
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+        $.ajax({
+          method: 'POST',
+          url: '/main/image',
+
+          /*MainController -> uploadImageModule*/
+          data: $myData,
+          contentType: false,
+          processData: false
+        }).done(function (data) {
+          e.data.dragged.children('img').remove();
+          e.data.dragged.children('form').remove();
+          createImage(e.data.dragged, data['content']);
+        });
+      }
+
+      ;
+    });
+  }
   /*$zone with $dragged element in*/
 
 
@@ -238,11 +282,20 @@ $(function () {
             var zone = $('div[data-zone="' + $result[i]['zone_id'] + '"]'); //On crée une div intermédiaire (dans laquelle on append TextArea etc.) en clonant les icones à gauche
             //cela permet d'avoir le meme comportement en drag&drop et en choix de semaine
 
-            $cloneDragged = $('#aside > div[data-mod=1]').clone();
-            prepareForInput($cloneDragged, zone, false); //on remplit cette div intermédiaire avec l'élément qui correspond à la catégorie module_id
+            $cloneDragged = $('#aside > div[data-mod=' + $result[i]['module_id'] + ']').clone();
+            prepareForInput($cloneDragged, zone, false);
+            $cloneDragged.attr('data-line-id', $result[i]['id']); //on remplit cette div intermédiaire avec l'élément qui correspond à la catégorie module_id
 
             if ($result[i]['module_id'] == 1) {
               createTextArea($cloneDragged, $result[i]['content']);
+            }
+
+            if ($result[i]['module_id'] == 2) {
+              if ($result[i]['content']) {
+                createImage($cloneDragged, $result[i]['content']);
+              } else {
+                createImageEmptyZone($cloneDragged);
+              }
             }
           }
         }
@@ -307,6 +360,7 @@ $(function () {
         /*cat 2*/
 
         if ($dragged.data('category') == "2") {
+          createImageEmptyZone($dragged);
           $dragged.append('<img id="preview" class="ill-mod-photo" src="img/polaroid.png"><form method="post" enctype="multipart/form-data"><div class="form-group file-parent"></div></form>');
           $fileInput = $('<input type="file" class="form-control-file">');
           $dragged.find('.file-parent').append($fileInput); // on rajoute dragged comme argument qui va se coller dans l'event e (à e.data.dragged)
@@ -420,13 +474,9 @@ $(function () {
   /*get select value and display mood on div*/
 
   function moodDisplay() {
-    console.log($(this).val());
-
     for ($i = 0; $i < select.length; $i++) {
       $moodChoozen = $(select[$i]).val();
-      console.log($moodChoozen);
       $zone = divMood[$i];
-      console.log($zone);
 
       switch ($moodChoozen) {
         case '1':

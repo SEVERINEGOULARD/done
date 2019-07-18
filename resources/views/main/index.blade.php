@@ -20,13 +20,13 @@ votre semaine
              
             <div class="row cst-row-admin cst-row-sub-admin">
                 <div class="col-md-4">
-                    <a href="/mon_compte"><i class="fas fa-cog cst-compte"></i></a>
+                    <a href="/mon_compte"><img class="img-header" src="1205514.svg"></a>
                 </div>
                 <div class="col-md-4">
                   <img src="{{Auth::user()->avatar}}" class="cst-avatar img-responsive center-block">
                 </div>
                 <div class="col-md-4">
-                    <a href="{{ url('/logout') }}"><i class="fas fa-sign-out-alt cst-compte"></i></a>
+                    <a href="{{ url('/logout') }}"><img class="img-header" src="log-out.svg"></a>
                 </div>
             </div>         
         </div>
@@ -86,11 +86,28 @@ votre semaine
       <img class="dragImage" src="img/moduleIco4Humeur.svg">
     </div>
 
+    <div id="draggable5" data-category="5" class="ui-widget-content modules" data-mod="5">
+      <img class="dragImage yt" src="img/moduleIco5YouTube.svg">
+    </div>
+
+      <div id="draggable6" data-category="6" class="ui-widget-content modules" data-mod="6">
+      <img class="dragImage" src="img/moduleIco6Local.svg">
+    </div>
+
+    <div id="draggable7" data-category="7" class="ui-widget-content modules" data-mod="7">
+      <img class="dragImage" src="img/moduleIco7Money.svg">
+    </div>
+
+    <div id="draggable8" data-category="8" class="ui-widget-content modules" data-mod="8">
+      <img class="dragImage" src="img/moduleIco8Sport.svg">
+    </div>
+
   </div>
 
   <!--MAIN-->
   <div class="container-main col-md-11">
     <div class="row cst-main-row" id="dropZones">
+
       <div class="col-md-6 cst-col-main-left">
         <div class="row cst-subrow dropZone" data-zone="1" id="dropZone1">
           
@@ -115,7 +132,8 @@ votre semaine
         </div>
       </div>
     </div>
-
+        
+        </div>
   </div>
 
 </div>
