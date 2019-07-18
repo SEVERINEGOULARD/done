@@ -12,13 +12,14 @@
 
 @section('content')
 
-<div class="container-fluid">
-    <div class="container cst-contain-admin">
-        <div class="cst-cpte-container">
+<!-- <div class="container-fluid"> -->
+    <div class="container">
+        <h2 class="cst-head-compte">Gestion des utilisateurs</h2>
+    </div>
+    <div class="container-fluid cst-contain-admin">
+        <div class="cst-cpte-container container">
             <div class="row">
-                <div class="col-md-12">
-                    <h2 class="cst-head-compte">Gestion des utilisateurs</h2>
-                </div>
+                
             </div>
 
             <div class="row cst-div-form-compte">
@@ -55,7 +56,7 @@
 
         </div>
     </div> 
-</div>
+<!-- </div> -->
 
 @endsection
 

@@ -109,8 +109,19 @@ label{
 	font-size: 2rem;
 }
 .cst-btn-login{
-	background-color: $colorYellow;
+	background-color: $colorGrey2;
+  background-image:none;
+  width:60%;
+  color:$colorGrey1;
 	font-size: 1.2rem;
+  margin:0 auto;
+}
+.cst-btn-login:hover{
+  background-color: $colorYellow;
+  background-image:none;
+  width:60%;
+  color:$colorGrey2;
+  font-size: 1.2rem;
 }
 .cst-label-log-rem{
 	font-size: 0.9rem;
@@ -123,20 +134,23 @@ label{
 .cst-div-login{
   background-image: linear-gradient(to top right, $colorGreen2, $colorGreen, $colorYellow);
 }
+.cst-btn-login-div{
+  margin:0 auto;
+}
+.cst-row-login-footer{
+  margin-top:100px;
+}
 
 /*VIEW CONTACT*/
 .cst-background{
 	background-image: linear-gradient(to top right, $colorGreen2, $colorGreen, $colorYellow);
 	min-height: 200px;
 }
-
-
-
-		a{
-			color : $colorGrey2;
-			font-family: $fontMain;
-		}
-	}
+a{
+	color : $colorGrey2;
+	font-family: $fontMain;
+}
+	
 
 
 
@@ -431,7 +445,7 @@ label{
 .cst-div-btn-compte{
 	text-align: right;
 }
-.cst-div-form-compte{
+.cst-contain-admin{
 	background-image: linear-gradient(to top right, $colorGreen2, $colorGreen, $colorYellow);
 }
 .cst-form-compte label, .cst-form-compte p{

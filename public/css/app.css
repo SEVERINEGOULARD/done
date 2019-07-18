@@ -10737,7 +10737,19 @@ label {
 }
 
 .cst-btn-login {
+  background-color: #424242;
+  background-image: none;
+  width: 60%;
+  color: #eeeeee;
+  font-size: 1.2rem;
+  margin: 0 auto;
+}
+
+.cst-btn-login:hover {
   background-color: #f8da63;
+  background-image: none;
+  width: 60%;
+  color: #424242;
   font-size: 1.2rem;
 }
 
@@ -10755,11 +10767,24 @@ label {
   background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
 }
 
+.cst-btn-login-div {
+  margin: 0 auto;
+}
+
+.cst-row-login-footer {
+  margin-top: 100px;
+}
+
 /*VIEW CONTACT*/
 
 .cst-background {
   background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
   min-height: 200px;
+}
+
+a {
+  color: #424242;
+  font-family: "Amatic SC", cursive;
 }
 
 .cst-contact-img {
@@ -11047,6 +11072,12 @@ p {
   height: 100%;
 }
 
+@media (max-width: 576px) {
+  #dropZones {
+    background: none;
+  }
+}
+
 /*VIEW MON_COMPTE - ADMIN*/
 
 .cst-btn-compte {
@@ -11066,7 +11097,7 @@ p {
   text-align: right;
 }
 
-.cst-div-form-compte {
+.cst-contain-admin {
   background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
 }
 
