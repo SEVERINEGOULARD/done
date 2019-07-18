@@ -384,7 +384,7 @@ p{
 
 
 
-video {
+/*video {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -396,17 +396,24 @@ video {
   transform: translateX(-50%) translateY(-50%);
   z-index: 0;
 }
-
+*/
 @media (pointer: coarse) and (hover: none) {
   /*body {
     background: url("../img/bg-mobile-fallback.jpg") #002E66 no-repeat center center scroll;
     background-position: cover;
   }*/
-  body video {
+  /*body video {
     display: none;
-  }
+  }*/
 }
-
+.cst-bg-welcome{
+  background:url('bg-img.jpg');
+  background-size: cover;
+  z-index: -1;
+}
+.cst-row-right-welcome{
+  z-index: 30;
+}
 .overlay {
   position: absolute;
   top: 0;
@@ -417,7 +424,19 @@ video {
   opacity: 0.7;
   z-index: 1;
 }
-
+.cst-content-welcome{
+  text-align: center;
+}
+.cst-content-welcome p{
+  color:$colorGrey2;
+  padding-left:36px;
+  line-height: 30px;
+  padding-top: 7rem;
+  
+}
+.cst-btn-go{
+  text-align:left;
+}
 .masthead {
   position: relative;
   overflow: hidden;
@@ -436,7 +455,7 @@ video {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: $colorGreen;
+  background-image: linear-gradient(to top right, $colorGreen2, $colorGreen, $colorYellow);
   -webkit-transform: skewY(4deg);
   transform: skewY(4deg);
   -webkit-transform-origin: bottom right;
@@ -447,6 +466,7 @@ video {
 
 .masthead .masthead-content h1 {
   font-size: 2.5rem;
+
 }
 
 .masthead .masthead-content p {
@@ -492,7 +512,7 @@ video {
 .social-icons ul > li > a {
   display: block;
   color: white;
-  background-color: rgba(0, 46, 102, 0.8);
+  background-image: linear-gradient(to top right, $colorGreen2, $colorGreen);
   border-radius: 100%;
   font-size: 2rem;
   line-height: 4rem;
@@ -502,16 +522,24 @@ video {
 .cst-row-head-home{
 	height:70px;
 }
-
+.cst-btn-welcome{
+  margin-left: 35px;
+  background-color:$colorGrey2!important;
+  color:#fff!important;
+  padding:9px!important;
+  width:32%;
+}
 
 .btn-secondary {
   background-color: #cd9557;
   border-color: #cd9557;
+  border:none;
+  border-radius:14px;
 }
 
-.btn-secondary:active, .btn-secondary:focus, .btn-secondary:hover {
-  background-color: #ba7c37 !important;
-  border-color: #ba7c37 !important;
+.btn-secondary:hover {
+  background-color:$colorYellow!important;
+  color:$colorGrey2!important;
 }
 
 .input {
@@ -527,12 +555,23 @@ ul.list-unstyled.text-center.mb-0 {
     text-align: right;
     font-size: 36px;
     z-index: 100;
+    a{
+      background: #9a8f8d;
+      padding: 8px!important;
+      border-radius: 19px;
+      color: #d8d8d9!important;
+    }
 }
 .mention {
-    position: fixed;
-    bottom: 5px;
+    z-index: 20;
+
+    a, p{
+      font-size: 0.8rem;
+      color:$colorGrey2;
+    }
 
 }
+
 h1.mb-3 { 
     /*margin-top: 300px;*/
 }
@@ -552,15 +591,63 @@ h1.mb-3 {
 
 img.logo {
     width: 50%;
-    left: 150px;
+}
+
+.cst-btn-close {
+    height: 13px;
+    width: 13px;
+    font-size: xx-small;
+    position: absolute;
+    background-color: $colorRed;
+    color: #fff !important;
+    top: 0px;
+    right: 0px;
+   
+}
+
+.cst-textarea {
+    height: 100%;
+    resize: none;
+    border-color:white;
 }
 
 
 
 
+/*********************MEDIA QUERIES*********************/
 
+@media screen and(max-width: 768px){
+  .cst-bg-welcome{
+  background:url('bg-img.jpg'),no-repeat, cover;
+  }
+  .masthead .masthead-bg {
+  width: 100%;
+  background:none;
 
-/*MEDIA QUERIES*/
+  }
+  .cst-bg-welcome{
+    margin:0;
+  }
+  .cst-left{
+    margin:0;
+  }
+  .cst-btn-go{
+    text-align: center;
+  }
+  .cst-icons a{
+    font-size: 0.4rem!important;
+  }
+  .cst-content-welcome p{
+    padding:0;
+    text-align: center;
+    color: #f6ede0;
+  }
+  .cst-btn-welcome{
+    width: 60%;
+  }
+
+}
+
 @media (min-width: 768px) {
   .social-icons {
     margin: 0;
@@ -620,20 +707,4 @@ img.logo {
     font-size: 1.3rem;
   }
 }
-.cst-btn-close {
-    height: 13px;
-    width: 13px;
-    font-size: xx-small;
-    position: absolute;
-    background-color: $colorRed;
-    color: #fff !important;
-    top: 0px;
-    right: 0px;
-   
-}
 
-.cst-textarea {
-    height: 100%;
-    resize: none;
-    border-color:white;
-}

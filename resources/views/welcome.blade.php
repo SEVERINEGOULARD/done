@@ -52,9 +52,6 @@
                 top: 18px;
             }
 
-            .content {
-                text-align: center;
-            }
 
             .title {
                 font-size: 84px;
@@ -77,11 +74,60 @@
     </head>
 
 <body>
-<!-- <div class="flex-center position-ref full-height"> -->
+<div class="content container-fluid">
 
-<!--row header-->
-    <div class="container-fluid cst-row-head-home">
-            <div class="row">
+    <div class="row cst-bg-welcome">
+        <!--LEFT ZONE-->
+        <div class="col-md-6 col-xs-12">
+            <div class="row cst-left">
+                <div class="masthead">
+                    <div class="masthead-bg">
+                    </div>
+                    <div class="container h-100">
+                        
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="cst-content-welcome masthead-content text-white py-5 py-md-0">
+                                        <img src="/logo1.png"  class="logo">
+                                        <!-- <h1 class="mb-3">DONE</h1> -->
+                                        <div class="text-left">
+                                            <p class="mb-5">Bienvenue dans votre <br><strong>Bullet Journal</strong>. <br/>
+                                        Un outil personnalisable <br>au service de votre organisation <br>et de votre imagination<br/>
+                                        </p>
+                                        </div>
+                                        
+                                        <div class="input-group input-group-newsletter">
+                                            <div class="cst-btn-go">
+                                               <a href='/register'><button class="btn btn-secondary cst-btn-welcome" type="button">C'est parti !</button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="row text-left">
+                                    <div class="col-md-12">
+                                        <div class="mention pl-3">
+                                          <a href="cgu" target="_blank">Conditions générales</a>
+                                          <a href="ml" target="_blank">Mentions légales</a>
+                                          <p>2019 All rights reserved</p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                                
+                            </div>
+                        
+                    </div>
+                </div>
+            </div>
+           
+
+            
+        </div>
+
+        <!--RIGHT ZONE-->
+        <div class="col-md-6 col-xs-12">
+            <div class="row cst-row-right-welcome">
                 <div class="col-md-12 text-right">
                     @if (Route::has('login'))
                     <div class="links cst-icons">
@@ -95,86 +141,14 @@
                                 <a href="{{ route('register') }}">Inscription</a>
                             @endif
                         @endauth
-                            @endif
+                    @endif
                             <a href="/contact">Contact</a>
                     </div>
                 </div>
-            </div>            
-    </div>
-    
-    
-        
-
-<div class="content container-fluid">
-
-    <div class="row">
-        <!--LEFT ZONE-->
-        <div class="col-md-6">
-            <div class="masthead">
-                <div class="masthead-bg">
-                </div>
-                <div class="container h-100">
-                    <div class="row h-100">
-                        <div class="col-md-12">
-                            <div class="masthead-content text-white py-5 py-md-0">
-                                <img src="/logo1.png"  class="logo">
-                                <h1 class="mb-3">DONE</h1>
-                                <p class="mb-5">Bienvenue dans votre <strong>Bullet Journal</strong>. <br/>
-                                Un outil de developpement personnel au service de votre organisation<br/>
-                                </p>
-                                <div class="input-group input-group-newsletter">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-secondary" type="button">C'est parti !</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--RIGHT ZONE-->
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-6 offset-md-6 social-icons">
-                    <div class="row">
-                        <ul class="list-unstyled text-center mb-0">
-                            <li class="list-unstyled-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li class="list-unstyled-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li class="list-unstyled-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="row support">
-                        <p>! Supportez Nous !</p>
-                    </div>
-                </div>
-            </div>
+            </div> 
         </div>
     </div>
-
-
-
-
-<!--VIDEO-->
-     <!-- <div class="vidfit"> -->
-  <!--  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-    <source src="mp4/date_bg.mp4" type="video/mp4">
-    </video> -->
-    <!-- </div> -->
-<!--LEFT-->
-
-
-    <div class="mention">
-      <a href="cgu" target="_blank">Conditions générales</a>
-      <a href="ml" target="_blank">Mentions légales - 2019 All rights reserved</a>
-    </div>
-
 </div><!--end container-fluid-->
-
-    
-
-
 
 <!-- </div> -->
 </body>

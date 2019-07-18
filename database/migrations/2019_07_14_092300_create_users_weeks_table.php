@@ -32,13 +32,6 @@ class CreateUsersWeeksTable extends Migration
             ->references('id')
             ->on('modules');
             $table->string('content')->nullable();
-            $table->string('monday')->nullable();
-            $table->string('tuesday')->nullable();
-            $table->string('wednesday')->nullable();
-            $table->string('thursday')->nullable();
-            $table->string('fraiday')->nullable();
-            $table->string('saturday')->nullable();
-            $table->string('sunday')->nullable();
             $table->timestamps();
         });
     }

@@ -53,7 +53,7 @@
 			</div> 
 		</div>
 
-		<form action="/main/mood" method="post">
+		<form id="formMood" action="" method="post">
 			
 			<div class="row">
 			

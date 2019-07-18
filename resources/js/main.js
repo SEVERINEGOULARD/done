@@ -387,10 +387,9 @@ var divMood = [
     
               /*get select value and display mood on div*/
         function moodDisplay(){
-            console.log($(this).val());
             for($i=0 ; $i<select.length ; $i++){
-                $moodChoozen = $(select[$i]).val(); console.log($moodChoozen);
-                $zone = divMood[$i];console.log($zone);
+                $moodChoozen = $(select[$i]).val(); 
+                $zone = divMood[$i];
               switch ($moodChoozen){
                 case '1': 
                 $($zone).css("background-image", "url('/heureux.png')").css("background-size", "cover").css("background-position","center");
@@ -430,9 +429,43 @@ var divMood = [
        }
   
        /*display mood on div after change*/
-    $(document).on('change', '.cst-select-mood', moodDisplay);
+//     $(document).on('change', '.cst-select-mood', moodDisplay);
+
+//      $("#btnMoods").click(function(e){
+//         e.preventDefault();
+//     $(".test").text($("formMood").serialize());
+// })
     
-   
+        /*Insert mood in BDD*/
+    //     $(document).on('click', '#btnMoods', function(e){
+    //         e.preventDefault();
+
+
+    //          $donnees = $(this).serialize();console.log($donnees);
+           
+    //         $.ajaxSetup({
+
+    //         headers: {
+    //         'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+    //             }
+    //         });
+
+    //          $.ajax({
+
+    //         url : '/main/mood',
+    //         method: "POST",
+    //         data: $donnees,
+    //         complete: function(data) {
+
+    //         // $result = data.responseJSON;
+    //         // console.log($result);
+
+            
+    //         }     
+    //     })
+    // });
+
+
 
     /*Ajax toDo*/
 
