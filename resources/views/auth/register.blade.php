@@ -8,7 +8,15 @@
                 <h1 class="card-header cst-register">REGISTER</h1>
                 <div class="card">
                     
-
+                @if ($errors->any())
+   <div class="alert alert-danger">
+       <ul>
+           @foreach ($errors->all() as $error)
+               <li>{{ $error }}</li>
+           @endforeach
+       </ul>
+   </div>
+@endif
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
                         
@@ -20,11 +28,7 @@
                                 <div class="col-md-6">
                                     <input id="pseudo" type="text" class="form-control @error('name') is-invalid @enderror" name="pseudo" value="{{ old('pseudo') }}" required autocomplete="pseudo" autofocus>
 
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                
                                 </div>
                             </div>
                     <!--Email-->
@@ -33,12 +37,6 @@
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
 
@@ -48,12 +46,6 @@
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
 
@@ -73,61 +65,15 @@
 
                                 <div class="col-md-6">
                                     <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror" name="dob">
-
-                                    @error('dob')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
 
-
-                    <!--City-->
-                    <!-- Must be set on "ville" regarding the API-->
-                            <div class="form-group row">
-                                <label for="ville" class="col-md-4 col-form-label text-md-right">Ville</label>
-
-                                <div class="col-md-6">
-                                    
-                                    <input id="ville" type="text" class="form-control" name="ville" value="{{ old('ville') }}" required>
-                                   
-                                       <ul style="position:absolute; z-index:100;">
-                                          <li data-vicopo="#ville">
-                                            <strong data-vicopo-code-postal></strong>
-                                            <span data-vicopo-ville></span>
-                                          </li>
-                                       </ul>
-                                </div>
-                            </div>
                     <!--Avatar-->
                      
                              <div class="form-group">
                                 <label for="exampleFormControlFile1">Avatar</label>
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="avatar">
                              </div>
-
-                    <!--Theme-->
-
-                            <div class="row cst-template">
-                                <div class="col-md-4 form-check form-check-inline cst-check-template">
-                                    <img src="{{URL::asset('template1.png')}}" style="width:30%;">
-                                    <input class="form-check-input" type="radio" name="theme" id="inlineRadio1" value="theme1">
-                                    <label class="form-check-label" for="inlineRadio1">Classic</label>
-                                </div>
-                                <div class="col-md-4 form-check form-check-inline cst-check-template">
-                                    <img src="{{URL::asset('template2.png')}}" style="width:30%;">
-                                    <input class="form-check-input" type="radio" name="theme" id="inlineRadio2" value="theme2">
-                                    <label class="form-check-label" for="inlineRadio2">Nature</label>
-                                </div>
-                                <div class="col-md-4 form-check form-check-inline cst-check-template">
-                                    <img src="{{URL::asset('template3.png')}}" style="width:30%;">
-                                    <input class="form-check-input" type="radio" name="theme" id="inlineRadio3" value="theme3">
-                                    <label class="form-check-label" for="inlineRadio3">Espace</label>
-                                </div>
-                            </div>
-
-                           
 
                     <!--Sumit Button-->
                             <div class="form-group row mb-0">

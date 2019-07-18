@@ -10647,6 +10647,7 @@ a.text-dark:focus {
 body {
   height: 100%;
   background-color: #fff;
+  position: relative;
 }
 
 * {
@@ -10665,6 +10666,12 @@ h1 {
 
 p {
   font-family: "Cormorant Garamond", serif;
+}
+
+button {
+  background-image: linear-gradient(to top right, #45e0aa, #f8da63);
+  border: none;
+  border-radius: 40px !important;
 }
 
 /*NAV BAR*/
@@ -10713,13 +10720,13 @@ p {
   box-shadow: 0px 5px 5px #a39e9e;
 }
 
-.header nav {
+nav {
   text-align: right;
   padding-top: 10px;
   letter-spacing: 0.2rem;
 }
 
-.header nav a {
+nav a {
   color: #424242;
   font-family: "Amatic SC", cursive;
 }
@@ -10823,10 +10830,6 @@ p {
 
 .cst-mood {
   border-radius: 54px;
-}
-
-.cst-div-select {
-  /*margin-left: 12px;*/
 }
 
 /*VIEW MAIN*/
@@ -11013,8 +11016,40 @@ p {
 
 /*VIEW TODO*/
 
-.cst-todo-p {
+.cst-todo-titles {
   font-size: 1rem;
+  color: #424242;
+}
+
+.fa-trash-alt {
+  color: #f8da63;
+}
+
+.cst-contact-footer {
+  position: fixed;
+  bottom: 0;
+}
+
+@media screen and (max-width: 576px) {
+  .mq-padding-todo {
+    padding-left: 30px !important;
+  }
+
+  .cst-todo-titles {
+    font-size: 0.6rem !important;
+  }
+
+  .cst-contact-footer {
+    position: relative;
+  }
+
+  #list-items {
+    padding-top: 26px !important;
+  }
+
+  .cst-todo-nav {
+    font-size: 0.8rem !important;
+  }
 }
 
 /*MAIN VIEW*/

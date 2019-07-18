@@ -552,6 +552,7 @@ $(function () {
   // });
 
 
+  $(document).on('change', '.cst-select-mood', moodDisplay);
   displayUserWeek();
 });
 
