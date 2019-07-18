@@ -10651,7 +10651,6 @@ body {
 }
 
 * {
-  font-family: "Rajdhani", sans-serif;
   font-size: 1.2rem;
   margin: 0;
   padding: 0;
@@ -10672,6 +10671,35 @@ button {
   background-image: linear-gradient(to top right, #45e0aa, #f8da63);
   border: none;
   border-radius: 40px !important;
+}
+
+.header {
+  background: #45e0aa !important;
+  height: 60px;
+  box-shadow: 0px 5px 5px #a39e9e;
+}
+
+nav {
+  text-align: right;
+  padding-top: 10px;
+  letter-spacing: 0.2rem;
+}
+
+nav a {
+  color: #424242;
+  font-family: "Amatic SC", cursive;
+}
+
+label {
+  color: #eeeeee;
+}
+
+.navbar-toggler {
+  background: #eeeeee;
+}
+
+#logo {
+  width: 50%;
 }
 
 /*NAV BAR*/
@@ -10712,23 +10740,6 @@ button {
 .cst-background {
   background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
   min-height: 200px;
-}
-
-.header {
-  background: #45e0aa !important;
-  height: 60px;
-  box-shadow: 0px 5px 5px #a39e9e;
-}
-
-nav {
-  text-align: right;
-  padding-top: 10px;
-  letter-spacing: 0.2rem;
-}
-
-nav a {
-  color: #424242;
-  font-family: "Amatic SC", cursive;
 }
 
 .cst-contact-img {
@@ -10773,29 +10784,25 @@ nav a {
 
 /*VIEW REGISTER*/
 
-.cst-register {
-  color: #f8da63 !important;
-}
-
-.card-header {
-  background-color: #fff;
-}
-
-.card-body {
-  background-color: #45e0aa;
-  color: #eeeeee;
-}
-
-.cst-template {
-  margin: 0 auto;
-}
-
-.cst-check-template {
+.cst-bg-register {
+  background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
   margin: 0;
 }
 
 .cst-btn-register {
+  background-color: #424242;
+  background-image: none;
+  width: 40%;
+  color: white;
+}
+
+.cst-btn-register:hover {
   background-color: #f8da63;
+  background-image: none;
+}
+
+.cst-input {
+  margin-left: 19px;
 }
 
 /*VIEW MOOD*/
@@ -10973,6 +10980,12 @@ nav a {
   display: none;
   height: 100%;
   resize: none;
+}
+
+@media (max-width: 576px) {
+  #dropZones {
+    background: none;
+  }
 }
 
 /*VIEW MON_COMPTE - ADMIN*/
