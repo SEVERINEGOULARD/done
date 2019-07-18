@@ -28,7 +28,7 @@
 @section('content')
 <section>
 	<div class="container-fluid">
-		<div class="container">
+		<div class="container cst-ml-div">
 			<div class="row">
 				<div class="col-md-12">
 					<h1>mentions légales</h1><br>
@@ -60,7 +60,7 @@ Date de dernière modification : 12/07/2019</p>
 
 @section('scripts-footer')
 
-<div class="container cst-contact-footer mt-5">
+<div class="container-fluid cst-contact-footer mt-5">
   <div class="row">
     <div class="col-md-4 text-center">
       <a href="/ml">Mentions légales</a>

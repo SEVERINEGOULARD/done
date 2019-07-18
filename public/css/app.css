@@ -1,5 +1,22 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+.header {
+  background: #45e0aa !important;
+  height: 60px;
+  box-shadow: 0px 5px 5px #a39e9e;
+}
+
+nav {
+  text-align: right;
+  padding-top: 10px;
+  letter-spacing: 0.2rem;
+}
+
+nav a {
+  color: #424242;
+  font-family: "Amatic SC", cursive;
+}
+
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -10715,13 +10732,24 @@ label {
 /*VIEW LOGIN*/
 
 .cst-login-head {
-  color: #f8da63;
   font-family: "Amatic SC", cursive;
   font-size: 2rem;
 }
 
 .cst-btn-login {
+  background-color: #424242;
+  background-image: none;
+  width: 60%;
+  color: #eeeeee;
+  font-size: 1.2rem;
+  margin: 0 auto;
+}
+
+.cst-btn-login:hover {
   background-color: #f8da63;
+  background-image: none;
+  width: 60%;
+  color: #424242;
   font-size: 1.2rem;
 }
 
@@ -10735,6 +10763,18 @@ label {
   padding-top: 10px;
 }
 
+.cst-div-login {
+  background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
+}
+
+.cst-btn-login-div {
+  margin: 0 auto;
+}
+
+.cst-row-login-footer {
+  margin-top: 100px;
+}
+
 /*VIEW CONTACT*/
 
 .cst-background {
@@ -10742,24 +10782,31 @@ label {
   min-height: 200px;
 }
 
+a {
+  color: #424242;
+  font-family: "Amatic SC", cursive;
+}
+
 .cst-contact-img {
   margin: 0 auto !important;
   width: 60%;
 }
 
-.cst-contact-footer {
+.cst-contact-footer,
+.cst-cgu-footer {
   background-color: #424242;
   box-shadow: 0px -2px 5px #a39e9e;
   padding-top: 10px;
 }
 
-.cst-contact-footer a {
+.cst-contact-footer a,
+.cst-cgu-footer a {
   padding-top: 10px;
   color: #eeeeee;
   font-family: "Cormorant Garamond", serif;
 }
 
-.cst-contact-footer p {
+p {
   color: #eeeeee;
   font-family: "Cormorant Garamond", serif;
 }
@@ -10780,6 +10827,11 @@ label {
 
 .img-membre-4 {
   width: 328px;
+}
+
+.cst-cgu-div,
+.cst-ml-div p {
+  color: #497264;
 }
 
 /*VIEW REGISTER*/
@@ -10992,6 +11044,44 @@ label {
   padding: 0 !important;
 }
 
+.file-input {
+  margin-left: 20%;
+}
+
+.modules {
+  width: 70%;
+  height: 9%;
+  border-radius: 5px;
+}
+
+.dragImage {
+  width: 65%;
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+.yt {
+  opacity: 0.7;
+}
+
+.illustration {
+  width: 30%;
+}
+
+.design-button {
+  width: 10%;
+  height: 10%;
+}
+
+.ill-mod-photo {
+  width: 50%;
+  margin-right: 30%;
+}
+
+.textForm {
+  height: 100%;
+}
+
 @media (max-width: 576px) {
   #dropZones {
     background: none;
@@ -11021,15 +11111,23 @@ label {
 /*VIEW MON_COMPTE - ADMIN*/
 
 .cst-btn-compte {
-  background-color: #f8da63 !important;
+  background-image: none;
+  background-color: #424242 !important;
+  color: #eeeeee !important;
   width: 40%;
 }
 
-.cst-div-btn-compte {
-  text-align: center;
+.cst-btn-compte:hover {
+  background-image: none;
+  background-color: #f8da63 !important;
+  color: #424242 !important;
 }
 
-.cst-div-form-compte {
+.cst-div-btn-compte {
+  text-align: right;
+}
+
+.cst-contain-admin {
   background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
 }
 
@@ -11038,13 +11136,7 @@ label {
   color: #eeeeee;
 }
 
-.cst-cpte-container {
-  width: 80%;
-  margin: 0 auto;
-}
-
 .cst-head-compte {
-  color: #f8da63;
   font-size: 2rem;
   font-family: "Amatic SC", cursive;
 }
@@ -11068,11 +11160,6 @@ label {
   color: #f8da63;
 }
 
-.cst-contact-footer {
-  position: fixed;
-  bottom: 0;
-}
-
 @media screen and (max-width: 576px) {
   .mq-padding-todo {
     padding-left: 30px !important;
@@ -11080,10 +11167,6 @@ label {
 
   .cst-todo-titles {
     font-size: 0.6rem !important;
-  }
-
-  .cst-contact-footer {
-    position: relative;
   }
 
   #list-items {
@@ -11094,8 +11177,6 @@ label {
     font-size: 0.8rem !important;
   }
 }
-
-/*MAIN VIEW*/
 
 .file-input {
   margin-left: 20%;
@@ -11406,6 +11487,63 @@ img.logo {
   .cst-row-right-welcome div {
     padding: 0;
   }
+
+  .cst-div-form-compte td,
+  .cst-div-form-compte td {
+    font-size: 0.8rem;
+  }
+
+  .cst-table-width {
+    font-size: 0.8rem;
+    width: 20%;
+  }
+
+  .cst-table1-width {
+    font-size: 0.8rem;
+    width: 10%;
+  }
+
+  .cst-table1-width i {
+    font-size: 0.8rem;
+  }
+
+  .cst-cpte-container {
+    margin: 0;
+    width: 100%;
+  }
+
+  .cst-div-form-compte {
+    background: none;
+  }
+
+  .cst-contain-admin {
+    margin-top: 14px;
+  }
+
+  .cst-div-form-compte {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .cst-btn-admin-update {
+    text-align: center;
+  }
+
+  .cst-container-admin-update {
+    margin-top: 29px;
+  }
+
+  .cst-btn-compte {
+    width: 88%;
+  }
+
+  .cst-div-btn-compte {
+    text-align: center;
+  }
+
+  .cst-div-form-compte {
+    background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
+  }
 }
 
 @media (min-width: 768px) {
@@ -11473,7 +11611,24 @@ img.logo {
   }
 }
 
+.cst-textarea {
+  height: 100%;
+  resize: none;
+  border: none;
+  background: transparent;
+}
+
+.parentimg {
+  width: 100%;
+  height: auto;
+}
+
 .img-header {
   width: 80%;
+}
+
+.img-design {
+  width: 70%;
+  margin-right: 15%;
 }
 
