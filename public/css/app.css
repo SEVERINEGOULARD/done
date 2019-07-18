@@ -11034,6 +11034,16 @@ p {
   resize: none;
 }
 
+.cst-main-mq {
+  display: flex;
+  flex-direction: column;
+  margin: 0 !important;
+}
+
+#aside {
+  padding: 0 !important;
+}
+
 .file-input {
   margin-left: 20%;
 }
@@ -11073,6 +11083,26 @@ p {
 }
 
 @media (max-width: 576px) {
+  #dropZones {
+    background: none;
+  }
+
+  .modules {
+    margin: 0;
+    text-align: center;
+    width: 40px;
+  }
+
+  .dragImage {
+    margin: 0;
+  }
+
+  .cst-logo {
+    width: 91px;
+  }
+}
+
+@media (max-width: 768px) {
   #dropZones {
     background: none;
   }
@@ -11146,6 +11176,43 @@ p {
   .cst-todo-nav {
     font-size: 0.8rem !important;
   }
+}
+
+.file-input {
+  margin-left: 20%;
+}
+
+.modules {
+  width: 70%;
+  height: 9%;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.dragImage {
+  width: 55%;
+}
+
+.yt {
+  opacity: 0.7;
+}
+
+.illustration {
+  width: 30%;
+}
+
+.design-button {
+  width: 10%;
+  height: 10%;
+}
+
+.ill-mod-photo {
+  width: 50%;
+  margin-right: 30%;
+}
+
+.textForm {
+  height: 100%;
 }
 
 /* WELCOME PAGE */
@@ -11343,10 +11410,6 @@ ul.list-unstyled.text-center.mb-0 {
 .mention p {
   font-size: 0.8rem;
   color: #424242;
-}
-
-h1.mb-3 {
-  /*margin-top: 300px;*/
 }
 
 .content {
