@@ -11022,7 +11022,7 @@ p {
 }
 
 .dragImage {
-  width: 55%;
+  width: 65%;
   margin-top: 10px;
   margin-left: 15px;
 }
@@ -11302,10 +11302,21 @@ img.logo {
 .cst-textarea {
   height: 100%;
   resize: none;
-  border-color: white;
+  border: none;
+  background: transparent;
+}
+
+.parentimg {
+  width: 100%;
+  height: auto;
 }
 
 .img-header {
   width: 80%;
+}
+
+.img-design {
+  width: 70%;
+  margin-right: 15%;
 }
 

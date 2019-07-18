@@ -241,6 +241,7 @@ p{
     background: url('../public/book2.png') no-repeat;
     background-size: cover;
 
+
 }
 .container-main{
     
@@ -358,12 +359,14 @@ p{
     width:70%;
     height: 9%;
     border-radius: 5px;
+    
 }
 
 .dragImage {
-    width: 55%;
+    width: 65%;
     margin-top: 10px;
     margin-left: 15px;
+
 }
 
 .yt{
@@ -642,12 +645,26 @@ img.logo {
    
 }
 
+
 .cst-textarea {
     height: 100%;
     resize: none;
-    border-color:white;
+    border: none;
+    background: transparent;
+}
+
+.parentimg{
+    width:100%;
+    height:auto;
 }
 
 .img-header{
     width:80%;
 }
+
+.img-design{
+    width: 70%;
+    margin-right:15%;
+}
+
+

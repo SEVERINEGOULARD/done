@@ -22,22 +22,7 @@ class MainController extends Controller
     	$data = $request->all();
     }
 
-   /* public function testQueryBuilder(Request $request) {
 
-
-        //SELECT * from userweek INNER JOIN users ON users_id = id where week_id = 29 AND user_id = 1
-
-        $query = UserWeek::query();
-        $query->join('users', 'user_id', '=', 'users.id');
-        $query->addSelect('users.pseudo');
-        $query->addSelect('users_weeks.*');
-        $query = $query->where('week_id', 29);
-        $query = $query->where('user_id', 1);
-
-        $userWeek = $query->get();
-
-        echo json_encode($userWeek);
-    }*/
 
     public function selectWeek(Request $request){
 
@@ -109,6 +94,7 @@ class MainController extends Controller
 
    public function insertDesignModule(Request $request){
 
+       $data = $request->all();
 
        $request->validate([
 
@@ -116,7 +102,15 @@ class MainController extends Controller
 
        ]);
 
-       $data = $request->all();
+
+
+       UserWeek::where('id', $data['line-id'])->update(['content' => $data['design']]);
+
+       
+
+       return response()->json($data);
+
+       
 
    }
    public function deleteModule(Request $request){
