@@ -10737,7 +10737,19 @@ label {
 }
 
 .cst-btn-login {
+  background-color: #424242;
+  background-image: none;
+  width: 60%;
+  color: #eeeeee;
+  font-size: 1.2rem;
+  margin: 0 auto;
+}
+
+.cst-btn-login:hover {
   background-color: #f8da63;
+  background-image: none;
+  width: 60%;
+  color: #424242;
   font-size: 1.2rem;
 }
 
@@ -10755,11 +10767,24 @@ label {
   background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
 }
 
+.cst-btn-login-div {
+  margin: 0 auto;
+}
+
+.cst-row-login-footer {
+  margin-top: 100px;
+}
+
 /*VIEW CONTACT*/
 
 .cst-background {
   background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
   min-height: 200px;
+}
+
+a {
+  color: #424242;
+  font-family: "Amatic SC", cursive;
 }
 
 .cst-contact-img {
@@ -11009,6 +11034,16 @@ p {
   resize: none;
 }
 
+.cst-main-mq {
+  display: flex;
+  flex-direction: column;
+  margin: 0 !important;
+}
+
+#aside {
+  padding: 0 !important;
+}
+
 .file-input {
   margin-left: 20%;
 }
@@ -11047,6 +11082,32 @@ p {
   height: 100%;
 }
 
+@media (max-width: 576px) {
+  #dropZones {
+    background: none;
+  }
+
+  .modules {
+    margin: 0;
+    text-align: center;
+    width: 40px;
+  }
+
+  .dragImage {
+    margin: 0;
+  }
+
+  .cst-logo {
+    width: 91px;
+  }
+}
+
+@media (max-width: 768px) {
+  #dropZones {
+    background: none;
+  }
+}
+
 /*VIEW MON_COMPTE - ADMIN*/
 
 .cst-btn-compte {
@@ -11066,7 +11127,7 @@ p {
   text-align: right;
 }
 
-.cst-div-form-compte {
+.cst-contain-admin {
   background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
 }
 
@@ -11115,6 +11176,43 @@ p {
   .cst-todo-nav {
     font-size: 0.8rem !important;
   }
+}
+
+.file-input {
+  margin-left: 20%;
+}
+
+.modules {
+  width: 70%;
+  height: 9%;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.dragImage {
+  width: 55%;
+}
+
+.yt {
+  opacity: 0.7;
+}
+
+.illustration {
+  width: 30%;
+}
+
+.design-button {
+  width: 10%;
+  height: 10%;
+}
+
+.ill-mod-photo {
+  width: 50%;
+  margin-right: 30%;
+}
+
+.textForm {
+  height: 100%;
 }
 
 /* WELCOME PAGE */
@@ -11314,10 +11412,6 @@ ul.list-unstyled.text-center.mb-0 {
   color: #424242;
 }
 
-h1.mb-3 {
-  /*margin-top: 300px;*/
-}
-
 .content {
   height: 100%;
 }
@@ -11515,17 +11609,6 @@ img.logo {
   .masthead .masthead-content p {
     font-size: 1.3rem;
   }
-}
-
-.cst-btn-close {
-  height: 13px;
-  width: 13px;
-  font-size: xx-small;
-  position: absolute;
-  background-color: #b71717;
-  color: #fff !important;
-  top: 0px;
-  right: 0px;
 }
 
 .cst-textarea {
