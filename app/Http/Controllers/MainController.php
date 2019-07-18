@@ -121,7 +121,8 @@ class MainController extends Controller
     }
 
     public function insertMoods(Request $request){
-      dd($request);
+      $data=$request->all();
+      $dd($data);
     }
 }
 

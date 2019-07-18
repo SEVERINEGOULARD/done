@@ -4,8 +4,8 @@
 
 @if (Route::has('login'))
 	<header>
-		<div class=" container-fluid header">
-			<div class=" container">
+		<div class="container-fluid header">
+			<div class="container">
 				<nav>
 				@auth
 					<a href="{{ url('/home') }}">Home</a>

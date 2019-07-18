@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Model\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 use Redirect;
 
 class RegisterController extends Controller
@@ -50,8 +51,9 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-
-       
+        
+        
+    
     $message = [
             'pseudo.required'        => "Votre pseudo est obligatoire",
             'pseudo.min'             => "Votre pseudo doit contenir au minimum 8 caractères",
@@ -70,15 +72,15 @@ class RegisterController extends Controller
 
         ];
     return Validator::make($data, [
-            'pseudo'         => ['required', 'alpha', 'max:255','min:8'],
+            'pseudo'         => ['required','max:255','min:8'],
             'email'          => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password'       => ['required', 'min:8', 'confirmed'],
-            'ville'          => ['string'],
-            'avatar'         => ['image', 'max:10000'],
-            'theme'          => ['string']
+            'avatar'         => ['nullable', 'image', 'max:10000'],
+            'theme'          => ['integer']
 
-                                      ],
-            $message);
+    ],
+            $message
+        );
        
                                       
     }
@@ -92,21 +94,33 @@ class RegisterController extends Controller
 
     //on a trouvé cette fonction native à laravel qui permet de retourner des messages d'error personnalisés à la place des messages d'erreur de laravel en anglais (vendor\laravel\framework\src\Illuminate\Foundation\Auth)
 
-    public function register(Request $request)
-    {  
-        $validator = $this->validator($request->all());
+    // public function register(Request $request)
+    // {  
+    //     dd('tewt');
+    //     $validator = $this->validator($request->all());
         
-        if ($validator->fails()) {
-            return redirect('/register')
-            ->withErrors($validator)
-            ->withInput();
-        }
+    //     if ($validator->fails()) {
+    //         return redirect('/register')
+    //         ->withErrors($validator)
+    //         ->withInput();
+    //     }
+        
+    //     event(new Registered($user = $this->create($request->all())));
+    //     $this->guard()->login($user);
+    //     return redirect($this->redirectPath());
+    // }
+    public function register(Request $request)
+    {
+        
+        $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
-        $this->guard()->login($user);
-        return redirect($this->redirectPath());
-    }
 
+        //$this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
       
     
 
@@ -119,20 +133,17 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {   dd($data);
-    
+    {   
+        
         $user = User::create([
-            'pseudo'        => $data['name'],
+            'pseudo'        => $data['pseudo'],
             'email'         => $data['email'],
             'password'      => Hash::make($data['password']),
             'dob'           => $data['dob'],
-            'ville'         => $data['ville'],
             'avatar'        => $data['avatar'],
             'template_id'   => $data['theme']    
 
         ]);
 
-        $user->save();
-       
     }
 }

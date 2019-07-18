@@ -445,13 +445,9 @@ $(function () {
   /*get select value and display mood on div*/
 
   function moodDisplay() {
-    console.log($(this).val());
-
     for ($i = 0; $i < select.length; $i++) {
       $moodChoozen = $(select[$i]).val();
-      console.log($moodChoozen);
       $zone = divMood[$i];
-      console.log($zone);
 
       switch ($moodChoozen) {
         case '1':
@@ -500,93 +496,34 @@ $(function () {
     }
   }
   /*display mood on div after change*/
+  //     $(document).on('change', '.cst-select-mood', moodDisplay);
+  //      $("#btnMoods").click(function(e){
+  //         e.preventDefault();
+  //     $(".test").text($("formMood").serialize());
+  // })
+
+  /*Insert mood in BDD*/
+  //     $(document).on('click', '#btnMoods', function(e){
+  //         e.preventDefault();
+  //          $donnees = $(this).serialize();console.log($donnees);
+  //         $.ajaxSetup({
+  //         headers: {
+  //         'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+  //             }
+  //         });
+  //          $.ajax({
+  //         url : '/main/mood',
+  //         method: "POST",
+  //         data: $donnees,
+  //         complete: function(data) {
+  //         // $result = data.responseJSON;
+  //         // console.log($result);
+  //         }     
+  //     })
+  // });
 
 
   $(document).on('change', '.cst-select-mood', moodDisplay);
-  /*Ajax toDo*/
-
-  $('#sendToDo').on('click', function (e) {
-    e.preventDefault();
-    $toDo = $('#toDo').val();
-    $category = $('#category').val();
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
-      }
-    });
-    $.ajax({
-      url: '/toDo',
-      dataType: "json",
-      method: "POST",
-      data: 'toDo=' + $toDo + '&category=' + $category,
-      complete: function complete(data) {
-        $result = data.responseJSON; // console.log($result);
-
-        if ($result['toDo'] && $result['category']) {
-          $('#list-items').append("<div class='row' class='list'><div class='col-md-8'>" + $result['toDo'] + " </div> <div class='col-md-2 text-center'><input type='checkbox'></div><div class='col-md-2'><a class='deleteList' data-delete='" + $result['category'] + "'><i class='far fa-trash-alt'></i></a></div></div>");
-        }
-      }
-    });
-  });
-  $('#chooseCat').on('change', function (e) {
-    e.preventDefault();
-    $chooseCat = $('#chooseCat').val();
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
-      }
-    });
-    $.ajax({
-      url: '/toDo/chooseCat',
-      dataType: "json",
-      method: "POST",
-      data: 'category=' + $chooseCat,
-      complete: function complete(data) {
-        $result = data.responseJSON;
-        $('#list-items').empty();
-
-        for (var i = 0; i < $result.length; i++) {
-          $('#list-items').append("<div class='row' class='list'><div class='col-md-8'>" + $result[i]['content'] + " </div> <div class='col-md-2 text-center'><input type='checkbox'></div><div class='col-md-2'><a class='deleteList' data-delete='" + $result[i]['id'] + "'><i class='far fa-trash-alt'></i></a></div></div>");
-        }
-      }
-    });
-  });
-  $(document).on('click', '.deleteList', function (e) {
-    e.preventDefault();
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
-      }
-    });
-    $.ajax({
-      url: '/toDo/delete',
-      dataType: 'json',
-      method: 'POST',
-      data: 'id=' + $(this).data('delete'),
-      complete: function complete(data) {
-        $result = data.responseJSON;
-        $('a[data-delete="' + $result['id'] + '"]').parent().parent().remove();
-      }
-    });
-  });
-  $(document).on('click', '.checkbox', function () {
-    $valueCheck = $(this).val();
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
-      }
-    });
-    $.ajax({
-      url: '/toDo/checkBox',
-      dataType: 'json',
-      method: 'POST',
-      data: 'id=' + $(this).data('checkbox') + '&value=' + $valueCheck,
-      complete: function complete(data) {
-        $result = data.responseJSON;
-        console.log($result);
-      }
-    });
-  });
   displayUserWeek();
 });
 
@@ -599,7 +536,7 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\laragon\www\masterclone\done\resources\js\main.js */"./resources/js/main.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\done\resources\js\main.js */"./resources/js/main.js");
 
 
 /***/ })
