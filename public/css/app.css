@@ -10972,7 +10972,7 @@ p {
   resize: none;
 }
 
-/*VIEW MON_COMPTE*/
+/*VIEW MON_COMPTE - ADMIN*/
 
 .cst-btn-compte {
   background-color: #f8da63 !important;
@@ -10984,7 +10984,7 @@ p {
 }
 
 .cst-div-form-compte {
-  background-color: #45e0aa;
+  background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
 }
 
 .cst-form-compte label,
@@ -11001,6 +11001,14 @@ p {
   color: #f8da63;
   font-size: 2rem;
   font-family: "Amatic SC", cursive;
+}
+
+.cst-table-width {
+  width: 25%;
+}
+
+.cst-table-width1 {
+  width: 12%;
 }
 
 /*VIEW TODO*/
@@ -11320,6 +11328,10 @@ img.logo {
 
   .cst-btn-welcome {
     width: 60%;
+  }
+
+  .cst-row-right-welcome div {
+    padding: 0;
   }
 }
 

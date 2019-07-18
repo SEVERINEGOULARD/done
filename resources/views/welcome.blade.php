@@ -106,9 +106,9 @@
                                  <div class="row text-left">
                                     <div class="col-md-12">
                                         <div class="mention pl-3">
-                                          <a href="cgu" target="_blank">Conditions générales</a>
+                                          <a href="cgu" target="_blank">Conditions générales</a><br>
                                           <a href="ml" target="_blank">Mentions légales</a>
-                                          <p>2019 All rights reserved</p>
+                                          <p class="pt-2">2019 All rights reserved</p>
                                         </div>
                                     </div>
                                     
@@ -134,6 +134,7 @@
                         @auth
                             <a href="/home">Home</a>
                             <a href="/main">Bullet journal</a>
+                            <a href="/admin">Dashboard</a>
                         @else
                             <a href="{{ route('login') }}">Connexion</a>
 

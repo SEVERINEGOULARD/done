@@ -28,20 +28,22 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Pseudo</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Date d'anniversaire</th>
+                                    <th scope="col" class="cst-table-width">Pseudo</th>
+                                    <th scope="col" class="cst-table-width">Email</th>
+                                    <th scope="col" class="cst-table-width">Date de naissance</th>
+                                    <th scope="col" class="cst-table1-width">Supp</th>
+                                    <th scope="col" class="cst-table1-width">Edit</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
                                 <tr>
-                                    <td>{{$user->pseudo}}</td>
-                                    <td>{{$user->email}}</td>
-                                    <td>{{$user->dob}}</td>
-                                    <td><a href="/admin/delete?id={{$user->id}}"><i class="fas fa-user-times"></i></a></td>
+                                    <td class="cst-table-width">{{$user->pseudo}}</td>
+                                    <td class="cst-table-width">{{$user->email}}</td>
+                                    <td class="cst-table-width">{{$user->dob}}</td>
+                                    <td class="cst-table1-width"><a href="/admin/delete?id={{$user->id}}"><i class="fas fa-user-times"></i></a></td>
                                     <!--vers userUdptate-->
-                                    <td><a href="/admin/update?id={{$user->id}}"><i class="fas fa-user-edit"></i></a></td>
+                                    <td class="cst-table1-width"><a href="/admin/update?id={{$user->id}}"><i class="fas fa-user-edit"></i></a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

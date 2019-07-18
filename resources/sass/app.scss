@@ -319,7 +319,7 @@ p{
 	resize:none;
 }
 
-/*VIEW MON_COMPTE*/
+/*VIEW MON_COMPTE - ADMIN*/
 .cst-btn-compte{
 	background-color: $colorYellow!important;
 	width:40%;	
@@ -328,7 +328,7 @@ p{
 	text-align: center;
 }
 .cst-div-form-compte{
-	background-color: $colorGreen;
+	background-image: linear-gradient(to top right, $colorGreen2, $colorGreen, $colorYellow);
 }
 .cst-form-compte label, .cst-form-compte p{
 	color: $colorGrey1;
@@ -341,6 +341,12 @@ p{
 	color: $colorYellow;
 	font-size: 2rem;
 	font-family: $fontMain;
+}
+.cst-table-width{
+  width:25%;
+}
+.cst-table-width1{
+  width:12%;
 }
 
 /*VIEW TODO*/
@@ -654,6 +660,9 @@ img.logo {
   }
   .cst-btn-welcome{
     width: 60%;
+  }
+  .cst-row-right-welcome div{
+    padding: 0;
   }
 
 }

@@ -142,5 +142,5 @@ votre semaine
 @endsection
 
 @section('scripts-footer')
-
+<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 @endsection
