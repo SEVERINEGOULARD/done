@@ -13,7 +13,7 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="container">
+    <div class="container cst-contain-admin">
         <div class="cst-cpte-container">
             <div class="row">
                 <div class="col-md-12">
@@ -22,7 +22,7 @@
             </div>
 
             <div class="row cst-div-form-compte">
-                <div class="col-md-12">
+                <div class="col-12">
                     <form> 
                     @csrf 
                         <table class="table">

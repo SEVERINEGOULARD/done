@@ -1,5 +1,22 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+.header {
+  background: #45e0aa !important;
+  height: 60px;
+  box-shadow: 0px 5px 5px #a39e9e;
+}
+
+nav {
+  text-align: right;
+  padding-top: 10px;
+  letter-spacing: 0.2rem;
+}
+
+nav a {
+  color: #424242;
+  font-family: "Amatic SC", cursive;
+}
+
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -10651,7 +10668,6 @@ body {
 }
 
 * {
-  font-family: "Rajdhani", sans-serif;
   font-size: 1.2rem;
   margin: 0;
   padding: 0;
@@ -10687,7 +10703,6 @@ button {
 /*VIEW LOGIN*/
 
 .cst-login-head {
-  color: #f8da63;
   font-family: "Amatic SC", cursive;
   font-size: 2rem;
 }
@@ -10707,6 +10722,10 @@ button {
   padding-top: 10px;
 }
 
+.cst-div-login {
+  background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
+}
+
 /*VIEW CONTACT*/
 
 .cst-background {
@@ -10714,41 +10733,26 @@ button {
   min-height: 200px;
 }
 
-.header {
-  background: #45e0aa !important;
-  height: 60px;
-  box-shadow: 0px 5px 5px #a39e9e;
-}
-
-nav {
-  text-align: right;
-  padding-top: 10px;
-  letter-spacing: 0.2rem;
-}
-
-nav a {
-  color: #424242;
-  font-family: "Amatic SC", cursive;
-}
-
 .cst-contact-img {
   margin: 0 auto !important;
   width: 60%;
 }
 
-.cst-contact-footer {
+.cst-contact-footer,
+.cst-cgu-footer {
   background-color: #424242;
   box-shadow: 0px -2px 5px #a39e9e;
   padding-top: 10px;
 }
 
-.cst-contact-footer a {
+.cst-contact-footer a,
+.cst-cgu-footer a {
   padding-top: 10px;
   color: #eeeeee;
   font-family: "Cormorant Garamond", serif;
 }
 
-.cst-contact-footer p {
+p {
   color: #eeeeee;
   font-family: "Cormorant Garamond", serif;
 }
@@ -10769,6 +10773,11 @@ nav a {
 
 .img-membre-4 {
   width: 328px;
+}
+
+.cst-cgu-div,
+.cst-ml-div p {
+  color: #497264;
 }
 
 /*VIEW REGISTER*/
@@ -10975,85 +10984,6 @@ nav a {
   resize: none;
 }
 
-/*VIEW MON_COMPTE - ADMIN*/
-
-.cst-btn-compte {
-  background-color: #f8da63 !important;
-  width: 40%;
-}
-
-.cst-div-btn-compte {
-  text-align: center;
-}
-
-.cst-div-form-compte {
-  background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
-}
-
-.cst-form-compte label,
-.cst-form-compte p {
-  color: #eeeeee;
-}
-
-.cst-cpte-container {
-  width: 80%;
-  margin: 0 auto;
-}
-
-.cst-head-compte {
-  color: #f8da63;
-  font-size: 2rem;
-  font-family: "Amatic SC", cursive;
-}
-
-.cst-table-width {
-  width: 25%;
-}
-
-.cst-table-width1 {
-  width: 12%;
-}
-
-/*VIEW TODO*/
-
-.cst-todo-titles {
-  font-size: 1rem;
-  color: #424242;
-}
-
-.fa-trash-alt {
-  color: #f8da63;
-}
-
-.cst-contact-footer {
-  position: fixed;
-  bottom: 0;
-}
-
-@media screen and (max-width: 576px) {
-  .mq-padding-todo {
-    padding-left: 30px !important;
-  }
-
-  .cst-todo-titles {
-    font-size: 0.6rem !important;
-  }
-
-  .cst-contact-footer {
-    position: relative;
-  }
-
-  #list-items {
-    padding-top: 26px !important;
-  }
-
-  .cst-todo-nav {
-    font-size: 0.8rem !important;
-  }
-}
-
-/*MAIN VIEW*/
-
 .file-input {
   margin-left: 20%;
 }
@@ -11090,6 +11020,76 @@ nav a {
 
 .textForm {
   height: 100%;
+}
+
+/*VIEW MON_COMPTE - ADMIN*/
+
+.cst-btn-compte {
+  background-image: none;
+  background-color: #424242 !important;
+  color: #eeeeee !important;
+  width: 40%;
+}
+
+.cst-btn-compte:hover {
+  background-image: none;
+  background-color: #f8da63 !important;
+  color: #424242 !important;
+}
+
+.cst-div-btn-compte {
+  text-align: right;
+}
+
+.cst-div-form-compte {
+  background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
+}
+
+.cst-form-compte label,
+.cst-form-compte p {
+  color: #eeeeee;
+}
+
+.cst-head-compte {
+  font-size: 2rem;
+  font-family: "Amatic SC", cursive;
+}
+
+.cst-table-width {
+  width: 25%;
+}
+
+.cst-table-width1 {
+  width: 12%;
+}
+
+/*VIEW TODO*/
+
+.cst-todo-titles {
+  font-size: 1rem;
+  color: #424242;
+}
+
+.fa-trash-alt {
+  color: #f8da63;
+}
+
+@media screen and (max-width: 576px) {
+  .mq-padding-todo {
+    padding-left: 30px !important;
+  }
+
+  .cst-todo-titles {
+    font-size: 0.6rem !important;
+  }
+
+  #list-items {
+    padding-top: 26px !important;
+  }
+
+  .cst-todo-nav {
+    font-size: 0.8rem !important;
+  }
 }
 
 /* WELCOME PAGE */
@@ -11367,6 +11367,63 @@ img.logo {
 
   .cst-row-right-welcome div {
     padding: 0;
+  }
+
+  .cst-div-form-compte td,
+  .cst-div-form-compte td {
+    font-size: 0.8rem;
+  }
+
+  .cst-table-width {
+    font-size: 0.8rem;
+    width: 20%;
+  }
+
+  .cst-table1-width {
+    font-size: 0.8rem;
+    width: 10%;
+  }
+
+  .cst-table1-width i {
+    font-size: 0.8rem;
+  }
+
+  .cst-cpte-container {
+    margin: 0;
+    width: 100%;
+  }
+
+  .cst-div-form-compte {
+    background: none;
+  }
+
+  .cst-contain-admin {
+    margin-top: 14px;
+  }
+
+  .cst-div-form-compte {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .cst-btn-admin-update {
+    text-align: center;
+  }
+
+  .cst-container-admin-update {
+    margin-top: 29px;
+  }
+
+  .cst-btn-compte {
+    width: 88%;
+  }
+
+  .cst-div-btn-compte {
+    text-align: center;
+  }
+
+  .cst-div-form-compte {
+    background-image: linear-gradient(to top right, #497264, #45e0aa, #f8da63);
   }
 }
 

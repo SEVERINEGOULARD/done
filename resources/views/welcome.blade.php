@@ -59,7 +59,7 @@
 
             .links > a {
                 color: #636b6f;
-                padding: 0 25px;
+                padding: 0 25px; 
                 font-size: 13px;
                 font-weight: 600;
                 letter-spacing: .1rem;
@@ -74,7 +74,7 @@
     </head>
 
 <body>
-<div class="content container-fluid">
+<div class="content container-fluid cst-content-main">
 
     <div class="row cst-bg-welcome">
         <!--LEFT ZONE-->

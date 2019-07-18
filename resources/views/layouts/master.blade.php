@@ -34,9 +34,9 @@
    <body>
    @yield('scripts-header')
 
-     
+       <div id='content'>
            @yield('content')
-      
+       </div>
 
    @yield('scripts-footer')
 

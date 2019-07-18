@@ -14,7 +14,7 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="container">
+    <div class="container cst-container-admin-update">
         <div class="cst-cpte-container">
             <div class="row">
                 <div class="col-md-12">
@@ -42,7 +42,7 @@
                         <strong>{{ $errors->first('email') }}</strong>
                       @endif
                     
-                    <div class="mt-5 mb-5">
+                    <div class="mt-5 mb-5 cst-btn-admin-update">
                         <button class="btn cst-btn-compte" type="submit">Modifiez les données</button>
                     </div>
 
@@ -59,7 +59,7 @@
 
 @section('scripts-footer')
 
-<div class="container-fluid cst-contact-footer mt-5">
+<div class="container-fluid cst-contact-footer cst-admin-update-footer mt-5">
   <div class="row">
     <div class="col-md-4 text-center">
       <a href="/ml">Mentions légales</a>

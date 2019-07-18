@@ -12,6 +12,23 @@ $colorRed: #b71717;
 $fontParagraph: 'Cormorant Garamond', serif;
 $fontMain: 'Amatic SC', cursive;
 
+.header{
+  background: $colorGreen!important;
+  height: 60px; 
+  box-shadow: 0px 5px 5px rgb(163, 158, 158);
+}
+
+nav{
+    text-align: right;
+    padding-top: 10px;
+    letter-spacing: .2rem;
+
+    a{
+      color : $colorGrey2;
+      font-family: $fontMain;
+    }
+  }
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
@@ -22,7 +39,6 @@ body{
 }
 
 *{
-	font-family: 'Rajdhani', sans-serif;
 	font-size:1.2rem;
 	margin:0;
 	padding:0;
@@ -59,7 +75,6 @@ button{
 /*VIEW LOGIN*/
 
 .cst-login-head{
-	color:$colorYellow;
 	font-family: $fontMain;
 	font-size: 2rem;
 }
@@ -72,8 +87,11 @@ button{
 }
 .cst-div-rem{
 	padding: 0;
-    text-align: center;
-    padding-top: 10px;
+  text-align: center;
+  padding-top: 10px;
+}
+.cst-div-login{
+  background-image: linear-gradient(to top right, $colorGreen2, $colorGreen, $colorYellow);
 }
 
 /*VIEW CONTACT*/
@@ -82,22 +100,7 @@ button{
 	min-height: 200px;
 }
 
-.header{
-	background: $colorGreen!important;
-	height: 60px; 
-	box-shadow: 0px 5px 5px rgb(163, 158, 158);
-}
 
-nav{
-		text-align: right;
-		padding-top: 10px;
-		letter-spacing: .2rem;
-
-		a{
-			color : $colorGrey2;
-			font-family: $fontMain;
-		}
-	}
 
 
 
@@ -107,7 +110,7 @@ nav{
 }
 
 
-.cst-contact-footer{
+.cst-contact-footer, .cst-cgu-footer{
 	background-color:  $colorGrey2;
 	box-shadow: 0px -2px 5px rgb(163, 158, 158);
 	padding-top: 10px;
@@ -117,12 +120,14 @@ nav{
 		font-family: $fontParagraph;
 	} 
 
+}
+
 	p{
 		
 		color: $colorGrey1;
 		font-family: $fontParagraph;
 	}
-}
+
 .cst-contact-titre{
 	font-size: 3rem;
 
@@ -140,6 +145,9 @@ nav{
 
 .img-membre-4{
     width: 328px;
+}
+.cst-cgu-div, .cst-ml-div p{
+  color:$colorGreen2;
 }
 
 /*VIEW REGISTER*/
@@ -322,76 +330,6 @@ nav{
 	resize:none;
 }
 
-/*VIEW MON_COMPTE - ADMIN*/
-.cst-btn-compte{
-	background-color: $colorYellow!important;
-	width:40%;	
-}
-.cst-div-btn-compte{
-	text-align: center;
-}
-.cst-div-form-compte{
-	background-image: linear-gradient(to top right, $colorGreen2, $colorGreen, $colorYellow);
-}
-.cst-form-compte label, .cst-form-compte p{
-	color: $colorGrey1;
-}
-.cst-cpte-container{
-	width:80%;
-	margin:0 auto;
-}
-.cst-head-compte{
-	color: $colorYellow;
-	font-size: 2rem;
-	font-family: $fontMain;
-}
-.cst-table-width{
-  width:25%;
-}
-.cst-table-width1{
-  width:12%;
-}
-
-/*VIEW TODO*/
-
-.cst-todo-titles{
-  font-size: 1rem;
-  color: $colorGrey2;
-}
-
-.fa-trash-alt{
-  color: $colorYellow
-}
-
-.cst-contact-footer{
-  position: fixed; 
-  bottom: 0;
-}
-
-@media screen and (max-width: 576px) {
-  .mq-padding-todo{
-    padding-left: 30px!important;
-  }
-
-  .cst-todo-titles{
-    font-size: .6rem!important;
-  }
-
-  .cst-contact-footer{
-    position: relative;
-  }
-
-  #list-items{
-    padding-top: 26px!important;
-  }
-
-  .cst-todo-nav{
-    font-size: .8rem!important;
-  }
-
-}
-
-/*MAIN VIEW*/
 
 .file-input{
     margin-left: 20%;
@@ -429,6 +367,74 @@ nav{
 
 .textForm{
     height: 100%;
+}
+
+
+/*VIEW MON_COMPTE - ADMIN*/
+.cst-btn-compte{
+  background-image:none;
+	background-color: $colorGrey2!important;
+  color:$colorGrey1!important;
+	width:40%;	
+}
+.cst-btn-compte:hover{
+  background-image:none;
+  background-color: $colorYellow!important;
+  color:$colorGrey2!important;
+}
+.cst-div-btn-compte{
+	text-align: right;
+}
+.cst-div-form-compte{
+	background-image: linear-gradient(to top right, $colorGreen2, $colorGreen, $colorYellow);
+}
+.cst-form-compte label, .cst-form-compte p{
+	color: $colorGrey1;
+}
+
+.cst-head-compte{
+	font-size: 2rem;
+	font-family: $fontMain;
+}
+.cst-table-width{
+  width:25%;
+}
+.cst-table-width1{
+  width:12%;
+}
+
+/*VIEW TODO*/
+
+.cst-todo-titles{
+  font-size: 1rem;
+  color: $colorGrey2;
+}
+
+.fa-trash-alt{
+  color: $colorYellow
+}
+
+
+
+@media screen and (max-width: 576px) {
+  .mq-padding-todo{
+    padding-left: 30px!important;
+  }
+
+  .cst-todo-titles{
+    font-size: .6rem!important;
+  }
+
+
+
+  #list-items{
+    padding-top: 26px!important;
+  }
+
+  .cst-todo-nav{
+    font-size: .8rem!important;
+  }
+
 }
 
 
@@ -700,7 +706,51 @@ img.logo {
   .cst-row-right-welcome div{
     padding: 0;
   }
-
+  .cst-div-form-compte td, .cst-div-form-compte td{
+    font-size:0.8rem;
+  }
+  .cst-table-width{
+    font-size:0.8rem;
+    width:20%;
+  }
+  .cst-table1-width{
+    font-size:0.8rem;
+    width:10%;
+  }
+  .cst-table1-width i{
+    font-size:0.8rem;
+    
+  }
+  .cst-cpte-container{
+    margin: 0;
+    width: 100%;
+  }
+  .cst-div-form-compte{
+    background: none;
+  }
+  .cst-contain-admin{
+    margin-top: 14px;
+  }
+  .cst-div-form-compte{
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+  .cst-btn-admin-update{
+    text-align: center;
+  }
+  .cst-container-admin-update{
+    margin-top: 29px;
+  }
+  .cst-btn-compte{
+    width: 88%;
+  } 
+  .cst-div-btn-compte{
+    text-align: center;
+  }   
+  .cst-div-form-compte{
+    background-image: linear-gradient(to top right, $colorGreen2, $colorGreen, $colorYellow);
+  }
+      
 }
 
 @media (min-width: 768px) {
