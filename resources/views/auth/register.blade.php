@@ -75,28 +75,6 @@
                                 <input type="file" class="form-control-file" id="exampleFormControlFile1" name="avatar">
                              </div>
 
-                    <!--Theme-->
-
-                            <div class="row cst-template">
-                                <div class="col-md-4 form-check form-check-inline cst-check-template">
-                                    <img src="{{URL::asset('template1.png')}}" style="width:30%;">
-                                    <input class="form-check-input" type="radio" name="theme" id="inlineRadio1" value="1" checked>
-                                    <label class="form-check-label" for="inlineRadio1">Classic</label>
-                                </div>
-                                <div class="col-md-4 form-check form-check-inline cst-check-template">
-                                    <img src="{{URL::asset('template2.png')}}" style="width:30%;">
-                                    <input class="form-check-input" type="radio" name="theme" id="inlineRadio2" value="2">
-                                    <label class="form-check-label" for="inlineRadio2">Nature</label>
-                                </div>
-                                <div class="col-md-4 form-check form-check-inline cst-check-template">
-                                    <img src="{{URL::asset('template3.png')}}" style="width:30%;">
-                                    <input class="form-check-input" type="radio" name="theme" id="inlineRadio3" value="3">
-                                    <label class="form-check-label" for="inlineRadio3">Espace</label>
-                                </div>
-                            </div>
-
-                           
-
                     <!--Sumit Button-->
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-3 mt-4">

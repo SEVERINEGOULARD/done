@@ -17,7 +17,8 @@ $fontMain: 'Amatic SC', cursive;
 
 body{
 	height:100%;
-	background-color: #fff;
+  background-color: #fff;
+  position : relative;
 }
 
 *{
@@ -39,11 +40,11 @@ p{
 	font-family: $fontParagraph;
 }
 
-//button{
-	//background-image: linear-gradient(to top right, $colorGreen, $colorYellow);
-	//border :none;
-	//border-radius: 20px;
-//}
+button{
+	background-image: linear-gradient(to top right, $colorGreen, $colorYellow);
+	border :none;
+	border-radius: 40px!important;
+}
 /*NAV BAR*/
 
 .cst-nav{
@@ -85,8 +86,9 @@ p{
 	background: $colorGreen!important;
 	height: 60px; 
 	box-shadow: 0px 5px 5px rgb(163, 158, 158);
+}
 
-	nav{
+nav{
 		text-align: right;
 		padding-top: 10px;
 		letter-spacing: .2rem;
@@ -96,7 +98,7 @@ p{
 			font-family: $fontMain;
 		}
 	}
-}
+
 
 
 .cst-contact-img{
@@ -186,13 +188,14 @@ p{
 .cst-select-mood option{
 	font-size: 0.8rem;
 	color: $colorGreen;
-}.cst-mood{
+}
+.cst-mood{
 	border-radius: 54px;
 }
     
-.cst-div-select{
-	/*margin-left: 12px;*/
-}
+// .cst-div-select{
+// 	/*margin-left: 12px;*/
+// }
 
 /*VIEW MAIN*/
 #moodDrag{
@@ -337,8 +340,41 @@ p{
 
 /*VIEW TODO*/
 
-.cst-todo-p{
-	font-size: 1rem;
+.cst-todo-titles{
+  font-size: 1rem;
+  color: $colorGrey2;
+}
+
+.fa-trash-alt{
+  color: $colorYellow
+}
+
+.cst-contact-footer{
+  position: fixed; 
+  bottom: 0;
+}
+
+@media screen and (max-width: 576px) {
+  .mq-padding-todo{
+    padding-left: 30px!important;
+  }
+
+  .cst-todo-titles{
+    font-size: .6rem!important;
+  }
+
+  .cst-contact-footer{
+    position: relative;
+  }
+
+  #list-items{
+    padding-top: 26px!important;
+  }
+
+  .cst-todo-nav{
+    font-size: .8rem!important;
+  }
+
 }
 
 /*MAIN VIEW*/

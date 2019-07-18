@@ -21,10 +21,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->date('dob')->nullable();
             $table->string('avatar')->default('/avatar.png')->nullable();
-            $table->unsignedBigInteger('template_id');
-            $table->foreign('template_id')
-            ->references('id')
-            ->on('templates');
             $table->integer('role')->default(2);//1 admin - 2 user
             $table->rememberToken();
             $table->timestamps();
