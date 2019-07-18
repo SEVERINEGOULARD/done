@@ -20,13 +20,13 @@ votre semaine
              
             <div class="row cst-row-admin cst-row-sub-admin">
                 <div class="col-md-4">
-                    <a href="/mon_compte"><i class="fas fa-cog cst-compte"></i></a>
+                    <a href="/mon_compte"><img class="img-header" src="1205514.svg"></a>
                 </div>
                 <div class="col-md-4">
                   <img src="{{Auth::user()->avatar}}" class="cst-avatar img-responsive center-block">
                 </div>
                 <div class="col-md-4">
-                    <a href="{{ url('/logout') }}"><i class="fas fa-sign-out-alt cst-compte"></i></a>
+                    <a href="{{ url('/logout') }}"><img class="img-header" src="log-out.svg"></a>
                 </div>
             </div>         
         </div>
@@ -107,6 +107,7 @@ votre semaine
   <!--MAIN-->
   <div class="container-main col-md-11">
     <div class="row cst-main-row" id="dropZones">
+
       <div class="col-md-6 cst-col-main-left">
         <div class="row cst-subrow dropZone" data-zone="1" id="dropZone1">
           
@@ -131,7 +132,8 @@ votre semaine
         </div>
       </div>
     </div>
-
+        
+        </div>
   </div>
 
 </div>

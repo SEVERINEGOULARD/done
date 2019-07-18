@@ -217,7 +217,7 @@ p{
 	
 }
 .cst-avatar{
-	width: 30%;
+	width: 95%;
     height: 80%;
 }
 .header{
@@ -228,8 +228,15 @@ p{
 	margin:0!important;
 	padding:0!important;
 }
+#dropZones {
+    z-index: 1005;
+    background: url('../public/book2.png') no-repeat;
+    background-size: cover;
+
+}
 .container-main{
-	margin:0!important;
+    
+	margin-left:0px!important;
 	padding:0!important;
 }
 .cst-ul{
@@ -280,8 +287,9 @@ p{
 }
 .cst-subrow{
 	height:33%;
-	border:1px solid #eeeeee;
+	border:none;
 	margin:0!important;
+    padding:5px 30px 5px 15px;
 	display: flex;
     justify-content: center;
     align-items: center;
@@ -630,4 +638,8 @@ img.logo {
     height: 100%;
     resize: none;
     border-color:white;
+}
+
+.img-header{
+    width:80%;
 }
