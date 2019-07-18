@@ -135,6 +135,7 @@
                             <a href="/home">Home</a>
                             <a href="/main">Bullet journal</a>
                             <a href="/admin">Dashboard</a>
+                            <a href="/logout">Déconnexion</a>
                         @else
                             <a href="{{ route('login') }}">Connexion</a>
 
@@ -144,6 +145,7 @@
                         @endauth
                     @endif
                             <a href="/contact">Contact</a>
+                            
                     </div>
                 </div>
             </div> 

@@ -10982,7 +10982,37 @@ label {
   resize: none;
 }
 
+.cst-main-mq {
+  display: flex;
+  flex-direction: column;
+  margin: 0 !important;
+}
+
+#aside {
+  padding: 0 !important;
+}
+
 @media (max-width: 576px) {
+  #dropZones {
+    background: none;
+  }
+
+  .modules {
+    margin: 0;
+    text-align: center;
+    width: 40px;
+  }
+
+  .dragImage {
+    margin: 0;
+  }
+
+  .cst-logo {
+    width: 91px;
+  }
+}
+
+@media (max-width: 768px) {
   #dropZones {
     background: none;
   }
@@ -11075,12 +11105,11 @@ label {
   width: 70%;
   height: 9%;
   border-radius: 5px;
+  text-align: center;
 }
 
 .dragImage {
   width: 55%;
-  margin-top: 10px;
-  margin-left: 15px;
 }
 
 .yt {
@@ -11300,10 +11329,6 @@ ul.list-unstyled.text-center.mb-0 {
 .mention p {
   font-size: 0.8rem;
   color: #424242;
-}
-
-h1.mb-3 {
-  /*margin-top: 300px;*/
 }
 
 .content {
