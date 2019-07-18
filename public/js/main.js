@@ -217,7 +217,8 @@ $(function () {
     $parent = $zone;
     $closeButton.on("click", $parent, function (parentButton) {
       parentButton.data.droppable('option', 'disabled', false);
-      $id = $(this).parent().data('line-id');
+      $id = $(this).parent().data('lineId');
+      console.log($id);
       $.ajaxSetup({
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -359,6 +360,41 @@ $(function () {
         /*cat 2*/
 
         if ($dragged.data('category') == "2") {
+          $dragged.append('<img id="preview" class="ill-mod-photo" src="img/polaroid.png"><form method="post" enctype="multipart/form-data"><div class="form-group file-parent"></div></form>');
+          $fileInput = $('<input type="file" class="form-control-file">');
+          $dragged.find('.file-parent').append($fileInput); // on rajoute dragged comme argument qui va se coller dans l'event e (à e.data.dragged)
+          // ça permet d'appeler cet élément dragged au moment de l'event sans devoir rechercher avec
+          // des parents de parents etc.
+
+          $fileInput.on('change', {
+            dragged: $dragged
+          }, function (e) {
+            var thatTarget = e.currentTarget;
+
+            if (thatTarget.files && thatTarget.files[0]) {
+              $myData = new FormData();
+              $myData.append('image', thatTarget.files[0]);
+              $myData.append('line-id', e.data.dragged.data('line-id'));
+              $.ajaxSetup({
+                headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+              });
+              $.ajax({
+                method: 'POST',
+                url: '/main/image',
+
+                /*MainController -> uploadImageModule*/
+                data: $myData,
+                contentType: false,
+                processData: false
+              }).done(function (data) {
+                $result = data;
+              });
+            }
+
+            ;
+          });
           createImageEmptyZone($dragged);
         }
 
@@ -387,15 +423,17 @@ $(function () {
             }
           });
         });
+        /*close cat3*/
+
         /*cat 4*/
 
         if ($dragged.data('category') == "4") {
           $dragged.append('<div id="moodDrag"></div>');
-          $.get("mood.html", function (data) {
+          $.get("mood.blade.php", function (data) {
             $dragged.find('#moodDrag').html(data);
           });
-        } //     }
-        // });
+        }
+        /*close cat4*/
         // $droppedOn $dragged
 
 
@@ -413,6 +451,7 @@ $(function () {
           data: 'zone=' + $droppedOnData + '&module=' + $draggedData + '&weekId=' + window.weekNumber,
           complete: function complete(data) {
             $result = data.responseJSON;
+            console.log($result);
             $dragged.attr('data-line-id', $result['id']);
           }
         });
@@ -432,385 +471,67 @@ $(function () {
   /*Array : select div for mood*/
 
   var divMood = ['#mood-1', '#mood-2', '#mood-3', '#mood-4', '#mood-5', '#mood-6', '#mood-7'];
-  $(document).on('change', select[0], function () {
-    $moodChoozen = $(this).val();
-    $zone = divMood[0];
+  /*get select value and display mood on div*/
 
-    switch ($moodChoozen) {
-      case 'Heureux':
-        $($zone).css("background-image", "url('/heureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
+  function moodDisplay() {
+    console.log($(this).val());
 
-      case 'Energique':
-        $($zone).css("background-image", "url('/energique.png')").css("background-size", "cover").css("background-position", "center");
-        break;
+    for ($i = 0; $i < select.length; $i++) {
+      $moodChoozen = $(select[$i]).val();
+      console.log($moodChoozen);
+      $zone = divMood[$i];
+      console.log($zone);
 
-      case 'Enervé':
-        $($zone).css("background-image", "url('/enerve.png')").css("background-size", "cover").css("background-position", "center");
-        break;
+      switch ($moodChoozen) {
+        case '1':
+          $($zone).css("background-image", "url('/heureux.png')").css("background-size", "cover").css("background-position", "center");
+          break;
 
-      case 'Fatigué':
-        $($zone).css("background-image", "url('/fatigue.png')").css("background-size", "cover").css("background-position", "center");
-        break;
+        case '2':
+          $($zone).css("background-image", "url('/energique.png')").css("background-size", "cover").css("background-position", "center");
+          break;
 
-      case 'Malade':
-        $($zone).css("background-image", "url('/malade.png')").css("background-size", "cover").css("background-position", "center");
-        break;
+        case '3':
+          $($zone).css("background-image", "url('/enerve.png')").css("background-size", "cover").css("background-position", "center");
+          break;
 
-      case 'Triste':
-        $($zone).css("background-image", "url('/triste.png')").css("background-size", "cover").css("background-position", "center");
-        break;
+        case '4':
+          $($zone).css("background-image", "url('/fatigue.png')").css("background-size", "cover").css("background-position", "center");
+          break;
 
-      case 'Inquiet':
-        $($zone).css("background-image", "url('/inquiet.png')").css("background-size", "cover").css("background-position", "center");
-        break;
+        case '5':
+          $($zone).css("background-image", "url('/malade.png')").css("background-size", "cover").css("background-position", "center");
+          break;
 
-      case 'Amoureux':
-        $($zone).css("background-image", "url('/amoureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
+        case '6':
+          $($zone).css("background-image", "url('/triste.png')").css("background-size", "cover").css("background-position", "center");
+          break;
 
-      case 'Amoureux':
-        $($zone).css("background-image", "url('/amoureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
+        case '7':
+          $($zone).css("background-image", "url('/inquiet.png')").css("background-size", "cover").css("background-position", "center");
+          break;
 
-      case 'Calme':
-        $($zone).css("background-image", "url('/calme.png')").css("background-size", "cover").css("background-position", "center");
-        break;
+        case '8':
+          $($zone).css("background-image", "url('/amoureux.png')").css("background-size", "cover").css("background-position", "center");
+          break;
 
-      case 'En colère':
-        $($zone).css("background-image", "url('/colere.png')").css("background-size", "cover").css("background-position", "center");
-        break;
+        case '9':
+          $($zone).css("background-image", "url('/calme.png')").css("background-size", "cover").css("background-position", "center");
+          break;
 
-      default:
-        $($zone).css("background-image", "url('/what.jpg')").css("background-size", "cover").css("background-position", "center");
+        case '10':
+          $($zone).css("background-image", "url('/colere.png')").css("background-size", "cover").css("background-position", "center");
+          break;
+
+        default:
+          $($zone).css("background-image", "url('/what.jpg')").css("background-size", "cover").css("background-position", "center");
+      }
     }
-  });
-  $(document).on('change', select[1], function () {
-    $moodChoozen = $(this).val();
-    $zone = divMood[1];
+  }
+  /*display mood on div after change*/
 
-    switch ($moodChoozen) {
-      case 'Heureux':
-        $($zone).css("background-image", "url('/heureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
 
-      case 'Energique':
-        $($zone).css("background-image", "url('/energique.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Enervé':
-        $($zone).css("background-image", "url('/enerve.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Fatigué':
-        $($zone).css("background-image", "url('/fatigue.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Malade':
-        $($zone).css("background-image", "url('/malade.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Triste':
-        $($zone).css("background-image", "url('/triste.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Inquiet':
-        $($zone).css("background-image", "url('/inquiet.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Amoureux':
-        $($zone).css("background-image", "url('/amoureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Amoureux':
-        $($zone).css("background-image", "url('/amoureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Calme':
-        $($zone).css("background-image", "url('/calme.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'En colère':
-        $($zone).css("background-image", "url('/colere.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      default:
-        $($zone).css("background", "grey");
-    }
-  });
-  $(document).on('change', select[2], function () {
-    $moodChoozen = $(this).val();
-    $zone = divMood[2];
-
-    switch ($moodChoozen) {
-      case 'Heureux':
-        $($zone).css("background-image", "url('/heureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Energique':
-        $($zone).css("background-image", "url('/energique.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Enervé':
-        $($zone).css("background-image", "url('/enerve.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Fatigué':
-        $($zone).css("background-image", "url('/fatigue.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Malade':
-        $($zone).css("background-image", "url('/malade.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Triste':
-        $($zone).css("background-image", "url('/triste.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Inquiet':
-        $($zone).css("background-image", "url('/inquiet.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Amoureux':
-        $($zone).css("background-image", "url('/amoureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Amoureux':
-        $($zone).css("background-image", "url('/amoureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Calme':
-        $($zone).css("background-image", "url('/calme.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'En colère':
-        $($zone).css("background-image", "url('/colere.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      default:
-        $($zone).css("background", "grey");
-    }
-  });
-  $(document).on('change', select[3], function () {
-    $moodChoozen = $(this).val();
-    $zone = divMood[3];
-
-    switch ($moodChoozen) {
-      case 'Heureux':
-        $($zone).css("background-image", "url('/heureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Energique':
-        $($zone).css("background-image", "url('/energique.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Enervé':
-        $($zone).css("background-image", "url('/enerve.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Fatigué':
-        $($zone).css("background-image", "url('/fatigue.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Malade':
-        $($zone).css("background-image", "url('/malade.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Triste':
-        $($zone).css("background-image", "url('/triste.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Inquiet':
-        $($zone).css("background-image", "url('/inquiet.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Amoureux':
-        $($zone).css("background-image", "url('/amoureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Amoureux':
-        $($zone).css("background-image", "url('/amoureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Calme':
-        $($zone).css("background-image", "url('/calme.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'En colère':
-        $($zone).css("background-image", "url('/colere.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      default:
-        $($zone).css("background", "grey");
-    }
-  });
-  $(document).on('change', select[4], function () {
-    $moodChoozen = $(this).val();
-    $zone = divMood[4];
-
-    switch ($moodChoozen) {
-      case 'Heureux':
-        $($zone).css("background-image", "url('/heureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Energique':
-        $($zone).css("background-image", "url('/energique.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Enervé':
-        $($zone).css("background-image", "url('/enerve.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Fatigué':
-        $($zone).css("background-image", "url('/fatigue.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Malade':
-        $($zone).css("background-image", "url('/malade.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Triste':
-        $($zone).css("background-image", "url('/triste.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Inquiet':
-        $($zone).css("background-image", "url('/inquiet.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Amoureux':
-        $($zone).css("background-image", "url('/amoureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Amoureux':
-        $($zone).css("background-image", "url('/amoureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Calme':
-        $($zone).css("background-image", "url('/calme.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'En colère':
-        $($zone).css("background-image", "url('/colere.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      default:
-        $($zone).css("background", "grey");
-    }
-  });
-  $(document).on('change', select[5], function () {
-    $moodChoozen = $(this).val();
-    $zone = divMood[5];
-
-    switch ($moodChoozen) {
-      case 'Heureux':
-        $($zone).css("background-image", "url('/heureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Energique':
-        $($zone).css("background-image", "url('/energique.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Enervé':
-        $($zone).css("background-image", "url('/enerve.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Fatigué':
-        $($zone).css("background-image", "url('/fatigue.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Malade':
-        $($zone).css("background-image", "url('/malade.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Triste':
-        $($zone).css("background-image", "url('/triste.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Inquiet':
-        $($zone).css("background-image", "url('/inquiet.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Amoureux':
-        $($zone).css("background-image", "url('/amoureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Amoureux':
-        $($zone).css("background-image", "url('/amoureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Calme':
-        $($zone).css("background-image", "url('/calme.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'En colère':
-        $($zone).css("background-image", "url('/colere.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      default:
-        $($zone).css("background", "grey");
-    }
-  });
-  /*todo*/
-
-  $('#sendToDo').on('click', function (e) {
-    e.preventDefault();
-    $toDo = $('#toDo').val();
-    $category = $('#category').val();
-  });
-  $(document).on('change', select[6], function () {
-    $moodChoozen = $(this).val();
-    $zone = divMood[6];
-
-    switch ($moodChoozen) {
-      case 'Heureux':
-        $($zone).css("background-image", "url('/heureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Energique':
-        $($zone).css("background-image", "url('/energique.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Enervé':
-        $($zone).css("background-image", "url('/enerve.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Fatigué':
-        $($zone).css("background-image", "url('/fatigue.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Malade':
-        $($zone).css("background-image", "url('/malade.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Triste':
-        $($zone).css("background-image", "url('/triste.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Inquiet':
-        $($zone).css("background-image", "url('/inquiet.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Amoureux':
-        $($zone).css("background-image", "url('/amoureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Amoureux':
-        $($zone).css("background-image", "url('/amoureux.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'Calme':
-        $($zone).css("background-image", "url('/calme.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      case 'En colère':
-        $($zone).css("background-image", "url('/colere.png')").css("background-size", "cover").css("background-position", "center");
-        break;
-
-      default:
-        $($zone).css("background", "grey");
-    }
-  }); //close event on change
-
+  $(document).on('change', '.cst-select-mood', moodDisplay);
   /*Ajax toDo*/
 
   $('#sendToDo').on('click', function (e) {
@@ -828,8 +549,7 @@ $(function () {
       method: "POST",
       data: 'toDo=' + $toDo + '&category=' + $category,
       complete: function complete(data) {
-        $result = data.responseJSON;
-        console.log($result);
+        $result = data.responseJSON; // console.log($result);
 
         if ($result['toDo'] && $result['category']) {
           $('#list-items').append("<div class='row' class='list'><div class='col-md-8'>" + $result['toDo'] + " </div> <div class='col-md-2 text-center'><input type='checkbox'></div><div class='col-md-2'><a class='deleteList' data-delete='" + $result['category'] + "'><i class='far fa-trash-alt'></i></a></div></div>");

@@ -125,5 +125,9 @@ class MainController extends Controller
        DB::table('users_weeks')->where('id', $data['id'])->delete();
        echo json_encode($data);
     }
+
+    public function insertMoods(Request $request){
+      dd($request);
+    }
 }
 
