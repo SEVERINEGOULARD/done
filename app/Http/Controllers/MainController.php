@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 Use App\Model\Week;
 Use App\Model\UserWeek;
@@ -21,6 +22,23 @@ class MainController extends Controller
     	$data = $request->all();
     }
 
+   /* public function testQueryBuilder(Request $request) {
+
+
+        //SELECT * from userweek INNER JOIN users ON users_id = id where week_id = 29 AND user_id = 1
+
+        $query = UserWeek::query();
+        $query->join('users', 'user_id', '=', 'users.id');
+        $query->addSelect('users.pseudo');
+        $query->addSelect('users_weeks.*');
+        $query = $query->where('week_id', 29);
+        $query = $query->where('user_id', 1);
+
+        $userWeek = $query->get();
+
+        echo json_encode($userWeek);
+    }*/
+
     public function selectWeek(Request $request){
 
        
@@ -30,9 +48,15 @@ class MainController extends Controller
 
         $user = Auth::user();
         $result = UserWeek::where('week_id', $data['number'])->where('user_id', $user->id);
-        $userWeek = $result->get();
+        $userWeeks = $result->get();
 
-    	echo json_encode($userWeek); 
+        foreach($userWeeks as $userWeek) {
+           if($userWeek->content && $userWeek->module_id == 2) {
+                $image = base64_encode( Storage::get($userWeek->content));
+                $userWeek->content = $image;
+            }
+        }
+    	echo json_encode($userWeeks); 
 
     }
 
@@ -70,9 +94,17 @@ class MainController extends Controller
 
        ]);
 
-       $path = $request->file('image')->store('UserImages');
+
+       $path = $request->file('image')->store('');
+
        UserWeek::where('id', $request->get('line-id'))->update(['content' => $path]);
-       return response()->json(['state' => $path, 'id' => $request->get('line-id')]);
+
+       $image = base64_encode( Storage::get($path));
+       return response()->json(['content'=>$image]);
+       
+      
+       //return response()->json(['state' => $path, 'id' => $request->get('line-id')]);
+       
    }
 
    public function insertDesignModule(Request $request){
