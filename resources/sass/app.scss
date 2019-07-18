@@ -61,6 +61,36 @@ button{
 	border :none;
 	border-radius: 40px!important;
 }
+
+.header{
+	background: $colorGreen!important;
+	height: 60px; 
+	box-shadow: 0px 5px 5px rgb(163, 158, 158);
+}
+
+nav{
+		text-align: right;
+		padding-top: 10px;
+		letter-spacing: .2rem;
+
+		a{
+			color : $colorGrey2;
+			font-family: $fontMain;
+		}
+  }
+  
+label{
+  color : $colorGrey1;
+}
+
+.navbar-toggler{
+  background: $colorGrey1;
+}
+
+
+#logo{
+  width: 50%;
+}
 /*NAV BAR*/
 
 .cst-nav{
@@ -101,6 +131,12 @@ button{
 }
 
 
+
+		a{
+			color : $colorGrey2;
+			font-family: $fontMain;
+		}
+	}
 
 
 
@@ -151,26 +187,29 @@ button{
 }
 
 /*VIEW REGISTER*/
-.cst-register{
-	color:$colorYellow!important;
-} 
-.card-header{
-	background-color:#fff; 
+
+.cst-bg-register{
+  background-image: linear-gradient(to top right, $colorGreen2, $colorGreen, $colorYellow);
+  margin:0;
 }
-.card-body{
-	background-color: $colorGreen;
-	color:$colorGrey1;
-}
-.cst-template{
-	margin:0 auto;
-}
-.cst-check-template{
-	margin:0;
-}
+
 .cst-btn-register{
-	background-color: $colorYellow;
+  background-color: $colorGrey2;
+  background-image : none;
+  width : 40%;
+  color : white;
 }
- 
+
+.cst-btn-register:hover{
+  background-color: $colorYellow;
+  background-image : none;
+}
+
+.cst-input{
+  margin-left: 19px;
+}
+
+
 /*VIEW MOOD*/
 
 .cst-mood{
@@ -369,6 +408,13 @@ button{
     height: 100%;
 }
 
+
+@media (max-width: 576px) {
+  
+  #dropZones{
+    background : none;
+  }
+ }
 
 /*VIEW MON_COMPTE - ADMIN*/
 .cst-btn-compte{

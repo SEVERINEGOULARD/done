@@ -11,7 +11,7 @@ votre semaine
 <div class="container-fluid header" id="header">
     <div class="row cst-header">
         <div class="col-md-1 cst-div-header">
-          <a href="/"><img src="{{URL::asset('logo.png')}}" class="cst-logo"></a>
+          <a href="/"><img src="{{URL::asset('logo1.png')}}" class="cst-logo"></a>
         </div>
         <div class="col-md-2 cst-div-hello">
             <div class="row cst-row-admin">
@@ -53,7 +53,6 @@ votre semaine
             <nav>
                 <ul class="cst-ul">
                     <li><a href="/toDo">To do</a></li>
-                    <li><a href="#">Journal</a></li>
                     <li><a href="/contact">Contact</a></li>
                 </ul>
             </nav>

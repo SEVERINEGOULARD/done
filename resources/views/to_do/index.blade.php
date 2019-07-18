@@ -77,7 +77,7 @@
 
 
 @section('scripts-footer')
-<script type="text/javascript" src="{{ asset('js/todo.js') }}"></script>
+
 
 <div class="container-fluid cst-contact-footer mt-5">
 	<div class="row mq-padding-todo">
