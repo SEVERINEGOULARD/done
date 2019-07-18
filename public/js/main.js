@@ -117,7 +117,7 @@ $(function () {
 
   function createTextArea(zone, content) {
     zone.append('<form class="textForm" method="post"></form>');
-    $textArea = $('<textarea id="textArea" class="cst-textarea" placeholder="Votre texte ici..."></textarea>');
+    $textArea = $('<textarea class="cst-textarea" placeholder="Votre texte ici..."></textarea>');
     $textArea.html(content);
     zone.find('.textForm').append($textArea);
     $textArea.keyup({
@@ -146,7 +146,7 @@ $(function () {
   }
 
   function createImageEmptyZone(zone) {
-    zone.append('<img id="preview" class="ill-mod-photo" src="img/polaroid.png"><form method="post"  enctype="multipart/form-data"><div class="form-group file-parent"></div></form>');
+    zone.append('<img class="ill-mod-photo" src="img/polaroid.png"><form method="post"  enctype="multipart/form-data"><div class="form-group file-parent"></div></form>');
     $fileInput = $('<input type="file" class="form-control-file">');
     zone.find('.file-parent').append($fileInput); // on rajoute dragged comme argument qui va se coller dans l'event e (à e.data.dragged)
     // ça permet d'appeler cet élément dragged au moment de l'event sans devoir rechercher avec
@@ -199,7 +199,6 @@ $(function () {
     if ($animate) {
       /* drop animation */
       $dragged.animate({
-        backgroundColor: "#fff",
         height: "100%",
         width: "100%"
       }, 1000);
@@ -284,7 +283,8 @@ $(function () {
 
             $cloneDragged = $('#aside > div[data-mod=' + $result[i]['module_id'] + ']').clone();
             prepareForInput($cloneDragged, zone, false);
-            $cloneDragged.attr('data-line-id', $result[i]['id']); //on remplit cette div intermédiaire avec l'élément qui correspond à la catégorie module_id
+            $cloneDragged.attr('data-line-id', $result[i]['id']); //TODO doublons d'images <<<<<<<<<<<<
+            //on remplit cette div intermédiaire avec l'élément qui correspond à la catégorie module_id
 
             if ($result[i]['module_id'] == 1) {
               createTextArea($cloneDragged, $result[i]['content']);
@@ -361,41 +361,6 @@ $(function () {
 
         if ($dragged.data('category') == "2") {
           createImageEmptyZone($dragged);
-          $dragged.append('<img id="preview" class="ill-mod-photo" src="img/polaroid.png"><form method="post" enctype="multipart/form-data"><div class="form-group file-parent"></div></form>');
-          $fileInput = $('<input type="file" class="form-control-file">');
-          $dragged.find('.file-parent').append($fileInput); // on rajoute dragged comme argument qui va se coller dans l'event e (à e.data.dragged)
-          // ça permet d'appeler cet élément dragged au moment de l'event sans devoir rechercher avec
-          // des parents de parents etc.
-
-          $fileInput.on('change', {
-            dragged: $dragged
-          }, function (e) {
-            var thatTarget = e.currentTarget;
-
-            if (thatTarget.files && thatTarget.files[0]) {
-              $myData = new FormData();
-              $myData.append('image', thatTarget.files[0]);
-              $myData.append('line-id', e.data.dragged.data('line-id'));
-              $.ajaxSetup({
-                headers: {
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-              });
-              $.ajax({
-                method: 'POST',
-                url: '/main/image',
-
-                /*MainController -> uploadImageModule*/
-                data: $myData,
-                contentType: false,
-                processData: false
-              }).done(function (data) {
-                $result = data;
-              });
-            }
-
-            ;
-          });
         }
 
         ; //close cat 2
@@ -403,29 +368,36 @@ $(function () {
         /*cat 3*/
 
         if ($dragged.data('category') == "3") {
-          $dragged.append('<div class"row"><button class="design-button"><img src="img/ville1.png" /></button><button class="design-button"><img src="img/texture1.jpg" /></button><button class="design-button"><img src="img/perso1.png"/></button><button class="design-button"><img src="img/arab2.png"/></button><button class="design-button"><img src="img/arab3.png"/></button></div><div class"row"><button class="design-button"><img src="img/chat1.jpg" /></button><button class="design-button"><img src="img/chat3.jpg" /></button><button class="design-button"><img src="img/livres.jpg" /></button></button><button class="design-button"><img src="img/arab4.png" /></button></button><button class="design-button"><img src="img/tempete.jpg" /></button><button class="design-button"><img src="img/tempete.jpg" /></button></button></button><button class="design-button"><img src="img/tempete.jpg" /></button><button class="design-button"><img src="img/tempete.jpg" /></button></button></button><button class="design-button"><img src="img/tempete.jpg" /></button></button></button><button class="design-button"><img src="img/tempete.jpg" /></button><button class="design-button"><img src="img/tempete.jpg" /></button></div>');
+          $dragged.addClass('modules - back');
+          $dragged.append('<div class="row parentimag"></div>');
+          $designBtn = $('<button id="btn1" data-but="img/arab4.png" class="design-button"><img src="img/arab4.png" /><button id="btn2" data-but="img/perso2.png" class="design-button"><img class="modules-back" src="img/perso2.png" /><button id="btn3" data-but="img/couteau.png" class="design-button"><img class="modules-back" src="img/couteau.png" />');
+          $dragged.find('.parentimag').append($designBtn);
         }
 
-        $(".design-button").on("click", function (e) {
-          e.preventDefault();
-          $.ajaxSetup({
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
+        for (i = 0; i < 8; i++) {
+          $('#btn' + [i]).on("click", function (e) {
+            e.preventDefault();
+            $.ajaxSetup({
+              headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+            });
+            $.ajax({
+              url: 'main/design',
+              dataType: "json",
+              method: "POST",
+              data: 'design=' + $(this).data('but') + '&line-id=' + $dragged.data('line-id'),
+              complete: function complete(data) {
+                $result = data.responseJSON;
+                $dragged.find('.parentimag').children($designBtn).remove();
+                $dragged.append('<img src="' + $result['design'] + '"</img>');
+              }
+            });
           });
-          $.ajax({
-            url: '/design',
-            dataType: "json",
-            method: "POST",
-            data: 'design=' + $('.design-button'),
-            complete: function complete(data) {
-              $result = data.responseJSON;
-            }
-          });
-        });
-        /*close cat3*/
-
+          /*close cat3*/
+        }
         /*cat 4*/
+
 
         if ($dragged.data('category') == "4") {
           $dragged.append('<div id="moodDrag"></div>');
@@ -451,7 +423,6 @@ $(function () {
           data: 'zone=' + $droppedOnData + '&module=' + $draggedData + '&weekId=' + window.weekNumber,
           complete: function complete(data) {
             $result = data.responseJSON;
-            console.log($result);
             $dragged.attr('data-line-id', $result['id']);
           }
         });
