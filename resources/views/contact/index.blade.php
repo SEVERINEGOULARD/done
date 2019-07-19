@@ -43,7 +43,7 @@
 		</div>
 
 		<div class="col-md-3 text-center pt-5">
-			<img src="{{URL::asset('livre.jpg')}}">
+			<img src="{{URL::asset('yas.png')}}">
 			<h3 class="cst-contact-titre1">Yasine Rachid</h3>
 			<p class="cst-contact-p m-0"><strong>Téléphone : </strong> 06.77.19.87.90</p>
 			<p class="cst-contact-p"><strong>Email : </strong> yasine@done.fr</p>

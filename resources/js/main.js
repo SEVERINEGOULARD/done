@@ -1,7 +1,12 @@
 $(function(){
 
 
+/*toggle*/
 
+
+$('#cst-btn-toggle').on('click', function() {
+    $( "#asideToggle" ).toggle();
+});
 /*get current week*/
 
     function getWeekNumber(d) {

@@ -11082,21 +11082,29 @@ p {
   height: 100%;
 }
 
-#cst-btn-toggle {
-  width: 32%;
-}
-
 @media (max-width: 576px) {
   #dropZones {
-    background: url(/images/carnet.jpg?db4f521f8985f2e37ee46122e4b2237c) no-repeat;
+    background: none;
   }
 
-  .cst-col-main-right {
-    background: #f4f4f4;
+  .modules {
+    margin: 0;
+    text-align: center;
+    width: 40px;
   }
 
-  .meteo {
-    display: none;
+  .dragImage {
+    margin: 0;
+  }
+
+  .cst-logo {
+    width: 91px;
+  }
+}
+
+@media (max-width: 768px) {
+  #dropZones {
+    background: none;
   }
 }
 

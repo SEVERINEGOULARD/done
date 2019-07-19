@@ -290,7 +290,7 @@ a{
 }
 .cst-avatar{
 	width: 95%;
-    height: 80%;
+  height: 80%;
 }
 .header{
 	background-color:#cdcdcd;
@@ -362,10 +362,10 @@ a{
 	height:33%;
 	border:none;
 	margin:0!important;
-    padding:5px 30px 5px 15px;
+  padding:5px 30px 5px 15px;
 	display: flex;
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 #draggable{
@@ -436,29 +436,26 @@ a{
     height: 100%;
 }
 
+#cst-btn-toggle{
+  width: 32%;
+}
+
 
 @media (max-width: 576px) {
   #dropZones{
-    background : none;
+    background: url('../public/carnet.jpg') no-repeat;
   }
-  .modules{
-    margin:0;
-    text-align: center;
-    width: 40px;
+  .cst-col-main-right{
+    background: #f4f4f4;
   }
-  .dragImage{
-    margin : 0;
-  }
-  .cst-logo{
-    width: 91px;
+  .meteo{
+    display: none;
   }
 }
 
-@media (max-width: 768px) { 
-  #dropZones{
-    background : none;
-  }
+@media (min-width: 576px){ 
 
+  
 }
 
 /*VIEW MON_COMPTE - ADMIN*/
@@ -796,6 +793,7 @@ img.logo {
     height: 100%;
     resize: none;
     border-color:white;
+    background: transparent;
 }
 
 
