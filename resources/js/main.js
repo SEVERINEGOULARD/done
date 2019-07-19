@@ -8,18 +8,12 @@ $('#cst-btn-toggle').on('click', function() {
     $( "#asideToggle" ).toggle();
 });
 /*get current week*/
-
     function getWeekNumber(d) {
-        // Copy date so don't modify original
+
         d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-        // Set to nearest Thursday: current date + 4 - current day number
-        // Make Sunday's day number 7
         d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
-        // Get first day of year
         var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-        // Calculate full weeks to nearest Thursday
         var weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
-        // Return array of year and week number
         return [d.getUTCFullYear(), weekNo];
     }//close getWeekNumber
 
@@ -28,7 +22,7 @@ $('#cst-btn-toggle').on('click', function() {
     document.getElementById("week").value = week;
 
 
-/*Create TextArea*/
+/*Create Module TextArea*/
     function createTextArea(zone, content) {
         zone.append('<form class="textForm" method="post"></form>');
         $textArea = $('<textarea class="cst-textarea" placeholder="Votre texte ici..."></textarea>');
@@ -52,14 +46,15 @@ $('#cst-btn-toggle').on('click', function() {
 
             });
         });
-    }//close creatTextArea
+    }
 
-
+/*Create Module Image*/
     function createImage(zone, base64content) {
         $img = $('<img src="data:image/png;base64,' + base64content + '">');
         zone.append($img);
     }
 
+/*Load saved modules*/
     function createImageEmptyZone(zone) {
         zone.append('<img class="ill-mod-photo" src="img/polaroid.png"><form method="post"  enctype="multipart/form-data"><div class="form-group file-parent"></div></form>');
         $fileInput = $('<input type="file" class="form-control-file">');
