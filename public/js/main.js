@@ -94,23 +94,12 @@
 /***/ (function(module, exports) {
 
 $(function () {
-  /*toggle*/
-  $('#cst-btn-toggle').on('click', function () {
-    $("#asideToggle").toggle();
-  });
   /*get current week*/
-
   function getWeekNumber(d) {
-    // Copy date so don't modify original
-    d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())); // Set to nearest Thursday: current date + 4 - current day number
-    // Make Sunday's day number 7
-
-    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7)); // Get first day of year
-
-    var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1)); // Calculate full weeks to nearest Thursday
-
-    var weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7); // Return array of year and week number
-
+    d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+    var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    var weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
     return [d.getUTCFullYear(), weekNo];
   } //close getWeekNumber
 
@@ -118,7 +107,7 @@ $(function () {
   var result = getWeekNumber(new Date());
   var week = result[0] + '-W' + result[1];
   document.getElementById("week").value = week;
-  /*Create TextArea*/
+  /*Create Module TextArea*/
 
   function createTextArea(zone, content) {
     zone.append('<form class="textForm" method="post"></form>');
@@ -142,21 +131,53 @@ $(function () {
         data: 'text=' + $(this).val() + '&line-id=' + e.data.dragged.data('line-id')
       });
     });
-  } //close creatTextArea
+  }
+  /*Create Module Image*/
 
 
   function createImage(zone, base64content) {
     $img = $('<img src="data:image/png;base64,' + base64content + '">');
     zone.append($img);
   }
+  /*Create Module Design*/
+
+
+  function createEmptyDesign(zone) {
+    zone.append('<div class="row parentimag"></div>');
+    $designBtn = $('<button id="btn1" data-but="img/arab4.png" class="design-button"><img src="img/arab4.png" /><button id="btn2" data-but="img/perso2.png" class="design-button"><img class="modules-back" src="img/perso2.png" /><button id="btn3" data-but="img/couteau.png" class="design-button"><img class="modules-back" src="img/couteau.png" /><button id="btn4" data-but="img/8.gif" class="design-button"><img src="img/8.gif" /><button id="btn5" data-but="img/music.png" class="design-button"><img src="img/music.png" /><button id="btn6" data-but="img/japan.png" class="design-button"><img src="img/japan.png" /><button id="btn7" data-but="img/licornes.png" class="design-button"><img src="img/licornes.png" />');
+    zone.find('.parentimag').append($designBtn);
+
+    for (i = 0; i < 8; i++) {
+      $('#btn' + [i]).on("click", function (e) {
+        e.preventDefault();
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+        $.ajax({
+          url: 'main/design',
+          dataType: "json",
+          method: "POST",
+          data: 'design=' + $(this).data('but') + '&line-id=' + zone.data('line-id'),
+          complete: function complete(data) {
+            $result = data.responseJSON;
+            zone.find('.parentimag').children($designBtn).remove();
+            createDesign(zone, $result['design']);
+          }
+        });
+      });
+    }
+  }
+
+  function createDesign(zone, content) {
+    zone.append('<img class="img-d img-fluid" src="' + content + '"</img>');
+  }
 
   function createImageEmptyZone(zone) {
     zone.append('<img class="ill-mod-photo" src="img/polaroid.png"><form method="post"  enctype="multipart/form-data"><div class="form-group file-parent"></div></form>');
     $fileInput = $('<input type="file" class="form-control-file">');
-    zone.find('.file-parent').append($fileInput); // on rajoute dragged comme argument qui va se coller dans l'event e (à e.data.dragged)
-    // ça permet d'appeler cet élément dragged au moment de l'event sans devoir rechercher avec
-    // des parents de parents etc.
-
+    zone.find('.file-parent').append($fileInput);
     $fileInput.on('change', {
       dragged: zone
     }, function (e) {
@@ -209,12 +230,11 @@ $(function () {
       }, 1000);
     } else {
       $dragged.css({
-        backgroundColor: "#fff",
         height: "100%",
         width: "100%"
       });
     }
-    /*close btn on modules*/
+    /*close btn / happening on module*/
 
 
     $closeButton = $('<button type="button" class="btn-outline-danger cst-btn-close">X</button>');
@@ -241,8 +261,6 @@ $(function () {
         }
       });
     });
-    /*red cross button on each dragged*/
-
     $dragged.append($closeButton).addClass("text-right");
   } //close prepareForInput
   //Display week choozen on select input
@@ -269,7 +287,8 @@ $(function () {
       method: "POST",
       data: 'number=' + window.weekNumber,
       complete: function complete(data) {
-        $result = data.responseJSON; // empty all areas
+        $result = data.responseJSON;
+        console.log($result); // empty all areas
 
         for ($s = 1; $s <= 6; $s++) {
           var zone = $('div[data-zone=' + $s + ']');
@@ -278,18 +297,18 @@ $(function () {
         }
 
         if ($result.length) {
-          // Week has data
-          // window.weekId = $result[0]['week_id'];
           //Pour tous les modules
           for (var i = 0; i < $result.length; i++) {
             //On identifie sa zone
             var zone = $('div[data-zone="' + $result[i]['zone_id'] + '"]'); //On crée une div intermédiaire (dans laquelle on append TextArea etc.) en clonant les icones à gauche
             //cela permet d'avoir le meme comportement en drag&drop et en choix de semaine
 
-            $cloneDragged = $('#aside > div[data-mod=' + $result[i]['module_id'] + ']').clone();
+            $cloneDragged = $('#aside').find('div[data-mod=' + $result[i]['module_id'] + ']').clone();
+            console.log($cloneDragged);
             prepareForInput($cloneDragged, zone, false);
-            $cloneDragged.attr('data-line-id', $result[i]['id']); //TODO doublons d'images <<<<<<<<<<<<
-            //on remplit cette div intermédiaire avec l'élément qui correspond à la catégorie module_id
+            $cloneDragged.attr('data-line-id', $result[i]['id']); //on remplit cette div intermédiaire avec l'élément qui correspond à la catégorie module_id
+
+            console.log($result[i]['content']);
 
             if ($result[i]['module_id'] == 1) {
               createTextArea($cloneDragged, $result[i]['content']);
@@ -302,14 +321,19 @@ $(function () {
                 createImageEmptyZone($cloneDragged);
               }
             }
+
+            if ($result[i]['module_id'] == 3) {
+              if ($result[i]['content']) {
+                createDesign($cloneDragged, $result[i]['content']);
+              } else {
+                createEmptyDesign($cloneDragged);
+              }
+            }
           }
         }
       }
     });
-  } //close displayUserWeek
-
-  /* Display modules by weeks */
-
+  }
   /*DRAGGABLES DECLARE*/
 
 
@@ -338,7 +362,7 @@ $(function () {
         $droppedOn = $(this);
         $dragged = ui.draggable;
         $droppedOnData = $droppedOn.data('zone');
-        $draggedData = $dragged.data('mod'); //Clone module to keep an icon aside
+        $draggedData = $dragged.data('mod'); //Clone module
 
         $clone = $dragged.clone();
         $clone.css({
@@ -355,54 +379,28 @@ $(function () {
         prepareForInput($dragged, $(this), true);
         /*behaviour by draggable category and ajax request for each*/
 
-        /*cat 1*/
+        /*cat 1 module textarea*/
 
         if ($dragged.data('category') == "1") {
           createTextArea($dragged, '');
         }
 
         ;
-        /*cat 2*/
+        /*cat 2 module image*/
 
         if ($dragged.data('category') == "2") {
           createImageEmptyZone($dragged);
         }
 
-        ; //close cat 2
-
-        /*cat 3*/
+        ;
+        /*cat 3 module design*/
 
         if ($dragged.data('category') == "3") {
-          $dragged.addClass('modules - back');
-          $dragged.append('<div class="row parentimag"></div>');
-          $designBtn = $('<button id="btn1" data-but="img/arab4.png" class="design-button"><img src="img/arab4.png" /><button id="btn2" data-but="img/perso2.png" class="design-button"><img class="modules-back" src="img/perso2.png" /><button id="btn3" data-but="img/couteau.png" class="design-button"><img class="modules-back" src="img/couteau.png" />');
-          $dragged.find('.parentimag').append($designBtn);
+          createEmptyDesign($dragged);
         }
 
-        for (i = 0; i < 8; i++) {
-          $('#btn' + [i]).on("click", function (e) {
-            e.preventDefault();
-            $.ajaxSetup({
-              headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-              }
-            });
-            $.ajax({
-              url: 'main/design',
-              dataType: "json",
-              method: "POST",
-              data: 'design=' + $(this).data('but') + '&line-id=' + $dragged.data('line-id'),
-              complete: function complete(data) {
-                $result = data.responseJSON;
-                $dragged.find('.parentimag').children($designBtn).remove();
-                $dragged.append('<img src="' + $result['design'] + '"</img>');
-              }
-            });
-          });
-          /*close cat3*/
-        }
-        /*cat 4*/
-
+        ;
+        /*cat 4 module mood*/
 
         if ($dragged.data('category') == "4") {
           $dragged.append('<div id="moodDrag"></div>');
@@ -411,7 +409,7 @@ $(function () {
           });
         }
         /*close cat4*/
-        // $droppedOn $dragged
+        //dragged on dropzone + week-id save
 
 
         $.ajaxSetup({
