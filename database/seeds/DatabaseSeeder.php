@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ModulesTableSeeder::class);
         $this->call(WeeksTableSeeder::class);
         $this->call(ZonesTableSeeder::class);
-        $this->call(MoodsTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
     }
 }

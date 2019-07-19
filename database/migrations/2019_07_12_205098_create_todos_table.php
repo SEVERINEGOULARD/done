@@ -15,7 +15,6 @@ class CreateTodosTable extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('checkbox')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')
             ->references('id')
