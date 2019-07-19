@@ -407,7 +407,7 @@ a{
 }
 
 .dragImage {
-    width: 65%;
+    width: 55%;
     margin-top: 10px;
     margin-left: 15px;
 
@@ -459,6 +459,32 @@ a{
     background : none;
   }
 
+} 
+.cst-btn-close {
+  height: 13px;
+  width: 13px;
+  font-size: xx-small;
+  position: absolute;
+  background-color: #b71717;
+  color: #fff !important;
+  top: 0px;
+  right: 0px;
+}
+
+.cst-textarea {
+  height: 100%;
+  resize: none;
+  border: none;
+  background: transparent;
+}
+
+.parentimg {
+  width: 100%;
+  height: auto;
+}
+.img-design {
+  width: 70%;
+  margin-right: 15%;
 }
 
 /*VIEW MON_COMPTE - ADMIN*/
@@ -492,6 +518,10 @@ a{
 }
 .cst-table-width1{
   width:12%;
+}
+.cst-div-form-compte{
+  background-image: linear-gradient(to top right, $colorGreen2, $colorGreen, $colorYellow);
+  margin:0!important;
 }
 
 /*VIEW TODO*/

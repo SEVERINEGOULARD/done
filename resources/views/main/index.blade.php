@@ -69,35 +69,35 @@ votre semaine
   <!--ASIDE-->
   <div id="aside" class="container-aside col-1 cst-col-aside dragModules">
     <div class="row cst-main-mq">
-      <div id="draggable1" data-category="1" class="ui-widget-content modules" data-mod="1">
+      <div id="draggable1" data-category="1" class="modules" data-mod="1">
         <img class="dragImage" src="img/moduleIco1Crayon.svg">
       </div>
 
-      <div id="draggable2" data-category="2" class="ui-widget-content modules" data-mod="2">
+      <div id="draggable2" data-category="2" class="modules" data-mod="2">
         <img class="dragImage" src="img/moduleIco2Photo.svg"> 
       </div>
 
-      <div id="draggable3" data-category="3" class="ui-widget-content modules" data-mod="3">
+      <div id="draggable3" data-category="3" class="modules" data-mod="3">
         <img class="dragImage" src="img/moduleIco3Paysage.svg">
       </div>
 
-      <div id="draggable4" data-category="4" class="ui-widget-content modules" data-mod="4">
+      <div id="draggable4" data-category="4" class="modules" data-mod="4">
         <img class="dragImage" src="img/moduleIco4Humeur.svg">
       </div>
 
-      <div id="draggable5" data-category="5" class="ui-widget-content modules" data-mod="5">
+      <div id="draggable5" data-category="5" class="modules" data-mod="5">
         <img class="dragImage yt" src="img/moduleIco5YouTube.svg">
       </div>
 
-        <div id="draggable6" data-category="6" class="ui-widget-content modules" data-mod="6">
+        <div id="draggable6" data-category="6" class="modules" data-mod="6">
         <img class="dragImage" src="img/moduleIco6Local.svg">
       </div>
 
-      <div id="draggable7" data-category="7" class="ui-widget-content modules" data-mod="7">
+      <div id="draggable7" data-category="7" class="modules" data-mod="7">
         <img class="dragImage" src="img/moduleIco7Money.svg">
       </div>
 
-      <div id="draggable8" data-category="8" class="ui-widget-content modules" data-mod="8">
+      <div id="draggable8" data-category="8" class="modules" data-mod="8">
         <img class="dragImage" src="img/moduleIco8Sport.svg">
       </div>
     </div>

@@ -204,7 +204,7 @@ $(function () {
       }, 1000);
     } else {
       $dragged.css({
-        backgroundColor: "#fff",
+        // backgroundColor: "#fff",
         height: "100%",
         width: "100%"
       });
@@ -403,6 +403,7 @@ $(function () {
           $dragged.append('<div id="moodDrag"></div>');
           $.get("mood.blade.php", function (data) {
             $dragged.find('#moodDrag').html(data);
+            eventListener();
           });
         }
         /*close cat4*/
@@ -496,32 +497,30 @@ $(function () {
     }
   }
   /*display mood on div after change*/
-  //     $(document).on('change', '.cst-select-mood', moodDisplay);
-  //      $("#btnMoods").click(function(e){
-  //         e.preventDefault();
-  //     $(".test").text($("formMood").serialize());
-  // })
 
-  /*Insert mood in BDD*/
-  //     $(document).on('click', '#btnMoods', function(e){
-  //         e.preventDefault();
-  //          $donnees = $(this).serialize();console.log($donnees);
-  //         $.ajaxSetup({
-  //         headers: {
-  //         'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
-  //             }
-  //         });
-  //          $.ajax({
-  //         url : '/main/mood',
-  //         method: "POST",
-  //         data: $donnees,
-  //         complete: function(data) {
-  //         // $result = data.responseJSON;
-  //         // console.log($result);
-  //         }     
-  //     })
-  // });
 
+  $(document).on('change', '.cst-select-mood', moodDisplay);
+  /*send data (moods) in BDD*/
+
+  function eventListener() {
+    $(document).on('submit', '#formMood', function (stay) {
+      $formdata = $('#formMood').serialize(); // here $(this) refere to the form its submitting
+
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+        }
+      });
+      $.ajax({
+        type: 'POST',
+        url: "/main/mood",
+        // dataType: "formData",
+        data: $formdata + '&weekId=' + window.weekNumber,
+        success: function success(data) {}
+      });
+      stay.preventDefault();
+    });
+  }
 
   $(document).on('change', '.cst-select-mood', moodDisplay);
   displayUserWeek();
@@ -536,7 +535,7 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\done\resources\js\main.js */"./resources/js/main.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\done\resources\js\main.js */"./resources/js/main.js");
 
 
 /***/ })

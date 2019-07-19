@@ -115,7 +115,7 @@ $(function(){
         }
         else {
             $dragged.css({
-                backgroundColor: "#fff",
+                // backgroundColor: "#fff",
                 height: "100%",
                 width: "100%"
             });
@@ -349,6 +349,7 @@ $(function(){
                 
                    $.get("mood.blade.php", function (data) {
                       $dragged.find('#moodDrag').html(data);
+                      eventListener();
                    });
 
              } /*close cat4*/   
@@ -459,44 +460,39 @@ var divMood = [
 
             }
             
-       }
-  
+       } 
+   
        /*display mood on div after change*/
-//     $(document).on('change', '.cst-select-mood', moodDisplay);
+    $(document).on('change', '.cst-select-mood', moodDisplay);
 
-//      $("#btnMoods").click(function(e){
-//         e.preventDefault();
-//     $(".test").text($("formMood").serialize());
-// })
-    
-        /*Insert mood in BDD*/
-    //     $(document).on('click', '#btnMoods', function(e){
-    //         e.preventDefault();
+        /*send data (moods) in BDD*/
+    function eventListener(){
 
-
-    //          $donnees = $(this).serialize();console.log($donnees);
-           
-    //         $.ajaxSetup({
-
-    //         headers: {
-    //         'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
-    //             }
-    //         });
-
-    //          $.ajax({
-
-    //         url : '/main/mood',
-    //         method: "POST",
-    //         data: $donnees,
-    //         complete: function(data) {
-
-    //         // $result = data.responseJSON;
-    //         // console.log($result);
-
+        $(document).on('submit', '#formMood', function(stay){
             
-    //         }     
-    //     })
-    // });
+
+            $formdata = $('#formMood').serialize(); // here $(this) refere to the form its submitting
+            
+            $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+                        }
+                    });
+            $.ajax({
+                type: 'POST',
+                url: "/main/mood",
+                // dataType: "formData",
+                data: $formdata + '&weekId=' + window.weekNumber, 
+                success: function (data) {
+                    
+                },
+            });
+             stay.preventDefault();
+        }); 
+    }
+        
+
+
 
 
 

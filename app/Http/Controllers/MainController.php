@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 Use App\Model\Week;
-Use App\Model\UserWeek;
+Use App\Model\UserWeek; 
 use Auth;
 use Session;
 use DB;
@@ -15,6 +15,9 @@ class MainController extends Controller
     
 
     public function index(){
+
+
+      
     	return view('main.index');
     }
 
@@ -117,12 +120,16 @@ class MainController extends Controller
 
        $data = $request->all();
        DB::table('users_weeks')->where('id', $data['id'])->delete();
-       echo json_encode($data);
+       
     }
 
     public function insertMoods(Request $request){
-      $data=$request->all();
-      $dd($data);
+      
+      $data = $request->all();
+      $user = Auth::user();
+
+      UserWeek::where('week_id', $data['weekId'])->where('user_id', $user->id)->update(['content' => $data['selectJ1'] .','. $data['selectJ2'] .','. $data['selectJ3'] .','. $data['selectJ4'] .','. $data['selectJ5'] .','. $data['selectJ6'] .','. $data['selectJ7']]);
+      
     }
 }
 
