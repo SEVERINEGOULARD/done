@@ -30,26 +30,26 @@
 			</div>
 		</div>
 		<div class="row"><!--zones moods-->
-			<div id="mood-1" class="cst-mood col-md-1 offset-md-3" style="background-image:url('/what.png'); background-size: cover ; background-position: center">
+			<div id="mood-1" class="cst-mood col-md-1 offset-md-3" style="background-image:url('/what.jpg'); background-size: cover ; background-position: center">
 				
 			</div>
-			<div id="mood-2" class="cst-mood col-md-1" style="background-image:url('/what.png'); background-size: cover ; background-position: center">
+			<div id="mood-2" class="cst-mood col-md-1" style="background-image:url('/what.jpg'); background-size: cover ; background-position: center">
 				
 			</div>
-			<div id="mood-3" class="cst-mood col-md-1" style="background-image:url('/what.png'); background-size: cover ; background-position: center">
+			<div id="mood-3" class="cst-mood col-md-1" style="background-image:url('/what.jpg'); background-size: cover ; background-position: center">
 				
 			</div>
-			<div id="mood-4" class="cst-mood col-md-1" style="background-image:url('/what.png'); background-size: cover ; background-position: center">
+			<div id="mood-4" class="cst-mood col-md-1" style="background-image:url('/what.jpg'); background-size: cover ; background-position: center">
 				
 			</div>
-			<div id="mood-5" class="cst-mood col-md-1" style="background-image:url('/what.png'); background-size: cover ; background-position: center">
+			<div id="mood-5" class="cst-mood col-md-1" style="background-image:url('/what.jpg'); background-size: cover ; background-position: center">
 				
 			</div>
-			<div id="mood-6" class="cst-mood col-md-1" style="background-image:url('/what.png'); background-size: cover ; background-position: center">
+			<div id="mood-6" class="cst-mood col-md-1" style="background-image:url('/what.jpg'); background-size: cover ; background-position: center">
 				
 			</div>
 			<div id="mood-7" class="cst-mood col-md-1" style="background-image:url('/what.jpg'); background-size: cover ; background-position: center">
-				 
+				
 			</div> 
 		</div>
 
@@ -60,7 +60,7 @@
 				
 				<div class="col-md-1 offset-md-3">
 					<div class="form-group cst-div-select">
-						<select name="selectJ1" class="form-control cst-select-mood" id="select-choice-mood1">
+						<select class="form-control cst-select-mood" id="select-choice-mood1">
               				<option value="0" selected>X</option>
 							<option value="1">Heureux</option>
 							<option value="2">Energique</option>
@@ -78,7 +78,7 @@
 
 				<div class="col-md-1">
 					<div class="form-group cst-div-select">
-						<select name="selectJ2" class="form-control cst-select-mood" id="select-choice-mood2">
+						<select class="form-control cst-select-mood" id="select-choice-mood2">
               				<option value="0" selected>X</option>
 							<option value="1">Heureux</option>
 							<option value="2">Energique</option>
@@ -96,7 +96,7 @@
 
 				<div class="col-md-1">
 					<div class="form-group cst-div-select">
-						<select name="selectJ3" class="form-control cst-select-mood" id="select-choice-mood3">
+						<select class="form-control cst-select-mood" id="select-choice-mood3">
               				<option value="0" selected>X</option>
 							<option value="1">Heureux</option>
 							<option value="2">Energique</option>
@@ -114,7 +114,7 @@
 
 				<div class="col-md-1">
 					<div class="form-group cst-div-select">
-						<select name="selectJ4" class="form-control cst-select-mood" id="select-choice-mood4">
+						<select class="form-control cst-select-mood" id="select-choice-mood4">
               				<option value="0" selected>X</option>
 							<option value="1">Heureux</option>
 							<option value="2">Energique</option>
@@ -132,7 +132,7 @@
 
 				<div class="col-md-1">
 					<div class="form-group cst-div-select">
-						<select name="selectJ5" class="form-control cst-select-mood" id="select-choice-mood5">
+						<select class="form-control cst-select-mood" id="select-choice-mood5">
               				<option value="0" selected>X</option>
 							<option value="1">Heureux</option>
 							<option value="2">Energique</option>
@@ -150,7 +150,7 @@
 
 				<div class="col-md-1">
 					<div class="form-group cst-div-select">
-						<select name="selectJ6" class="form-control cst-select-mood" id="select-choice-mood6">
+						<select class="form-control cst-select-mood" id="select-choice-mood6">
               				<option value="0" selected>X</option>
 							<option value="1">Heureux</option>
 							<option value="2">Energique</option>
@@ -168,7 +168,7 @@
 
 				<div class="col-md-1">
 					<div class="form-group cst-div-select">
-						<select name="selectJ7" class="form-control cst-select-mood" id="select-choice-mood7">
+						<select class="form-control cst-select-mood" id="select-choice-mood7">
               				<option value="0" selected>X</option>
 							<option value="1">Heureux</option>
 							<option value="2">Energique</option>

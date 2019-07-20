@@ -290,7 +290,7 @@ a{
 }
 .cst-avatar{
 	width: 95%;
-  height: 80%;
+    height: 80%;
 }
 .header{
 	background-color:#cdcdcd;
@@ -362,14 +362,14 @@ a{
 	height:33%;
 	border:none;
 	margin:0!important;
-  padding:5px 30px 5px 15px;
+    padding:5px 30px 5px 15px;
 	display: flex;
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 #draggable{
-	z-index: 100;
+	z-index: 1001;
 }
 
 .cst-Module{
@@ -407,7 +407,7 @@ a{
 }
 
 .dragImage {
-    width: 55%;
+    width: 65%;
     margin-top: 10px;
     margin-left: 15px;
 
@@ -422,8 +422,8 @@ a{
 }
 
 .design-button{
-    width: 10%;
-    height: 10%;
+    width: 20%;
+    height: 20%;
  
 }
 
@@ -436,51 +436,29 @@ a{
     height: 100%;
 }
 
-#cst-btn-toggle{
-  width: 32%;
-}
-
 
 @media (max-width: 576px) {
   #dropZones{
-    background: url('../public/carnet.jpg') no-repeat;
+    background : none;
   }
-  .cst-col-main-right{
-    background: #f4f4f4;
+  .modules{
+    margin:0;
+    text-align: center;
+    width: 40px;
   }
-  .meteo{
-    display: none;
+  .dragImage{
+    margin : 0;
+  }
+  .cst-logo{
+    width: 91px;
   }
 }
 
-@media (min-width: 576px){ 
+@media (max-width: 768px) { 
+  #dropZones{
+    background : none;
+  }
 
-} 
-.cst-btn-close {
-  height: 13px;
-  width: 13px;
-  font-size: xx-small;
-  position: absolute;
-  background-color: #b71717;
-  color: #fff !important;
-  top: 0px;
-  right: 0px;
-}
-
-.cst-textarea {
-  height: 100%;
-  resize: none;
-  border: none;
-  background: transparent;
-}
-
-.parentimg {
-  width: 100%;
-  height: auto;
-}
-.img-design {
-  width: 70%;
-  margin-right: 15%;
 }
 
 /*VIEW MON_COMPTE - ADMIN*/
@@ -514,10 +492,6 @@ a{
 }
 .cst-table-width1{
   width:12%;
-}
-.cst-div-form-compte{
-  background-image: linear-gradient(to top right, $colorGreen2, $colorGreen, $colorYellow);
-  margin:0!important;
 }
 
 /*VIEW TODO*/
@@ -822,7 +796,6 @@ img.logo {
     height: 100%;
     resize: none;
     border-color:white;
-    background: transparent;
 }
 
 
@@ -980,6 +953,7 @@ img.logo {
 .parentimg{
     width:100%;
     height:auto;
+   
 }
 
 .img-header{
@@ -992,7 +966,22 @@ img.logo {
 }
 
 .img-d{
-  width:auto;
-  max-height: 180px;
-  margin-right: 40%;
+    width:auto;
+    max-height: 180px;
+    margin-right: 40%;
 }
+
+.light {
+    border: 2px dashed #bf7d3f;
+    border-radius: 50px;
+    transition-timing-function: ease;
+    transition-duration:2s;
+    opacity: 0.5;
+}
+
+.img-limit{
+    width:auto;
+    max-height:180px;
+    
+}
+
