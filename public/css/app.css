@@ -11060,10 +11060,6 @@ p {
   margin-left: 15px;
 }
 
-.yt {
-  opacity: 0.7;
-}
-
 .illustration {
   width: 30%;
 }
@@ -11071,6 +11067,7 @@ p {
 .design-button {
   width: 20%;
   height: 20%;
+  text-align: center;
 }
 
 .ill-mod-photo {
@@ -11621,6 +11618,7 @@ img.logo {
 .parentimg {
   width: 100%;
   height: auto;
+  text-align: center;
 }
 
 .img-header {
@@ -11629,13 +11627,11 @@ img.logo {
 
 .img-design {
   width: 70%;
-  margin-right: 15%;
 }
 
 .img-d {
   width: auto;
   max-height: 180px;
-  margin-right: 40%;
 }
 
 .light {

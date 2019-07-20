@@ -78,7 +78,7 @@ votre semaine
       </div>
 
       <div id="draggable3" data-category="3" class="modules" data-mod="3">
-        <img class="dragImage" src="img/moduleIco3Paysage.svg">
+        <img class="dragImage" src="img/moduleIco3Gif.svg">
       </div>
 
       <div id="draggable4" data-category="4" class="modules" data-mod="4">

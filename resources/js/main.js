@@ -72,8 +72,9 @@ $(function () {
     /*Create Module Design*/
     function createEmptyDesign(zone) {
         zone.append('<div class="row parentimag"></div>');
-        $designBtn = $('<button id="btn1" data-but="img/arab4.png" class="design-button"><img src="img/arab4.png" /><button id="btn2" data-but="img/perso2.png" class="design-button"><img class="modules-back" src="img/perso2.png" /><button id="btn3" data-but="img/couteau.png" class="design-button"><img class="modules-back" src="img/couteau.png" /><button id="btn4" data-but="img/8.gif" class="design-button"><img src="img/8.gif" /><button id="btn5" data-but="img/music.png" class="design-button"><img src="img/music.png" /><button id="btn6" data-but="img/japan.png" class="design-button"><img src="img/japan.png" /><button id="btn7" data-but="img/licornes.png" class="design-button"><img src="img/licornes.png" />');
-        zone.find('.parentimag').append($designBtn);
+        $designBtn = $('<button id="btn1" data-but="img/tenor1.gif" class="design-button"><img src="img/tenor1.gif" /><button id="btn2" data-but="img/tenor2.gif" class="design-button"><img class="modules-back" src="img/tenor2.gif" /><button id="btn3" data-but="img/tenor3.gif" class="design-button"><img class="modules-back" src="img/tenor3.gif" /><button id="btn4" data-but="img/tenor4.gif" class="design-button"><img src="img/tenor4.gif" /><button id="btn5" data-but="img/tenor5.gif" class="design-button"><img src="img/tenor5.gif" /><button id="btn6" data-but="img/tenor6.gif" class="design-button"><img src="img/tenor6.gif" /><button id="btn7" data-but="img/tenor7.gif" class="design-button"><img src="img/tenor7.gif" /><button id="btn8" data-but="img/tenor8.gif" class="design-button"><img src="img/tenor8.gif" /><button id="btn9" data-but="img/tenor9.gif" class="design-button"><img src="img/tenor9.gif" /><button id="btn10" data-but="img/tenor10.gif" class="design-button"><img src="img/tenor10.gif" /><button id="btn11" data-but="img/9.gif" class="design-button"><img src="img/9.gif" /><button id="btn12" data-but="img/tenor12.gif" class="design-button"><img src="img/tenor12.gif" /><button id="btn13" data-but="img/teno13.gif" class="design-button"><img src="img/tenor13.gif" /><button id="btn14" data-but="img/tenor14.gif" class="design-button"><img src="img/tenor14.gif" /><button id="btn15" data-but="img/tenor15.gif" class="design-button"><img src="img/tenor15.gif" /><button id="btn16" data-but="img/tenor16.gif" class="design-button"><img src="img/tenor16.gif" /><button id="btn17" data-but="img/tenor17.gif" class="design-button"><img src="img/tenor17.gif" /><button id="btn18" data-but="img/tenor18.gif" class="design-button"><img src="img/tenor18.gif" /><button id="btn19" data-but="img/tenor19.gif" class="design-button"><img src="img/tenor19.gif" /><button id="btn20" data-but="img/tenor20.gif" class="design-button"><img src="img/tenor20.gif" />');
+
+          zone.find('.parentimag').append($designBtn);
 
         
             zone.find('.parentimag').children($designBtn).on("click", function (e) {
@@ -200,8 +201,8 @@ $(function () {
         });
 
         $dragged
-            .append($closeButton)
-            .addClass("text-right");
+            .append($closeButton);
+            
 
     }//close prepareForInput
 
