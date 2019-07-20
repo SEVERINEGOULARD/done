@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/main';
 
     /**
      * Create a new controller instance.
@@ -71,14 +71,13 @@ class RegisterController extends Controller
             'avatar.max'             => "Votre fichier est trop volumineux"
 
         ];
-    return Validator::make($data, [
-            'pseudo'         => ['required','max:255','min:8'],
-            'email'          => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password'       => ['required', 'min:8', 'confirmed'],
-            'avatar'         => ['nullable', 'image', 'max:10000'],
+        return Validator::make($data, [
+                'pseudo'         => ['required','max:255','min:8'],
+                'email'          => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password'       => ['required', 'min:8', 'confirmed'],
+                'avatar'         => ['nullable', 'image', 'max:10000'],
 
-
-    ],
+        ],
             $message
         );
        
@@ -92,40 +91,7 @@ class RegisterController extends Controller
     * return error's redirection
     */
 
-    //on a trouvé cette fonction native à laravel qui permet de retourner des messages d'error personnalisés à la place des messages d'erreur de laravel en anglais (vendor\laravel\framework\src\Illuminate\Foundation\Auth)
-
-    // public function register(Request $request)
-    // {  
-    //     dd('tewt');
-    //     $validator = $this->validator($request->all());
-        
-    //     if ($validator->fails()) {
-    //         return redirect('/register')
-    //         ->withErrors($validator)
-    //         ->withInput();
-    //     }
-        
-    //     event(new Registered($user = $this->create($request->all())));
-    //     $this->guard()->login($user);
-    //     return redirect($this->redirectPath());
-    // }
-    public function register(Request $request)
-    {
-        
-        $this->validator($request->all())->validate();
-
-        event(new Registered($user = $this->create($request->all())));
-
-        //$this->guard()->login($user);
-
-        return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
-    }
-      
     
-
-
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -133,16 +99,13 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {   
-        
-        $user = User::create([
+    {   session()->flash('bienvenue', 'Bienvenue sur votre journal');
+        return User::create([
             'pseudo'        => $data['pseudo'],
             'email'         => $data['email'],
             'password'      => Hash::make($data['password']),
             'dob'           => $data['dob'],
             'avatar'        => $data['avatar'], 
-
         ]);
-
     }
 }

@@ -288,6 +288,7 @@ $(function(){
             $("#dropZone" + i).droppable({
                 zIndex: 1,
                 tolerance: "fit",
+                
     
                 drop: function (event, ui) {
     

@@ -60,7 +60,7 @@
 			<div class="col-md-8" id="list-items">
 				@foreach($toDos as $toDo)
 				<div class="row pt-2" class="list">
-					<div class="col-10" id="toDoContent">
+					<div class="col-8" id="toDoContent">
 						{{$toDo->content}}
 					</div>
 					<div class="col-2">

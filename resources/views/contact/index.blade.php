@@ -6,9 +6,12 @@
 	<header>
 		<div class="container-fluid header">
 			<div class="container">
-				<nav>
+				<nav class="row">
+					<div class="col-6 text-left">
+						<a href="/"><img id="logo" src="{{asset('logo1.png')}}" alt="done"></a>
+					</div>
+					<div class="col-6">
 				@auth
-					<a href="{{ url('/home') }}">Home</a>
 					<a href="/main">Bullet journal</a>
 				@else
 					<a href="{{ route('login') }}">Connexion</a>
@@ -18,6 +21,9 @@
 					@endif
 				@endauth
 				@endif
+					<a href="/contact">Contact</a>
+					</div>
+					
 				</nav>
 			</div>
 		<div>

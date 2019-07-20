@@ -132,7 +132,6 @@
                     @if (Route::has('login'))
                     <div class="links cst-icons">
                         @auth
-                            <a href="/home">Home</a>
                             <a href="/main">Bullet journal</a>
                             <a href="/admin">Dashboard</a>
                             <a href="/logout">Déconnexion</a>

@@ -89,7 +89,11 @@ label{
 
 
 #logo{
-  width: 50%;
+  width: 25%;
+}
+
+#logoApp{
+  width: 21%;
 }
 /*NAV BAR*/
 
@@ -223,6 +227,9 @@ a{
   margin-left: 19px;
 }
 
+.input-date-register{
+  width: 181px!important;
+}
 
 /*VIEW MOOD*/
 
@@ -356,7 +363,9 @@ a{
 	height:40px;
 }
 .cst-logo{
-	height: 100%;
+  padding-top: 5px;
+  width: 119px;
+
 }
 .cst-subrow{
 	height:33%;
@@ -439,6 +448,15 @@ a{
 #cst-btn-toggle{
   width: 32%;
 }
+
+.cst-p-main{
+  color: $colorGreen2!important;
+}
+
+.blackNWhite{
+  filter: grayscale(100%);
+}
+
 
 
 @media (max-width: 576px) {
@@ -954,7 +972,7 @@ img.logo {
 }
 
 .img-header{
-    width:80%;
+    width:36px;
 }
 
 .img-design{

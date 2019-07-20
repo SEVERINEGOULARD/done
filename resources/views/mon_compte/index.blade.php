@@ -3,12 +3,26 @@
 @extends('layouts.master')
 
 @section('scripts-header')
-<header class="header">
-    <nav>
-        <a href="{{ url('/home') }}">Home</a>
-        <a href="/main">Bullet journal</a>
-    </nav>
-</header>
+<header>
+		<div class="container-fluid header">
+			<div class="container">
+				<nav class="row">
+					<div class="col-6 text-left">
+						<a href="/"><img id="logo" src="{{asset('logo1.png')}}" alt="done"></a>
+					</div>
+					<div class="col-6">
+				
+					<a href="/main">Bullet journal</a>
+				
+                    <a href="/contact">Contact</a>
+                    
+                    <a href="{{ url('/logout') }}">Déconnexion</a>
+					</div>
+					
+				</nav>
+			</div>
+		<div>
+	</header>
 @endsection
 
 @section('content')

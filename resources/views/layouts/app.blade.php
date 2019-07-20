@@ -27,13 +27,13 @@
         <nav class="navbar navbar-expand-md shadow-sm cst-nav">
             <div class="container">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-6 text-left">
                         <a class="navbar-brand" href="{{ url('/') }}">
                             {{-- config('app.name', 'Laravel') --}}
-                            <img id="logo" src='{{asset("logo1.png")}}'>
+                            <img id="logoApp" src='{{asset("logo1.png")}}'>
                         </a>
                     </div>
-                    <div class="col-9">
+                    <div class="col-6">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -75,6 +75,9 @@
                                         </div>
                                     </li>
                                 @endguest
+                                    </li>
+                                        <a class="nav-link" href="/contact">Contact</a>
+                                    <li>
                             </ul>
                         </div>
                     </div>

@@ -46,9 +46,12 @@
 
 
                     <!--Date of Birth-->
+                    
                     <div class="form-group row">
-                        <label for="dob" class="col-md-4 col-form-label">Date de naissance</label>
-                            <input id="dob" type="date" class="cst-input form-control @error('dob') is-invalid @enderror" name="dob">
+                        <label for="dob" class="col-md-4 col-form-label">Date de naissance</label><br>
+                    </div>    
+                    <div class="row">
+                        <input id="dob" type="date" class="input-date-register cst-input form-control @error('dob') is-invalid @enderror" name="dob">
                     </div>
 
                     <!--Avatar-->
@@ -60,7 +63,7 @@
 
                    
                     <div class="mt-5 mb-5 text-right">
-                        <button type="submit" class="btn cst-btn-register">Valider</button>
+                        <button id="btn-submit-register" type="submit" class="btn cst-btn-register">Valider</button>
                     </div>
                 
             </form>

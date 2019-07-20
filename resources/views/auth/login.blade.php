@@ -9,7 +9,7 @@
     
 
 <div class="container-fluid cst-div-login">
-   
+   <div class="container">
             
                 <div class="row"> 
                     <div class="col-12">
@@ -65,7 +65,7 @@
                     </div>
                 </form>
             
-      
+    </div>
 </div>
 
 <div class="container-fluid cst-contact-footer mt-5">
