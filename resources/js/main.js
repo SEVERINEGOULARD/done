@@ -477,143 +477,47 @@ $(function () {
                     $($zone).css("background-image", "url('/colere.png')").css("background-size", "cover").css("background-position","center");
                     break;
                     default: $($zone).css("background-image", "url('/what.jpg')").css("background-size", "cover").css("background-position","center");
-                    }
-                });
-                $.ajax({
-                    url: '/main/ajax',/*Main Controller -> InsertDrop*/
-                    dataType: "json",
-                    method: "POST",
-                    data: 'zone=' + $droppedOnData + '&module=' + $draggedData + '&weekId=' + window.weekNumber,
-                    complete: function (data) {
-                        $result = data.responseJSON;
-
-                        $dragged.attr('data-line-id', $result['id']);
-                    }
-                });
-
-            }
-        });
-    };
-
-
-/*MOOD TRACKER*/
-/*Array : moods available*/
-var mood = [
-            'Heureux',
-            'Energique',
-            'Enervé',
-            'Fatigué',
-            'Malade',
-            'Triste',
-            'Inquiet',
-            'Amoureux',
-            'Calme',
-            'En colère'
-          ];
-/*Array : select input for week*/
-var select = [
-              '#select-choice-mood1',
-              '#select-choice-mood2',
-              '#select-choice-mood3',
-              '#select-choice-mood4',
-              '#select-choice-mood5',
-              '#select-choice-mood6',
-              '#select-choice-mood7',
-            ];   
-
-/*Array : select div for mood*/  
-var divMood = [
-              '#mood-1',
-              '#mood-2',
-              '#mood-3',
-              '#mood-4',
-              '#mood-5',
-              '#mood-6',
-              '#mood-7',
-              ];     
-
+                  }
     
-              /*get select value and display mood on div*/
-        function moodDisplay(){
-            for($i=0 ; $i<select.length ; $i++){
-                $moodChoozen = $(select[$i]).val(); 
-                $zone = divMood[$i];
-              switch ($moodChoozen){
-                case '1': 
-                $($zone).css("background-image", "url('/heureux.png')").css("background-size", "cover").css("background-position","center");
-                break;
-                case '2': 
-                $($zone).css("background-image", "url('/energique.png')").css("background-size", "cover").css("background-position","center");
-                break;
-                case '3': 
-                $($zone).css("background-image", "url('/enerve.png')").css("background-size", "cover").css("background-position","center");
-                break;
-                case '4': 
-                $($zone).css("background-image", "url('/fatigue.png')").css("background-size", "cover").css("background-position","center");
-                break;
-                case '5': 
-                $($zone).css("background-image", "url('/malade.png')").css("background-size", "cover").css("background-position","center");
-                break;
-                case '6': 
-                $($zone).css("background-image", "url('/triste.png')").css("background-size", "cover").css("background-position","center");
-                break;
-                case '7': 
-                $($zone).css("background-image", "url('/inquiet.png')").css("background-size", "cover").css("background-position","center");
-                break;
-                case '8': 
-                $($zone).css("background-image", "url('/amoureux.png')").css("background-size", "cover").css("background-position","center");
-                break;
-                case '9': 
-                $($zone).css("background-image", "url('/calme.png')").css("background-size", "cover").css("background-position","center");
-                break;
-                case '10': 
-                $($zone).css("background-image", "url('/colere.png')").css("background-size", "cover").css("background-position","center");
-                break;
-                default: $($zone).css("background-image", "url('/what.jpg')").css("background-size", "cover").css("background-position","center");
                 }
 
             }
             
-       } 
+       
    
        /*display mood on div after change*/
-//     $(document).on('change', '.cst-select-mood', moodDisplay);
+    $(document).on('change', '.cst-select-mood', moodDisplay);
 
-//      $("#btnMoods").click(function(e){
-//         e.preventDefault();
-//     $(".test").text($("formMood").serialize());
-// })
-    
-        /*Insert mood in BDD*/
-    //     $(document).on('click', '#btnMoods', function(e){
-    //         e.preventDefault();
+        /*send data (moods) in BDD*/
+    function eventListener(){
 
-
-    //          $donnees = $(this).serialize();console.log($donnees);
-           
-    //         $.ajaxSetup({
-
-    //         headers: {
-    //         'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
-    //             }
-    //         });
-
-    //          $.ajax({
-
-    //         url : '/main/mood',
-    //         method: "POST",
-    //         data: $donnees,
-    //         complete: function(data) {
-
-    //         // $result = data.responseJSON;
-    //         // console.log($result);
-
+        $(document).on('submit', '#formMood', function(stay){
             
-    //         }     
-    //     })
-    // });
+
+            $formdata = $('#formMood').serialize(); // here $(this) refere to the form its submitting
+            
+            $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+                        }
+                    });
+            $.ajax({
+                type: 'POST',
+                url: "/main/mood",
+                // dataType: "formData",
+                data: $formdata + '&weekId=' + window.weekNumber, 
+                success: function (data) {
+                    
+                },
+            });
+             stay.preventDefault();
+        }); 
+    }
+        
 
 
+
+   
 
     $(document).on('change', '.cst-select-mood', moodDisplay);
  
