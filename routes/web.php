@@ -41,7 +41,7 @@ Route::get('/toDo', 'ToDoController@index')->middleware('auth');
 Route::post('/toDo', 'ToDoController@insertToDo')->middleware('auth');
 Route::post('/toDo/chooseCat', 'ToDoController@chooseCat')->middleware('auth');
 Route::post('/toDo/delete', 'ToDoController@deleteToDo')->middleware('auth');
-Route::post('/toDo/checkBox', 'ToDoController@checkBox')->middleware('auth');
+Route::post('/toDo/crossed', 'ToDoController@crossLine')->middleware('auth');
 
 
 

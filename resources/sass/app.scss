@@ -22,13 +22,13 @@ nav{
     text-align: right;
     padding-top: 10px;
     letter-spacing: .2rem;
-
+ 
     a{
       color : $colorGrey2;
       font-family: $fontMain;
     }
   }
-
+ 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
@@ -297,7 +297,7 @@ a{
 }
 .cst-avatar{
 	width: 95%;
-  height: 80%;
+    height: 80%;
 }
 .header{
 	background-color:#cdcdcd;
@@ -371,14 +371,14 @@ a{
 	height:33%;
 	border:none;
 	margin:0!important;
-  padding:5px 30px 5px 15px;
+    padding:5px 30px 5px 15px;
 	display: flex;
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 #draggable{
-	z-index: 100;
+	z-index: 1001;
 }
 
 .cst-Module{
@@ -411,43 +411,29 @@ a{
 .modules {
     width:70%;
     height: 9%;
-    border-radius: 5px;
-    
+    border-radius: 5px;  
 }
-
 .dragImage {
     width: 65%;
     margin-top: 10px;
     margin-left: 15px;
-
 }
-
-.yt{
-    opacity:0.7;
-}
-
 .illustration{
     width:30%;
 }
-
 .design-button{
-    width: 10%;
-    height: 10%;
- 
+    width: 20%;
+    height: 20%;
+    text-align:center;
 }
-
 .ill-mod-photo {
     width: 50%;
     margin-right: 30%;
 }
-
 .textForm{
     height: 100%;
 }
 
-#cst-btn-toggle{
-  width: 32%;
-}
 
 .cst-p-main{
   color: $colorGreen2!important;
@@ -461,19 +447,36 @@ a{
 
 @media (max-width: 576px) {
   #dropZones{
-    background: url('../public/carnet.jpg') no-repeat;
+    background : none;
   }
-  .cst-col-main-right{
-    background: #f4f4f4;
+  .modules{
+    margin:0;
+    text-align: center;
+    width: 40px;
   }
-  .meteo{
-    display: none;
+  .dragImage{
+    margin : 0;
+  }
+  .cst-logo{
+    width: 91px;
   }
 }
 
-@media (min-width: 576px){ 
+@media (max-width: 768px) { 
+  #dropZones{
+    background : none;
+  }
 
-  
+} 
+.cst-btn-close {
+  height: 13px;
+  width: 13px;
+  font-size: small;
+  position: absolute;
+  background: #e76b6b!important;
+  color: #fff !important;
+  top: 0px;
+  right: 0px;
 }
 
 /*VIEW MON_COMPTE - ADMIN*/
@@ -497,11 +500,10 @@ a{
 .cst-form-compte label, .cst-form-compte p{
 	color: $colorGrey1;
 }
-
 .cst-head-compte{
 	font-size: 2rem;
 	font-family: $fontMain;
-}
+} 
 .cst-table-width{
   width:25%;
 }
@@ -510,16 +512,34 @@ a{
 }
 
 /*VIEW TODO*/
-
-.cst-todo-titles{
-  font-size: 1rem;
-  color: $colorGrey2;
+.tdlt{
+  text-decoration: line-through;
 }
-
+.cst-todo-titles{
+  font-size: 1.4rem;
+  color: $colorGreen2;
+  font-family: $fontParagraph;
+}
+.cst-to-col{
+  background: $colorGrey1;
+  padding: 10px;
+  border-radius: 5px;
+}
 .fa-trash-alt{
   color: $colorYellow
 }
-
+.cst-p-todo{
+  color:$colorGreen2;
+}
+.cst-icon-done{
+  color:#28dfbf;
+  } 
+.cursor{
+  cursor: pointer;
+}
+.btn-toDoList{
+  height: 60px;
+}
 
 
 @media screen and (max-width: 576px) {
@@ -796,9 +816,9 @@ img.logo {
 }
 
 .cst-btn-close {
-    height: 13px;
-    width: 13px;
-    font-size: xx-small;
+    height: 23px;
+    width: 23px;
+    font-size: small;
     position: absolute;
     background-color: $colorRed;
     color: #fff !important;
@@ -811,7 +831,6 @@ img.logo {
     height: 100%;
     resize: none;
     border-color:white;
-    background: transparent;
 }
 
 
@@ -969,6 +988,7 @@ img.logo {
 .parentimg{
     width:100%;
     height:auto;
+    text-align: center;
 }
 
 .img-header{
@@ -977,11 +997,26 @@ img.logo {
 
 .img-design{
     width: 70%;
-    margin-right:15%;
+ 
 }
 
 .img-d{
-  width:auto;
-  max-height: 180px;
-  margin-right: 40%;
+    width:auto;
+    max-height: 180px;
+ 
 }
+
+.light {
+    border: 2px dashed #bf7d3f;
+    border-radius: 50px;
+    transition-timing-function: ease;
+    transition-duration:2s;
+    opacity: 0.5;
+}
+
+.img-limit{
+    width:auto;
+    max-height:180px;
+    
+}
+

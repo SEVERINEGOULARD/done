@@ -49,19 +49,17 @@
 		</div>
 
 		<div class="col-md-3 text-center pt-5">
-			<img src="{{URL::asset('yas.png')}}">
-			<div class="pt-4">
-				<h3 class="cst-contact-titre1">Yasine Rachid</h3>
-				<p class="cst-contact-p m-0"><strong>Téléphone : </strong> 06.77.19.87.90</p>
-				<p class="cst-contact-p"><strong>Email : </strong> yasine@done.fr</p>
-			</div>
+			<img src="{{URL::asset('livre.jpg')}}">
+			<h3 class="cst-contact-titre1">Yasine Rachid</h3>
+			<p class="cst-contact-p m-0"><strong>Téléphone : </strong> 06.77.19.87.90</p>
+			<p class="cst-contact-p"><strong>Email : </strong> yasine@done.fr</p>
 		</div>
 
 		<div class="col-md-3 text-center pt-5">
 			<h3 class="cst-contact-titre1">Audrey Llavador</h3>
 			<p class="cst-contact-p m-0"><strong>Téléphone : </strong> 06.78.09.17.80</p>
 			<p class="cst-contact-p"><strong>Email : </strong> audrey@done.fr</p>
-			<img src="{{URL::asset('audrey.png')}}">
+			<img src="{{URL::asset('livre.jpg')}}">
 		</div>
  
 		<div class="col-md-3 text-center pt-5">
@@ -81,7 +79,7 @@
 
 @section('scripts-footer')
 
-<div class="container-fluid cst-contact-footer mt-5">
+<div class="container cst-contact-footer mt-5">
   <div class="row">
     <div class="col-md-4 text-center">
       <a href="/ml">Mentions légales</a>

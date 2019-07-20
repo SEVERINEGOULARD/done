@@ -75,21 +75,22 @@ votre semaine
 
 <!--ASIDE FIXE-->
 <div class="container-fluid row">
+  <!--ASIDE-->
   <div id="aside" class="container-aside col-1 cst-col-aside dragModules">
     <div class="row cst-main-mq">
-      <div id="draggable1" data-category="1" class=" modules" data-mod="1">
+      <div id="draggable1" data-category="1" class="modules" data-mod="1">
         <img class="dragImage" src="img/moduleIco1Crayon.svg">
       </div>
 
-      <div id="draggable2" data-category="2" class=" modules" data-mod="2">
+      <div id="draggable2" data-category="2" class="modules" data-mod="2">
         <img class="dragImage" src="img/moduleIco2Photo.svg"> 
       </div>
 
-      <div id="draggable3" data-category="3" class=" modules" data-mod="3">
-        <img class="dragImage" src="img/moduleIco3Paysage.svg">
+      <div id="draggable3" data-category="3" class="modules" data-mod="3">
+        <img class="dragImage" src="img/moduleIco3Gif.svg">
       </div>
 
-      <div id="draggable4" data-category="4" class=" modules" data-mod="4">
+      <div id="draggable4" data-category="4" class="modules" data-mod="4">
         <img class="dragImage" src="img/moduleIco4Humeur.svg">
       </div>
 
@@ -108,15 +109,18 @@ votre semaine
       <div id="draggable8" data-category="8" class=" modules" data-mod="8">
         <img class="dragImage blackNWhite" src="img/moduleIco8Sport.svg" alt="module en cours de développement">
       </div>
+
+      <div class="pt-5">
+        <a href="/toDo"><button class="btn-toDoList">To do List</button></a>
+      </div>
     </div>
   </div>
 
-
   <!--MAIN-->
-  <div class="container-main col-11">
+  <div class="container-main col-md-11">
     <div class="row cst-main-row" id="dropZones">
 
-      <div class="col-xs-12 col-md-6  cst-col-main-left">
+      <div class="col-6 cst-col-main-left">
         <div class="row cst-subrow dropZone" data-zone="1" id="dropZone1">
          
         </div>
@@ -127,7 +131,7 @@ votre semaine
           
         </div>
       </div>
-      <div class="col-xs-12 col-md-6 cst-col-main-right">
+      <div class="col-6 cst-col-main-right">
         <div class="row cst-subrow dropZone" data-zone="4" id="dropZone4">
           
         </div>
