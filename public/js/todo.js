@@ -189,7 +189,7 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\laragon\www\done\resources\js\todo.js */"./resources/js/todo.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\masterclone\done\resources\js\todo.js */"./resources/js/todo.js");
 
 
 /***/ })

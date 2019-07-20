@@ -76,7 +76,7 @@ class RegisterController extends Controller
             'email'          => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password'       => ['required', 'min:8', 'confirmed'],
             'avatar'         => ['nullable', 'image', 'max:10000'],
-
+            'theme'          => ['integer']
 
     ],
             $message
@@ -140,7 +140,8 @@ class RegisterController extends Controller
             'email'         => $data['email'],
             'password'      => Hash::make($data['password']),
             'dob'           => $data['dob'],
-            'avatar'        => $data['avatar'], 
+            'avatar'        => $data['avatar'],
+            'template_id'   => $data['theme']    
 
         ]);
 
