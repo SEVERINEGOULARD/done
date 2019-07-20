@@ -8,7 +8,7 @@ class CreateTodosTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * 
      * @return void
      */
     public function up()
@@ -16,6 +16,7 @@ class CreateTodosTable extends Migration
         Schema::create('todos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('category_id');
+            $table->integer('done')->default(0);//1 done - 0 undone
             $table->foreign('category_id')
             ->references('id')
             ->on('categories');

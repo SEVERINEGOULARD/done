@@ -24,27 +24,32 @@
 			</div>
 			<div class="col-12 pb-4 mq-padding-todo">
 				<div class="row">
-					<div class="col-6">
-						<p class="m-0 cst-todo-titles">Recherchez vos listes par catégorie</p>
+					<div class="col-5">
+						<p class="m-0 cst-todo-titles">Affichez vos objectifs par catégorie :</p>				
 					</div>
-
-					<div class="col-6 text-right">
-						<a href="/toDo" class="cst-todo-titles">Toute votre liste</a>
+					<div class="col-4">	
+						<form>
+							<select id="chooseCat" required>
+								<option selected>--sélectionnez votre catégorie--</option>
+								@foreach($categories as $chooseCat)
+									<option value="{{$chooseCat->id}}">{{$chooseCat->name}}</option>
+								@endforeach
+							</select>
+						</form>
 					</div>
-					
-					<form>
-						<select id="chooseCat" required>
-							<option selected>--sélectionnez votre catégorie--</option>
-							@foreach($categories as $chooseCat)
-								<option value="{{$chooseCat->id}}">{{$chooseCat->name}}</option>
-							@endforeach
-						</select>
-					</form>
+					<div>
+						<p class="cst-p-todo pt-3">- OU -</p>
+					</div>
+					<div class="col-12 text-left">
+						<p><a href="/toDo" class="cst-todo-titles">Cliquez <b>ICI</b> pour afficher tous vos objectifs</a></p>
+					</div>
 				</div>
 			</div>
+			<hr>
 			<div class="col-md-4">
+				<h2>Ajoutez un objectif :</h2>
 				<form method="" action="">
-					<textarea name="toDo" id="toDo" maxlength="70"></textarea>
+					<textarea name="toDo" id="toDo" maxlength="70">Nouvel objectif !</textarea>
 					<select id="category" required>
 						<option selected>--sélectionnez votre catégorie--</option>
 						@foreach($categories as $category)
@@ -54,20 +59,26 @@
 					<div class="w-50 pt-3">
 						<button id="sendToDo" type="submit">Envoyer</button>
 					</div>
-				</form>
-			</div>
-			
-			<div class="col-md-8" id="list-items">
-				@foreach($toDos as $toDo)
-				<div class="row pt-2" class="list">
-					<div class="col-10" id="toDoContent">
-						{{$toDo->content}}
+				</form> 
+			</div> 
+		
+			<div class="col-md-8 cst-to-col">
+				<h2>Ma "To Do list" :</h2>
+				<div id="list-items">
+					@foreach($toDos as $toDo)
+					<div class="row pt-2" class="list">
+						<div class="col-8 {{$toDo->done == 1 ?'tdlt':''}}" id="toDoContent">
+							{{$toDo->content}}
+						</div>
+						<div class="col-2">
+							<a class ="deleteList" href="#" data-delete='{{$toDo->id}}' ><i class="cursor far fa-trash-alt"></i></a>
+						</div>
+						<div class="col-2">
+							<a class ="crossedList" href="#" data-crossed='{{$toDo->id}}' ><i class="cursor fas fa-check-circle cst-icon-done"></i></a>
+						</div>
 					</div>
-					<div class="col-2">
-						<a class ="deleteList" href="#" data-delete='{{$toDo->id}}' ><i class="far fa-trash-alt"></i></a>
-					</div>
-				</div>
-				@endforeach
+					@endforeach
+				</div> 
 			</div>
 		</div>
 	</div>

@@ -1,10 +1,10 @@
 <!--view welcome-->
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Done</title>
 
         <script src="{{ asset('js/app.js') }}"></script>
@@ -131,11 +131,14 @@
                 <div class="col-md-12 text-right">
                     @if (Route::has('login'))
                     <div class="links cst-icons">
-                        @auth
+                        @auth 
                             <a href="/home">Home</a>
                             <a href="/main">Bullet journal</a>
-                            <a href="/admin">Dashboard</a>
                             <a href="/logout">Déconnexion</a>
+                            @if (Route::has('admin'))
+                                <a href="/admin">Dashboard</a>
+                            @endif
+
                         @else
                             <a href="{{ route('login') }}">Connexion</a>
 
@@ -145,7 +148,7 @@
                         @endauth
                     @endif
                             <a href="/contact">Contact</a>
-                            
+
                     </div>
                 </div>
             </div> 

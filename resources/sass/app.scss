@@ -22,13 +22,13 @@ nav{
     text-align: right;
     padding-top: 10px;
     letter-spacing: .2rem;
-
+ 
     a{
       color : $colorGrey2;
       font-family: $fontMain;
     }
   }
-
+ 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
@@ -459,9 +459,9 @@ a{
 .cst-btn-close {
   height: 13px;
   width: 13px;
-  font-size: xx-small;
+  font-size: small;
   position: absolute;
-  background-color: #b71717;
+  background: #e76b6b!important;
   color: #fff !important;
   top: 0px;
   right: 0px;
@@ -508,7 +508,7 @@ a{
 .cst-head-compte{
 	font-size: 2rem;
 	font-family: $fontMain;
-}
+} 
 .cst-table-width{
   width:25%;
 }
@@ -521,16 +521,34 @@ a{
 }
 
 /*VIEW TODO*/
-
-.cst-todo-titles{
-  font-size: 1rem;
-  color: $colorGrey2;
+.tdlt{
+  text-decoration: line-through;
 }
-
+.cst-todo-titles{
+  font-size: 1.4rem;
+  color: $colorGreen2;
+  font-family: $fontParagraph;
+}
+.cst-to-col{
+  background: $colorGrey1;
+  padding: 10px;
+  border-radius: 5px;
+}
 .fa-trash-alt{
   color: $colorYellow
 }
-
+.cst-p-todo{
+  color:$colorGreen2;
+}
+.cst-icon-done{
+  color:#28dfbf;
+  } 
+.cursor{
+  cursor: pointer;
+}
+.btn-toDoList{
+  height: 60px;
+}
 
 
 @media screen and (max-width: 576px) {
@@ -807,9 +825,9 @@ img.logo {
 }
 
 .cst-btn-close {
-    height: 13px;
-    width: 13px;
-    font-size: xx-small;
+    height: 23px;
+    width: 23px;
+    font-size: small;
     position: absolute;
     background-color: $colorRed;
     color: #fff !important;

@@ -38,12 +38,7 @@ $(function(){
     
                 });
             });
-        }
-        else {
-            $dragged.css({
-                // backgroundColor: "#fff",
-                height: "100%",
-                width: "100%"
+        }    
     
     /*Create Module Image*/
         function createImage(zone, base64content) {
@@ -291,7 +286,7 @@ $(function(){
         // Behaviour drop/drag
         for (i = 1; i <= 6; i++) {
             $("#dropZone" + i).droppable({
-                zIndex: 1,
+                zIndex: 1, 
                 tolerance: "fit",
     
                 drop: function (event, ui) {
@@ -368,52 +363,9 @@ $(function(){
                     });
     
                 }
-                for (i = 0; i < 8; i++) {
-                    $('#btn'+[i]).on("click", function (e) {
-                        e.preventDefault();
-                        $.ajaxSetup({
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            }
-                        });
-                        $.ajax({
-                            url: 'main/design',
-                            dataType: "json",
-                            method: "POST",
-                            data: 'design=' + $(this).data('but') + '&line-id=' + $dragged.data('line-id'),
-                            complete: function (data) {
-                                $result = data.responseJSON;
-
-                                $dragged.find('.parentimag').children($designBtn).remove();
-                                $dragged.append('<img src="' + $result['design'] + '"</img>');
-
-                            }
-                        });
-                    });/*close cat3*/
-
-                }
-               
-
-                /*cat 4*/
-                if ($dragged.data('category') == "4") {
-                  $dragged.append('<div id="moodDrag"></div>');
-                
-                   $.get("mood.blade.php", function (data) {
-                      $dragged.find('#moodDrag').html(data);
-                      eventListener();
-                   });
-
-             } /*close cat4*/   
-
-
-
-            // $droppedOn $dragged
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
             });
         };
-    
+               
     
     /*MOOD TRACKER*/
     /*Array : moods available*/
@@ -495,7 +447,7 @@ $(function(){
 
             }
             
-       } 
+       
    
        /*display mood on div after change*/
     $(document).on('change', '.cst-select-mood', moodDisplay);

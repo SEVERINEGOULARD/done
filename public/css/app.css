@@ -11103,9 +11103,9 @@ p {
 .cst-btn-close {
   height: 13px;
   width: 13px;
-  font-size: xx-small;
+  font-size: small;
   position: absolute;
-  background-color: #b71717;
+  background: #e76b6b !important;
   color: #fff !important;
   top: 0px;
   right: 0px;
@@ -11176,13 +11176,40 @@ p {
 
 /*VIEW TODO*/
 
+.tdlt {
+  text-decoration: line-through;
+}
+
 .cst-todo-titles {
-  font-size: 1rem;
-  color: #424242;
+  font-size: 1.4rem;
+  color: #497264;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.cst-to-col {
+  background: #eeeeee;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .fa-trash-alt {
   color: #f8da63;
+}
+
+.cst-p-todo {
+  color: #497264;
+}
+
+.cst-icon-done {
+  color: #28dfbf;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.btn-toDoList {
+  height: 60px;
 }
 
 @media screen and (max-width: 576px) {
@@ -11455,9 +11482,9 @@ img.logo {
 }
 
 .cst-btn-close {
-  height: 13px;
-  width: 13px;
-  font-size: xx-small;
+  height: 23px;
+  width: 23px;
+  font-size: small;
   position: absolute;
   background-color: #b71717;
   color: #fff !important;

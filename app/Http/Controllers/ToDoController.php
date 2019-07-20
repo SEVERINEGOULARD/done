@@ -26,10 +26,10 @@ class ToDoController extends Controller
         $toDo->category_id  = $data['category'];
         $toDo->user_id      = $user->id; 
         $toDo->save();
-        echo json_encode($data);
+        echo json_encode($data); 
     }
 
-        public function chooseCat(Request $request){
+    public function chooseCat(Request $request){
         $data = $request->all();
         $user = Auth::user();
         $chooseCat = Todo::where('category_id', $data['category'])->where('user_id', $user->id)->get();
@@ -37,15 +37,24 @@ class ToDoController extends Controller
         echo json_encode($chooseCat);
     }
 
-    
-        public function deleteToDo(Request $request){ 
+     
+    public function deleteToDo(Request $request){ 
         $data = $request->all();
+        // A voir si _ça marche
+        // Todos::where('id', $request->id)->delete();
         DB::table('todos')->where('id', $request->id)->delete();
         echo json_encode($data);
     }
 
-    public function checkBox(Request $request){
+    public function crossLine(request $request){
         $data = $request->all();
-        echo json_encode($data);
+
+        $todo = Todo::where('id', $data['id'])->first();
+        $todo->done       = 1;
+
+        $todo->save();
+        echo json_encode($todo);
     }
+
+    
 }

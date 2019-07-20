@@ -49,7 +49,6 @@ votre semaine
     <div class="col-3 offset-md-2 cst-div-header cst-nav">
       <nav>
           <ul class="cst-ul">
-              <li><a href="/toDo">Todo </a></li>
               <li><a href="/contact">&nbspContact</a></li>
           </ul>
       </nav>
@@ -95,6 +94,10 @@ votre semaine
 
       <div id="draggable8" data-category="8" class=" modules" data-mod="8">
         <img class="dragImage" src="img/moduleIco8Sport.svg">
+      </div>
+
+      <div class="pt-5">
+        <a href="/toDo"><button class="btn-toDoList">To do List</button></a>
       </div>
     </div>
   </div>
